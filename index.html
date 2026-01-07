@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-43P9QM2K0N"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-43P9QM2K0N");
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark light" />
@@ -9,6 +23,63 @@
       name="description"
       content="John Van Wagenen — senior software engineer. Personal site coming soon. Available for consulting and freelance work."
     />
+
+    <link rel="canonical" href="https://johnvw.dev/" />
+
+    <meta name="author" content="John Van Wagenen" />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Open Graph (social previews) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="John Van Wagenen" />
+    <meta property="og:url" content="https://johnvw.dev/" />
+    <meta
+      property="og:description"
+      content="Senior software engineer. Writing-forward personal site coming soon. Available for consulting and freelance work."
+    />
+    <meta property="og:site_name" content="John Van Wagenen" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="John Van Wagenen" />
+    <meta name="twitter:url" content="https://johnvw.dev/" />
+    <meta name="twitter:site" content="@jtvanwage" />
+    <meta name="twitter:creator" content="@jtvanwage" />
+    <meta
+      name="twitter:description"
+      content="Senior software engineer. Writing-forward personal site coming soon. Available for consulting and freelance work."
+    />
+
+    <!-- Structured data (SEO) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "John Van Wagenen",
+            "url": "https://johnvw.dev/",
+            "description": "Writing-forward personal site coming soon. Available for consulting and freelance work.",
+            "inLanguage": "en"
+          },
+          {
+            "@type": "Person",
+            "name": "John Van Wagenen",
+            "url": "https://johnvw.dev/",
+            "jobTitle": "Senior Software Engineer",
+            "description": "Senior software engineer. Writes about engineering, systems, and shipping reliable software. Available for consulting and freelance work.",
+            "sameAs": ["https://x.com/jtvanwage"],
+            "knowsAbout": [
+              "Software engineering",
+              "System design",
+              "Performance",
+              "Reliability",
+              "Testing"
+            ]
+          }
+        ]
+      }
+    </script>
 
     <style>
       :root {
@@ -464,7 +535,10 @@
 
       <main>
         <section class="hero" aria-label="Intro">
-          <h1>Writing-forward site, launching soon.</h1>
+          <h1>John Van Wagenen</h1>
+          <p class="hint" style="margin-top: 10px">
+            Writing-forward site, launching soon.
+          </p>
           <p>
             I’m <strong>John Van Wagenen</strong> — a senior software engineer.
             This is a placeholder for a blog-first home where I publish

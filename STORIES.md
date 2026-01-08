@@ -40,7 +40,7 @@ Status legend:
 
 -
 
-### [ ] S02 — Add Tailwind CSS
+### [x] S02 — Add Tailwind CSS
 
 **Goal:** Tailwind works across `app/` routes.
 

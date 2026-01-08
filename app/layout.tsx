@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export const metadata = { title: "John Van Wagenen" };
 
 export default function RootLayout({

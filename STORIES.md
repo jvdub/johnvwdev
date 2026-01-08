@@ -218,11 +218,10 @@ Status legend:
 
 **Progress**
 
-- Created `content/posts/` and added published sample post: `content/posts/2026-01-08-demystifying-ai-in-engineering.mdx`.
+- Created `content/posts/` and added published sample post: `content/posts/demystifying-ai-in-engineering.mdx`.
 - Added `content/drafts/` for in-progress writing (keeps drafts out of published posts folder).
--
 
-### [ ] S10 — Implement MDX/Markdown loading at build time
+### [x] S10 — Implement MDX/Markdown loading at build time
 
 **Goal:** Parse frontmatter + compile MDX during build.
 
@@ -241,9 +240,11 @@ Status legend:
 
 **Progress**
 
--
+- Added post loader utility in `lib/posts.ts` (reads `content/posts/`, derives slug, validates required frontmatter, filters drafts, sorts by date).
+- Added MDX compilation helper in `lib/mdx.tsx` using `next-mdx-remote/rsc`.
+- Build-time loader + MDX compilation are in place and `npm run build` succeeds.
 
-### [ ] S11 — Blog index page (`/blog`)
+### [x] S11 — Blog index page (`/blog`)
 
 **Goal:** List published posts.
 
@@ -259,9 +260,9 @@ Status legend:
 
 **Progress**
 
--
+- Implemented `/blog` list view (published posts only) with title/date/description and links to slug pages.
 
-### [ ] S12 — Blog article pages (`/blog/[slug]`)
+### [x] S12 — Blog article pages (`/blog/[slug]`)
 
 **Goal:** Render each post as a static page.
 
@@ -277,11 +278,11 @@ Status legend:
 
 **Progress**
 
-- ***
+- Added `app/blog/[slug]/page.tsx` with `generateStaticParams`, MDX rendering, and 404 for unknown slugs.
 
 ## Static export + minimal SEO
 
-### [ ] S13 — Minimal metadata (title + description + canonical)
+### [x] S13 — Minimal metadata (title + description + canonical)
 
 **Goal:** Baseline metadata without going deep on SEO.
 
@@ -297,7 +298,8 @@ Status legend:
 
 **Progress**
 
--
+- Added `/blog` and per-post metadata sourced from frontmatter.
+- Canonical uses `canonicalUrl` if set; otherwise site URL + path.
 
 ### [ ] S14 — Generate `sitemap.xml` and `rss.xml` at build time
 

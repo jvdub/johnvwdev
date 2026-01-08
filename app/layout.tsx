@@ -1,11 +1,19 @@
 import "./globals.css";
 
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { SITE_URL } from "../lib/site";
 
-export const metadata = { title: "John Van Wagenen" };
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "John Van Wagenen",
+    template: "%s | John Van Wagenen",
+  },
+};
 
 const THEME_INIT_SCRIPT = `(() => {
   try {

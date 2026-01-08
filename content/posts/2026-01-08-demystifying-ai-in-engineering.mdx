@@ -1,0 +1,121 @@
+---
+title: "Demystifying AI in Engineering"
+date: "2026-01-08"
+description: "A practical, non-hype look at how modern AI models work and where they help (and don’t) in software engineering."
+tags:
+  - ai
+  - llms
+  - engineering
+  - machine-learning
+draft: false
+heroImage: ""
+canonicalUrl: ""
+---
+
+## **Demystifying AI in Engineering**
+
+When talking about AI in software engineering, I often hear things like:
+
+“I don’t trust it.”  
+“Does it really save any time?”  
+“Why use it when I can just do it myself?”  
+“It’s just a statistical model.”  
+“It just writes slop.”
+
+As someone who has been invested in AI for nearly ten years, it can be frustrating to hear these. At the same time, they are not all wrong. Under the hood, modern AI really _is_ a statistical model. That does not mean it is not useful.
+
+My goal here is not to sell you on AI or write an academic paper. It is to give you a clear, practical look at how today’s models actually work so you can better judge when they are valuable and when they are not.
+
+To do that, it helps to understand where a lot of this skepticism came from.
+
+---
+
+## **Yesterday’s AI**
+
+Let’s go back about ten years to the mid-2010s, when _machine learning_ was the buzzword of the moment. We were starting to call things “AI,” but most of what we had were narrow, specialized models.
+
+The thinking at the time was straightforward. Computers are good with numbers, so if we could turn text, images, and other messy data into numbers, we could train models on it. Techniques like vector embeddings, popularized by tools such as `word2vec`, made this possible by representing things like words or images as numerical vectors that preserved some notion of meaning.
+
+From there, we trained models using large labeled datasets. You would show the model examples. This is a muffin. This is not a muffin. Over time, it learned statistical patterns that let it guess whether a new image was likely a muffin or not.
+
+This approach worked, but only within limits.
+
+Most machine learning at the time was supervised, narrow, and task-specific. Models were trained to do one thing well, such as classifying images, tagging text, or detecting spam. They processed one input at a time in a tightly constrained problem space.
+
+As a result, these systems were slow to train, brittle in practice, and difficult to generalize. A model that was great at identifying muffins was useless for detecting cancer or translating text. What we called “big” models were measured in millions, and sometimes tens of millions, of parameters. They were only as good as the specific data they were trained on.
+
+Given that history, it is no wonder many engineers learned to distrust “AI.”
+
+---
+
+## **What Changed**
+
+So how did we get from that world to the generative models we use today?
+
+Several things changed, but three matter most.
+
+### **1. Transformers**
+
+The most important shift was the introduction of the transformer architecture.
+
+Before transformers, models processed language mostly sequentially. They looked at one word at a time and had limited ability to understand how all parts of a sentence related to each other. Disambiguating a word like “bank” often required awkward workarounds.
+
+Transformers changed this by allowing models to look at all the words in a piece of text at once and learn how they relate to one another. Instead of isolated tokens, the model reasons over relationships across an entire sentence, paragraph, or document.
+
+This single change dramatically expanded what models could understand and generate. It moved machine learning beyond narrow classification tasks and made general-purpose language models possible.
+
+### **2. Scale and Generality**
+
+Once transformers proved they could scale, we started training models on much broader datasets. These included publicly available text, code, documentation, books, and research.
+
+Instead of learning one task, models began learning general patterns across many domains. This shift is the foundation of what we now call generative AI.
+
+### **3. Model-Native Context**
+
+Context changed as well.
+
+A decade ago, context was mostly managed by application code. Developers decided what data to send to a model, often in small and rigid chunks. This made systems fragile and limited.
+
+Today, context is largely model-native. Models manage it themselves by tracking, compressing, and prioritizing information across much larger windows. This enables longer conversations, richer reasoning, and multi-step workflows that simply were not practical before.
+
+---
+
+## **Why Today’s AI Feels Different**
+
+These changes did not turn statistical models into magic. What they did was make them broadly useful.
+
+Modern models can ingest large portions of a codebase and reason across multiple files. They can synthesize information from documentation, tests, and error output in a way older systems never could.
+
+Yes, they are still predicting the most likely next token. The difference is that they do so with far more context, better representations, and significantly improved performance.
+
+That is why an LLM can often help you track down a nasty bug or draft a reasonable implementation sketch in minutes. Tasks that once required hours of manual searching and context switching can now be accelerated.
+
+---
+
+## **Where Models Excel and Where They Struggle**
+
+Today’s models are especially strong at pattern recognition and synthesis. They work well across large contexts and are good at generating first drafts of code, tests, or documentation.
+
+They still have limits.
+
+They tend to be opinionated and often nudge you toward common patterns that may not match your architecture. They can also get lost when iterating through complex changes, especially when tests start failing in unexpected ways.
+
+In many ways, they behave like an overeager intern. They are genuinely helpful, surprisingly capable, and occasionally too confident for their own good.
+
+---
+
+## **How Engineers Should Approach Them**
+
+Chances are you already have access to these tools, whether through Copilot, Claude, Cursor, or something similar.
+
+The key is learning how to work with them.
+
+A good starting point is simple. The next time you are working on something, ask yourself how you would explain it to an intern. Then try explaining it to an AI instead and see what it does.
+
+Start small. Observe where it helps and where it struggles. Experiment with how your prompts change the outcome.
+
+Like any tool, the value comes with practice and with understanding its limits.
+
+---
+
+If you want to explore this more or talk through how these tools fit into real engineering workflows, feel free to reach out.

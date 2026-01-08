@@ -193,7 +193,7 @@ Status legend:
 
 ## Blog (MDX)
 
-### [ ] S09 — Create blog content folder + sample post
+### [x] S09 — Create blog content folder + sample post
 
 **Goal:** Establish content conventions.
 
@@ -218,6 +218,8 @@ Status legend:
 
 **Progress**
 
+- Created `content/posts/` and added published sample post: `content/posts/2026-01-08-demystifying-ai-in-engineering.mdx`.
+- Added `content/drafts/` for in-progress writing (keeps drafts out of published posts folder).
 -
 
 ### [ ] S10 — Implement MDX/Markdown loading at build time

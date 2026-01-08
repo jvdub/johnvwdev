@@ -58,7 +58,7 @@ Status legend:
 
 -
 
-### [ ] S03 — Port existing theme tokens from index.html
+### [x] S03 — Port existing theme tokens from index.html
 
 **Goal:** Reuse the current palette and token naming from `index.html`.
 
@@ -75,7 +75,7 @@ Status legend:
 
 **Progress**
 
--
+- Added legacy CSS variables (dark default + light overrides) in app/globals.css and mapped Tailwind theme utilities to them.
 
 ### [ ] S04 — Theme toggle (dark/light)
 

@@ -18,7 +18,7 @@ Status legend:
 
 ## Foundation
 
-### [ ] S01 — Scaffold Next.js app (App Router + TypeScript)
+### [x] S01 — Scaffold Next.js app (App Router + TypeScript)
 
 **Goal:** Initialize the Next.js project in this repo.
 

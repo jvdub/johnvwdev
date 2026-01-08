@@ -158,7 +158,7 @@ Status legend:
 
 - Added `/projects` route with placeholder items and wired header + home links.
 
-### [ ] S07 — About page (`/about`)
+### [x] S07 — About page (`/about`)
 
 **Goal:** About-me content page.
 
@@ -172,7 +172,8 @@ Status legend:
 
 **Progress**
 
--
+- Implemented About hero card using shared layout styling.
+- Reused headshot image and added a short “Now” section (no links).
 
 ### [ ] S08 — Contact page (`/contact`) with socials only
 

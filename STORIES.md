@@ -122,7 +122,7 @@ Status legend:
 
 ## Pages
 
-### [ ] S06 — Landing page (`/`)
+### [x] S06 — Landing page (`/`)
 
 **Goal:** Initial home page structure and copy.
 
@@ -137,7 +137,26 @@ Status legend:
 
 **Progress**
 
--
+- Implemented hero/intro section and added Blog + Projects links.
+- Added Writing + Consulting preview sections to reduce “empty page” feel.
+- Added optional headshot image in hero (expects `public/jvw_headshot.jpg`).
+
+### [x] S19 — Projects section (`/projects`)
+
+**Goal:** Add a dedicated Projects section to match navigation and landing links.
+
+**Deliverables**
+
+- Projects page (`/projects`) with placeholder list.
+- Primary navigation includes Projects.
+
+**Done when**
+
+- `/projects` renders with the shared layout and looks good in both themes.
+
+**Progress**
+
+- Added `/projects` route with placeholder items and wired header + home links.
 
 ### [ ] S07 — About page (`/about`)
 

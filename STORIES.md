@@ -77,7 +77,7 @@ Status legend:
 
 - Added legacy CSS variables (dark default + light overrides) in app/globals.css and mapped Tailwind theme utilities to them.
 
-### [ ] S04 — Theme toggle (dark/light)
+### [x] S04 — Theme toggle (dark/light)
 
 **Goal:** Allow switching themes; persist choice.
 
@@ -94,7 +94,9 @@ Status legend:
 
 **Progress**
 
--
+- Added a header theme toggle.
+- Sets `data-theme="dark"|"light"` on `<html>`.
+- Persists theme to `localStorage` and defaults to system preference on first load.
 
 ### [ ] S05 — Layout shell (header/nav/footer) + responsive base
 

@@ -175,7 +175,7 @@ Status legend:
 - Implemented About hero card using shared layout styling.
 - Reused headshot image and added a short “Now” section (no links).
 
-### [ ] S08 — Contact page (`/contact`) with socials only
+### [x] S08 — Contact page (`/contact`) with socials only
 
 **Goal:** Provide a way to reach you without form/email handling.
 
@@ -189,7 +189,7 @@ Status legend:
 
 **Progress**
 
-- ***
+- Implemented socials-only Contact page with external links to X, LinkedIn, and GitHub (no form/email workflow).
 
 ## Blog (MDX)
 

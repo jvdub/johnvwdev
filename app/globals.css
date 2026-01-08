@@ -63,5 +63,27 @@ body {
 }
 
 body {
-  @apply bg-bg text-fg font-sans;
+  @apply bg-bg text-fg font-sans antialiased leading-relaxed;
+}
+
+@layer base {
+  a {
+    @apply text-accent underline underline-offset-4;
+  }
+
+  a:hover {
+    @apply text-accent-2;
+  }
+
+  h1 {
+    @apply text-4xl font-extrabold tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
 }

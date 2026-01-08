@@ -98,7 +98,7 @@ Status legend:
 - Sets `data-theme="dark"|"light"` on `<html>`.
 - Persists theme to `localStorage` and defaults to system preference on first load.
 
-### [ ] S05 — Layout shell (header/nav/footer) + responsive base
+### [x] S05 — Layout shell (header/nav/footer) + responsive base
 
 **Goal:** Consistent layout across pages, readable on mobile/tablet/desktop.
 
@@ -115,7 +115,10 @@ Status legend:
 
 **Progress**
 
-- ***
+- Implemented shared header/nav/footer shell.
+- Extracted `components/SiteHeader.tsx` and `components/SiteFooter.tsx`.
+- Centralized max width + responsive padding in `app/layout.tsx`.
+- Added minimal typography/link defaults in `app/globals.css`.
 
 ## Pages
 

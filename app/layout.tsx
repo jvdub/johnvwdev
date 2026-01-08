@@ -2,7 +2,8 @@ import "./globals.css";
 
 import type { ReactNode } from "react";
 
-import { ThemeToggle } from "../components/ThemeToggle";
+import { SiteFooter } from "../components/SiteFooter";
+import { SiteHeader } from "../components/SiteHeader";
 
 export const metadata = { title: "John Van Wagenen" };
 
@@ -26,12 +27,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="min-h-screen flex flex-col">
-        <header className="border-b border-border bg-surface">
-          <div className="mx-auto flex max-w-content items-center justify-end px-4 py-3">
-            <ThemeToggle />
-          </div>
-        </header>
-        {children}
+        <SiteHeader />
+        <main className="mx-auto w-full max-w-content flex-1 px-4 py-8 sm:py-10">
+          {children}
+        </main>
+        <SiteFooter />
       </body>
     </html>
   );

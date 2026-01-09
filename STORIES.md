@@ -319,7 +319,7 @@ Status legend:
 - Added build-time generator script (`npm run generate:feeds`) that writes `public/sitemap.xml` (static routes + published posts) and `public/rss.xml` (published posts only).
 - Wired generation into `prebuild` so `npm run build` always produces the files.
 
-### [ ] S15 — Wire Google Analytics
+### [x] S15 — Wire Google Analytics
 
 **Goal:** Include GA using existing measurement id.
 
@@ -333,7 +333,8 @@ Status legend:
 
 **Progress**
 
--
+- Wired GA gtag loader + init scripts in `app/layout.tsx` for measurement ID `G-43P9QM2K0N`.
+- Verified measurement ID appears in built output HTML.
 
 ### [ ] S16 — Configure static export (`next export`)
 
@@ -368,6 +369,24 @@ Status legend:
 
 - No horizontal scrolling on common viewport widths.
 - Blog articles are comfortable to read on phones.
+
+**Progress**
+
+-
+
+### [ ] S20 — GA SPA pageview tracking
+
+**Goal:** Record page views on client-side navigation (App Router).
+
+**Deliverables**
+
+- Client-side route change tracking that triggers a GA pageview on pathname/search changes.
+- Uses the existing measurement ID `G-43P9QM2K0N` (no additional GA properties).
+- Keeps static-export compatibility (no server-only dependencies).
+
+**Done when**
+
+- Navigating between routes (e.g., `/` → `/blog` → `/about`) triggers a page view event per navigation.
 
 **Progress**
 

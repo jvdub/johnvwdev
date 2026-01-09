@@ -336,7 +336,7 @@ Status legend:
 - Wired GA gtag loader + init scripts in `app/layout.tsx` for measurement ID `G-43P9QM2K0N`.
 - Verified measurement ID appears in built output HTML.
 
-### [ ] S16 — Configure static export (`next export`)
+### [x] S16 — Configure static export (`next export`)
 
 **Goal:** Ensure the site exports as fully static.
 
@@ -352,7 +352,8 @@ Status legend:
 
 **Progress**
 
-- ***
+- Updated `next.config.js` to use `output: "export"` with `images.unoptimized` and `trailingSlash`.
+- Verified `npm run build` generates a static `out/` directory containing exported routes.
 
 ## Final polish (v1)
 

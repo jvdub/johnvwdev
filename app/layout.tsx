@@ -42,21 +42,6 @@ const THEME_INIT_SCRIPT = `(() => {
 
     const apply = (theme) => {
       document.documentElement.dataset.theme = theme;
-
-      const toggles = document.querySelectorAll("[data-theme-toggle]");
-      toggles.forEach((btn) => {
-        try {
-          btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
-          btn.setAttribute(
-            "aria-label",
-            theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
-          );
-          const value = btn.querySelector("[data-theme-value]");
-          if (value) value.textContent = theme;
-        } catch {
-          // ignore
-        }
-      });
     };
 
     const setStored = (theme) => {

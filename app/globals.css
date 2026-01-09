@@ -87,3 +87,12 @@ body {
     @apply text-2xl font-semibold tracking-tight;
   }
 }
+
+/* Theme toggle label: derive text from the current theme attribute. */
+[data-theme-value]::after {
+  content: "dark";
+}
+
+:root[data-theme="light"] [data-theme-value]::after {
+  content: "light";
+}

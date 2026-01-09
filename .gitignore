@@ -3,6 +3,7 @@ node_modules/
 .env.local
 .env
 .DS_Store
+out/
 
 # Build-time generated SEO artifacts
 public/sitemap.xml

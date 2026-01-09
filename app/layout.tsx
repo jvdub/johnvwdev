@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { GaPageView } from "../components/GaPageView";
 import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
@@ -94,6 +95,7 @@ gtag('config', '${GA_MEASUREMENT_ID}');`,
         />
       </head>
       <body className="min-h-screen flex flex-col">
+        <GaPageView measurementId={GA_MEASUREMENT_ID} />
         <SiteHeader />
         <main className="mx-auto w-full max-w-content flex-1 px-4 py-8 sm:py-10">
           {children}

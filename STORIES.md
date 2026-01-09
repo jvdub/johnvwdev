@@ -378,7 +378,7 @@ Status legend:
 - Added overflow guards for long URLs/words and made code blocks horizontally scrollable to prevent page-level horizontal scrolling.
 - Made header nav more resilient on small screens (min-width handling + better tap targets).
 
-### [ ] S20 — GA SPA pageview tracking
+### [x] S20 — GA SPA pageview tracking
 
 **Goal:** Record page views on client-side navigation (App Router).
 
@@ -394,7 +394,9 @@ Status legend:
 
 **Progress**
 
--
+- Added client-side route change tracking via `components/GaPageView.tsx`.
+- Uses App Router hooks (`usePathname`, `useSearchParams`) to fire `gtag('config', 'G-43P9QM2K0N', { page_path, page_location })` on navigation.
+- Skips initial page load to avoid double-counting (initial pageview is handled by the existing layout scripts).
 
 ### [ ] S18 — Update README runbook
 

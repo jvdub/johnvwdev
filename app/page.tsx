@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -22,12 +23,14 @@ export default function Home() {
           </div>
 
           <div className="shrink-0">
-            <img
+            <Image
               src="/jvw_headshot.jpg"
               alt="Headshot of John Van Wagenen"
               width={112}
               height={112}
+              sizes="(min-width: 640px) 112px, 96px"
               className="h-24 w-24 rounded-full border border-border bg-surface2 object-cover shadow-elev sm:h-28 sm:w-28"
+              priority
             />
           </div>
         </div>

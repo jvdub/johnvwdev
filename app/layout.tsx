@@ -17,12 +17,71 @@ export const metadata: Metadata = {
 
 const THEME_INIT_SCRIPT = `(() => {
   try {
+    // Avoid double-binding in case this script ever runs again.
+    if (window.__jvwThemeInit) return;
+    window.__jvwThemeInit = true;
+
     const key = "theme";
-    const stored = window.localStorage.getItem(key);
-    const hasStored = stored === "light" || stored === "dark";
-    const system = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const theme = hasStored ? stored : system;
-    document.documentElement.dataset.theme = theme;
+    const isTheme = (v) => v === "light" || v === "dark";
+
+    const readStored = () => {
+      try {
+        const v = window.localStorage.getItem(key);
+        return isTheme(v) ? v : null;
+      } catch {
+        return null;
+      }
+    };
+
+    const getSystem = () =>
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+
+    const apply = (theme) => {
+      document.documentElement.dataset.theme = theme;
+
+      const toggles = document.querySelectorAll("[data-theme-toggle]");
+      toggles.forEach((btn) => {
+        try {
+          btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+          btn.setAttribute(
+            "aria-label",
+            theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
+          );
+          const value = btn.querySelector("[data-theme-value]");
+          if (value) value.textContent = theme;
+        } catch {
+          // ignore
+        }
+      });
+    };
+
+    const setStored = (theme) => {
+      try {
+        window.localStorage.setItem(key, theme);
+      } catch {
+        // ignore
+      }
+    };
+
+    const initial = readStored() ?? getSystem();
+    apply(initial);
+
+    const onClick = (event) => {
+      const target = event.target;
+      const btn = target && target.closest ? target.closest("[data-theme-toggle]") : null;
+      if (!btn) return;
+
+      const current = document.documentElement.dataset.theme;
+      const normalized = isTheme(current) ? current : (readStored() ?? getSystem());
+      const next = normalized === "dark" ? "light" : "dark";
+      apply(next);
+      setStored(next);
+    };
+
+    // Use event delegation so buttons added later still work.
+    document.addEventListener("click", onClick);
   } catch {
     // ignore
   }

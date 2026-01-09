@@ -1,3 +1,5 @@
+import { Github, Linkedin, X } from "lucide-react";
+
 export default function Contact() {
   return (
     <div className="flex flex-col gap-8">
@@ -21,9 +23,10 @@ export default function Contact() {
           rel="noopener noreferrer me"
           className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
-          <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-            X
-          </p>
+          <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
+            <X className="h-4 w-4" aria-hidden="true" />
+            <span>X</span>
+          </div>
           <p className="mt-2 text-base font-semibold text-fg">@jtvanwage</p>
           <p className="mt-3 text-sm text-fg-muted">Open profile →</p>
         </a>
@@ -34,9 +37,10 @@ export default function Contact() {
           rel="noopener noreferrer me"
           className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
-          <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-            LinkedIn
-          </p>
+          <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
+            <Linkedin className="h-4 w-4" aria-hidden="true" />
+            <span>LinkedIn</span>
+          </div>
           <p className="mt-2 text-base font-semibold text-fg">
             John Van Wagenen
           </p>
@@ -49,9 +53,10 @@ export default function Contact() {
           rel="noopener noreferrer me"
           className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
-          <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-            GitHub
-          </p>
+          <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
+            <Github className="h-4 w-4" aria-hidden="true" />
+            <span>GitHub</span>
+          </div>
           <p className="mt-2 text-base font-semibold text-fg">@jvdub</p>
           <p className="mt-3 text-sm text-fg-muted">Open profile →</p>
         </a>

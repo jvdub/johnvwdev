@@ -12,21 +12,22 @@ export function generateStaticParams() {
 }
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   try {
-    const { frontmatter } = getPostSourceBySlug(params.slug);
+    const { slug } = await params;
+    const { frontmatter } = getPostSourceBySlug(slug);
 
     const canonical =
       frontmatter.canonicalUrl && frontmatter.canonicalUrl.trim().length > 0
         ? frontmatter.canonicalUrl
-        : canonicalForPath(`/blog/${params.slug}`);
+        : canonicalForPath(`/blog/${slug}`);
 
     return {
       title: frontmatter.title,
@@ -43,8 +44,10 @@ export async function generateMetadata({
 export default async function BlogPostPage({ params }: PageProps) {
   let postSource: ReturnType<typeof getPostSourceBySlug>;
 
+  const { slug } = await params;
+
   try {
-    postSource = getPostSourceBySlug(params.slug);
+    postSource = getPostSourceBySlug(slug);
   } catch {
     notFound();
   }

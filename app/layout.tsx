@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import type { ReactNode } from "react";
+import { Suspense } from "react";
 import type { Metadata } from "next";
 
 import { SiteFooter } from "../components/SiteFooter";
@@ -95,7 +96,9 @@ gtag('config', '${GA_MEASUREMENT_ID}');`,
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        <GaPageView measurementId={GA_MEASUREMENT_ID} />
+        <Suspense fallback={null}>
+          <GaPageView measurementId={GA_MEASUREMENT_ID} />
+        </Suspense>
         <SiteHeader />
         <main className="mx-auto w-full max-w-content flex-1 px-4 py-8 sm:py-10">
           {children}

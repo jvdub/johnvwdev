@@ -301,7 +301,7 @@ Status legend:
 - Added `/blog` and per-post metadata sourced from frontmatter.
 - Canonical uses `canonicalUrl` if set; otherwise site URL + path.
 
-### [ ] S14 — Generate `sitemap.xml` and `rss.xml` at build time
+### [x] S14 — Generate `sitemap.xml` and `rss.xml` at build time
 
 **Goal:** Required outputs are produced for published posts.
 
@@ -316,7 +316,8 @@ Status legend:
 
 **Progress**
 
--
+- Added build-time generator script (`npm run generate:feeds`) that writes `public/sitemap.xml` (static routes + published posts) and `public/rss.xml` (published posts only).
+- Wired generation into `prebuild` so `npm run build` always produces the files.
 
 ### [ ] S15 — Wire Google Analytics
 

@@ -24,7 +24,7 @@ export default function About() {
               width={112}
               height={112}
               sizes="(min-width: 640px) 112px, 96px"
-              className="h-24 w-24 rounded-full border border-border bg-surface2 object-cover shadow-elev sm:h-28 sm:w-28"
+              className="h-24 w-24 rounded-full border border-border bg-surface-2 object-cover shadow-elev sm:h-28 sm:w-28"
               priority
             />
           </div>

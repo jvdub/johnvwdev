@@ -76,15 +76,51 @@ body {
   }
 
   h1 {
-    @apply text-4xl font-extrabold tracking-tight;
+    @apply text-3xl font-extrabold tracking-tight leading-tight sm:text-4xl;
   }
 
   h2 {
-    @apply text-3xl font-bold tracking-tight;
+    @apply text-2xl font-bold tracking-tight leading-tight sm:text-3xl;
   }
 
   h3 {
-    @apply text-2xl font-semibold tracking-tight;
+    @apply text-xl font-semibold tracking-tight leading-tight sm:text-2xl;
+  }
+
+  /* Prevent horizontal scrolling from long URLs/strings. */
+  p,
+  li,
+  a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  img,
+  video,
+  svg,
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  pre {
+    @apply max-w-full overflow-x-auto rounded-md border border-border bg-surface-2 p-4 text-sm leading-6;
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  /* Only apply list markers/indentation to long-form content (e.g., MDX posts). */
+  .mdx-content ul {
+    @apply list-disc pl-6;
+  }
+
+  .mdx-content ol {
+    @apply list-decimal pl-6;
   }
 }
 

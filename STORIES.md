@@ -357,7 +357,7 @@ Status legend:
 
 ## Final polish (v1)
 
-### [ ] S17 — Responsive readability pass
+### [x] S17 — Responsive readability pass
 
 **Goal:** Satisfy SPEC responsiveness acceptance criteria.
 
@@ -373,7 +373,10 @@ Status legend:
 
 **Progress**
 
--
+- Tuned base typography for headings (smaller on mobile, scales at `sm`).
+- Improved blog article readability with responsive font size/leading and slightly roomier content spacing.
+- Added overflow guards for long URLs/words and made code blocks horizontally scrollable to prevent page-level horizontal scrolling.
+- Made header nav more resilient on small screens (min-width handling + better tap targets).
 
 ### [ ] S20 — GA SPA pageview tracking
 

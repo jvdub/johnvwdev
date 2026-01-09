@@ -19,7 +19,7 @@ export default function Contact() {
           href="https://x.com/jtvanwage"
           target="_blank"
           rel="noopener noreferrer me"
-          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
           <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
             X
@@ -32,7 +32,7 @@ export default function Contact() {
           href="https://www.linkedin.com/in/john-van-wagenen/"
           target="_blank"
           rel="noopener noreferrer me"
-          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
           <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
             LinkedIn
@@ -47,7 +47,7 @@ export default function Contact() {
           href="https://github.com/jvdub"
           target="_blank"
           rel="noopener noreferrer me"
-          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
           <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
             GitHub

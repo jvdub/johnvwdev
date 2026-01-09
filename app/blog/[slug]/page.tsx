@@ -52,15 +52,15 @@ export default async function BlogPostPage({ params }: PageProps) {
   const content = await compilePostMdx(postSource.source);
 
   return (
-    <article className="mx-auto max-w-3xl">
-      <header className="mb-8">
+    <article className="mx-auto max-w-3xl text-base leading-7 sm:text-lg sm:leading-8">
+      <header className="mb-6 sm:mb-8">
         <h1 className="mb-2">{postSource.frontmatter.title}</h1>
         <div className="text-sm text-fg-muted">
           {postSource.frontmatter.date}
         </div>
       </header>
 
-      <div className="space-y-5">{content}</div>
+      <div className="mdx-content space-y-6 sm:space-y-7">{content}</div>
     </article>
   );
 }

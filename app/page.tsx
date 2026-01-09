@@ -29,7 +29,7 @@ export default function Home() {
               width={112}
               height={112}
               sizes="(min-width: 640px) 112px, 96px"
-              className="h-24 w-24 rounded-full border border-border bg-surface2 object-cover shadow-elev sm:h-28 sm:w-28"
+              className="h-24 w-24 rounded-full border border-border bg-surface-2 object-cover shadow-elev sm:h-28 sm:w-28"
               priority
             />
           </div>
@@ -38,19 +38,19 @@ export default function Home() {
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/blog"
-            className="inline-flex items-center justify-center rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-fg no-underline shadow-elev hover:bg-surface2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+            className="inline-flex items-center justify-center rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-fg no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
           >
             Read the blog
           </Link>
           <Link
             href="/projects"
-            className="inline-flex items-center justify-center rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-fg no-underline shadow-elev hover:bg-surface2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+            className="inline-flex items-center justify-center rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-fg no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
           >
             Browse projects
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-fg no-underline shadow-elev hover:bg-surface2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+            className="inline-flex items-center justify-center rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-fg no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
           >
             Contact
           </Link>
@@ -63,7 +63,7 @@ export default function Home() {
       >
         <Link
           href="/blog"
-          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
           <h2 className="text-xl font-semibold tracking-tight">Blog</h2>
           <p className="mt-2 text-fg-muted">
@@ -74,7 +74,7 @@ export default function Home() {
 
         <Link
           href="/projects"
-          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
           <h2 className="text-xl font-semibold tracking-tight">Projects</h2>
           <p className="mt-2 text-fg-muted">
@@ -102,7 +102,7 @@ export default function Home() {
           </p>
 
           <ul className="mt-6 grid gap-3" aria-label="Recent articles">
-            <li className="rounded-md border border-border bg-surface2 p-4">
+            <li className="rounded-md border border-border bg-surface-2 p-4">
               <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
                 Coming soon
               </p>
@@ -113,7 +113,7 @@ export default function Home() {
                 A pragmatic look at what AI can and can’t do.
               </p>
             </li>
-            <li className="rounded-md border border-border bg-surface2 p-4">
+            <li className="rounded-md border border-border bg-surface-2 p-4">
               <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
                 Coming soon
               </p>
@@ -124,7 +124,7 @@ export default function Home() {
                 How AI helps beyond code generation—from design to testing.
               </p>
             </li>
-            <li className="rounded-md border border-border bg-surface2 p-4">
+            <li className="rounded-md border border-border bg-surface-2 p-4">
               <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
                 Coming soon
               </p>
@@ -152,7 +152,7 @@ export default function Home() {
           </p>
 
           <ul className="mt-6 grid gap-3" aria-label="Engagement types">
-            <li className="rounded-md border border-border bg-surface2 p-4">
+            <li className="rounded-md border border-border bg-surface-2 p-4">
               <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
                 Architecture
               </p>
@@ -163,7 +163,7 @@ export default function Home() {
                 Clear plans, tradeoffs, and pragmatic sequencing.
               </p>
             </li>
-            <li className="rounded-md border border-border bg-surface2 p-4">
+            <li className="rounded-md border border-border bg-surface-2 p-4">
               <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
                 Delivery
               </p>
@@ -174,7 +174,7 @@ export default function Home() {
                 Shipping production-quality code with ownership.
               </p>
             </li>
-            <li className="rounded-md border border-border bg-surface2 p-4">
+            <li className="rounded-md border border-border bg-surface-2 p-4">
               <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
                 Stability
               </p>

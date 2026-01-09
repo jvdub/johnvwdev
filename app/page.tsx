@@ -58,12 +58,6 @@ export default function Home() {
             Read the blog
           </Link>
           <Link
-            href="/projects"
-            className="inline-flex items-center justify-center rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-fg no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
-          >
-            Browse projects
-          </Link>
-          <Link
             href="/contact"
             className="inline-flex items-center justify-center rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-fg no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
           >
@@ -72,40 +66,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        aria-label="Quick links"
-        className="grid w-full gap-4 sm:grid-cols-2"
-      >
-        <Link
-          href="/blog"
-          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
-        >
-          <h2 className="text-xl font-semibold tracking-tight">Blog</h2>
-          <p className="mt-2 text-fg-muted">
-            Writing-first notes and posts, newest first.
-          </p>
-          <p className="mt-3 text-sm text-fg-muted">Go to /blog →</p>
-        </Link>
-
-        <Link
-          href="/projects"
-          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
-        >
-          <h2 className="text-xl font-semibold tracking-tight">Projects</h2>
-          <p className="mt-2 text-fg-muted">
-            A short list of things I’ve built (placeholders for now).
-          </p>
-          <p className="mt-3 text-sm text-fg-muted">Go to /projects →</p>
-        </Link>
-      </section>
-
-      <section
-        aria-label="Writing and consulting"
-        className="grid w-full gap-4 lg:grid-cols-2"
-      >
+      <section aria-label="Blog" className="w-full">
         <div className="rounded-lg border border-border bg-surface p-6 shadow-elev sm:p-8">
           <div className="flex items-baseline justify-between gap-4">
-            <h2>Writing</h2>
+            <h2>Blog</h2>
             <Link href="/blog" className="text-sm">
               See all →
             </Link>
@@ -134,56 +98,6 @@ export default function Home() {
                 <p className="mt-1 text-sm text-fg-muted">{post.description}</p>
               </li>
             ))}
-          </ul>
-        </div>
-
-        <div className="rounded-lg border border-border bg-surface p-6 shadow-elev sm:p-8">
-          <div className="flex items-baseline justify-between gap-4">
-            <h2>Consulting</h2>
-            <Link href="/contact" className="text-sm">
-              Get in touch →
-            </Link>
-          </div>
-          <div className="mt-3 h-1 w-12 rounded bg-accent" aria-hidden="true" />
-          <p className="mt-4 text-fg-muted">
-            Available for focused engagements where senior engineering judgment
-            and execution speed matter.
-          </p>
-
-          <ul className="mt-6 grid gap-3" aria-label="Engagement types">
-            <li className="rounded-md border border-border bg-surface-2 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                Architecture
-              </p>
-              <p className="mt-1 font-medium text-fg">
-                System design &amp; technical direction
-              </p>
-              <p className="mt-1 text-sm text-fg-muted">
-                Clear plans, tradeoffs, and pragmatic sequencing.
-              </p>
-            </li>
-            <li className="rounded-md border border-border bg-surface-2 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                Delivery
-              </p>
-              <p className="mt-1 font-medium text-fg">
-                Feature work &amp; platform improvements
-              </p>
-              <p className="mt-1 text-sm text-fg-muted">
-                Shipping production-quality code with ownership.
-              </p>
-            </li>
-            <li className="rounded-md border border-border bg-surface-2 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                Stability
-              </p>
-              <p className="mt-1 font-medium text-fg">
-                Performance, reliability, and cleanup
-              </p>
-              <p className="mt-1 text-sm text-fg-muted">
-                Reduce toil, tighten feedback loops, and improve uptime.
-              </p>
-            </li>
           </ul>
         </div>
       </section>

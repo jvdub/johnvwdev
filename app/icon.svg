@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="JVW">
+  <title>JVW</title>
+  <desc>Brand colors: navy #081a33, gold #caa64a, forest #0f2a1d.</desc>
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="#081a33"/>
+  <g fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- J (forest) -->
+    <path d="M16 18 V38 Q16 48 8 48" stroke="#0f2a1d"/>
+    <!-- V (gold) -->
+    <path d="M26 18 L32 48 L38 18" stroke="#caa64a"/>
+    <!-- W (forest) -->
+    <path d="M40 18 L44 48 L48 30 L52 48 L56 18" stroke="#0f2a1d"/>
+  </g>
+</svg>

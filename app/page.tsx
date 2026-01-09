@@ -1,7 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { getAllPosts } from "../lib/posts";
+
+function formatPostDate(date: string): string {
+  // Frontmatter dates are ISO (YYYY-MM-DD). Pin to UTC midnight for stability.
+  const parsed = new Date(`${date}T00:00:00Z`);
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(parsed);
+}
+
 export default function Home() {
+  const latestPosts = getAllPosts().slice(0, 3);
+
   return (
     <div className="flex flex-col gap-10">
       <section
@@ -102,39 +117,23 @@ export default function Home() {
           </p>
 
           <ul className="mt-6 grid gap-3" aria-label="Recent articles">
-            <li className="rounded-md border border-border bg-surface-2 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                Coming soon
-              </p>
-              <p className="mt-1 font-medium text-fg">
-                Demystifying AI in Engineering
-              </p>
-              <p className="mt-1 text-sm text-fg-muted">
-                A pragmatic look at what AI can and can’t do.
-              </p>
-            </li>
-            <li className="rounded-md border border-border bg-surface-2 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                Coming soon
-              </p>
-              <p className="mt-1 font-medium text-fg">
-                AI and Software Engineering: More Than Just Coding
-              </p>
-              <p className="mt-1 text-sm text-fg-muted">
-                How AI helps beyond code generation—from design to testing.
-              </p>
-            </li>
-            <li className="rounded-md border border-border bg-surface-2 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                Coming soon
-              </p>
-              <p className="mt-1 font-medium text-fg">
-                Where AI Falls Short in Production Systems
-              </p>
-              <p className="mt-1 text-sm text-fg-muted">
-                Limitations through the lens of senior engineering experience.
-              </p>
-            </li>
+            {latestPosts.map((post) => (
+              <li
+                key={post.slug}
+                className="rounded-md border border-border bg-surface-2 p-4"
+              >
+                <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
+                  {formatPostDate(post.date)}
+                </p>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="mt-1 block font-medium text-fg no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                >
+                  {post.title}
+                </Link>
+                <p className="mt-1 text-sm text-fg-muted">{post.description}</p>
+              </li>
+            ))}
           </ul>
         </div>
 

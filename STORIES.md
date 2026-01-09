@@ -398,7 +398,7 @@ Status legend:
 - Uses App Router hooks (`usePathname`, `useSearchParams`) to fire `gtag('config', 'G-43P9QM2K0N', { page_path, page_location })` on navigation.
 - Skips initial page load to avoid double-counting (initial pageview is handled by the existing layout scripts).
 
-### [ ] S18 — Update README runbook
+### [x] S18 — Update README runbook
 
 **Goal:** Make the repo self-serve for future sessions/agents.
 
@@ -415,4 +415,4 @@ Status legend:
 
 **Progress**
 
--
+- Added a self-serve runbook in README covering install, `dev`/`build` (static export to `out/`), local serving, and how to add a blog post with required frontmatter.

@@ -1,4 +1,6 @@
-import { Github, Linkedin, X } from "lucide-react";
+import { AtSign, Github, Linkedin, X } from "lucide-react";
+
+import { BlueskyIcon } from "../../components/BlueskyIcon";
 
 export default function Contact() {
   return (
@@ -9,7 +11,7 @@ export default function Contact() {
       >
         <h1 className="leading-tight">Contact</h1>
         <p className="mt-4 max-w-2xl text-lg text-fg-muted">
-          The best way to reach me is on one of the platforms below.
+          The best way to reach me is on one of the platforms or email below.
         </p>
       </section>
 
@@ -59,6 +61,36 @@ export default function Contact() {
           </div>
           <p className="mt-2 text-base font-semibold text-fg">@jvdub</p>
           <p className="mt-3 text-sm text-fg-muted">Open profile →</p>
+        </a>
+
+        <a
+          href="https://bsky.app/profile/jtvanwage.bsky.social"
+          target="_blank"
+          rel="noopener noreferrer me"
+          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+        >
+          <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
+            <BlueskyIcon className="h-4 w-4" />
+            <span>BlueSky</span>
+          </div>
+          <p className="mt-2 text-base font-semibold text-fg">
+            @jtvanwage.bsky.social
+          </p>
+          <p className="mt-3 text-sm text-fg-muted">Open profile →</p>
+        </a>
+
+        <a
+          href="mailto:johnvwdev@gmail.com"
+          className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+        >
+          <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
+            <AtSign className="h-4 w-4" aria-hidden="true" />
+            <span>Email</span>
+          </div>
+          <p className="mt-2 text-base font-semibold text-fg">
+            johnvwdev@gmail.com
+          </p>
+          <p className="mt-3 text-sm text-fg-muted">Send email →</p>
         </a>
       </section>
     </div>

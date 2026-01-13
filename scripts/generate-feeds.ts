@@ -30,6 +30,7 @@ function writeFileEnsuringDir(filePath: string, content: string): void {
 type SitemapEntry = {
   pathname: string;
   lastmod: string;
+  changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 };
 
 const STATIC_PATHS: string[] = ["/", "/about", "/blog", "/contact", "/projects"];
@@ -39,13 +40,16 @@ function generateSitemapXml(entries: SitemapEntry[]): string {
     .map((entry) => {
       const loc = canonicalForPath(entry.pathname);
       const lastmod = entry.lastmod;
+      const changefreq = entry.changefreq;
       return [
         "  <url>",
         `    <loc>${escapeXml(loc)}</loc>`,
         `    <lastmod>${escapeXml(lastmod)}</lastmod>`,
+        changefreq ? `    <changefreq>${escapeXml(changefreq)}</changefreq>` : "",
         "  </url>",
       ].join("\n");
     })
+    .map((block) => block.replace(/^\s*\n/gm, ""))
     .join("\n");
 
   return [
@@ -111,7 +115,11 @@ function main(): void {
 
   const buildDate = isoDateOnly(new Date());
   const sitemapEntries: SitemapEntry[] = [
-    ...STATIC_PATHS.map((pathname) => ({ pathname, lastmod: buildDate })),
+    ...STATIC_PATHS.map((pathname) => ({
+      pathname,
+      lastmod: buildDate,
+      changefreq: pathname === "/" || pathname === "/blog" ? "weekly" : undefined,
+    })),
     ...posts.map((post) => ({ pathname: `/blog/${post.slug}`, lastmod: post.date })),
   ];
 

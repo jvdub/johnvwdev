@@ -1,0 +1,129 @@
+---
+title: "Using AI in Personal Projects vs Enterprise Codebases"
+date: "2026-01-12"
+description: "Why AI feels magical in small personal projects but slows down in enterprise codebases—and the context and leadership skills that close the gap."
+tags:
+  - ai
+  - llms
+  - engineering
+  - productivity
+  - leadership
+  - enterprise
+draft: false
+heroImage: "/images/posts/using-ai-in-personal-projects-vs-enterprise-codebases.png"
+canonicalUrl: ""
+---
+
+## **A Shift in How I’ve Been Using AI**
+
+As a senior software engineer, I’ve been using AI extensively at work on large, enterprise software. Despite that investment, I haven’t used it much for personal projects. I experimented a bit nearly a year ago when the tools were still relatively new, but since then, most of my usage has been in a professional setting.
+
+That’s recently changed.
+
+I built a personal site (which is likely where you’re reading this) entirely with GPT 5.2. The experience was enlightening and highlighted some important differences between using AI on small, personal projects and using the same tools in large enterprise systems.
+
+What follows are some of the lessons I took away from that contrast.
+
+---
+
+## **When AI Feels Almost Magical**
+
+For my personal project, I created a simple, statically served blog. I started by putting up a placeholder landing page. I briefly described what I wanted, and the AI produced a simple page that was about 90% of what I had in mind. A few more turns later, we had a first version ready to go.
+
+I uploaded it immediately so the site wasn’t empty while I worked on what I actually wanted: a functioning blog. From start to finish, including some hosting configuration, this took about an hour—far faster than I expected.
+
+The next day, I sat down to build out the blog itself. Even with modern tooling, I expected this to take a few evenings. I was curious to see how much AI could accelerate the process.
+
+And accelerate it did.
+
+---
+
+## **A Clean Spec, Small Stories, and Rapid Progress**
+
+I began by describing the project to the AI: constraints, colors, technology choices, and, just as importantly, what I didn’t want. I had it write everything into a `SPEC.md` file at the root of the repository so we could refine it and refer back to it as development progressed.
+
+The AI asked a few clarifying questions, and after a handful of back-and-forth turns, the spec was in a place I felt good about.
+
+From there, I opened a new chat and worked with it to break the spec into small, actionable stories. We refined those together as well. Even then, I added a few stories later as the project evolved.
+
+Once the stories were ready, I opened yet another chat and asked the AI to implement the first story, referring back to the spec as needed.
+
+This is where my mind started to melt.
+
+---
+
+## **The Enterprise Contrast**
+
+At work, I’m used to using AI on large systems. I’m used to feeding it context, helping it understand stories, and having it do most of the implementation work. But I’m also used to this taking time. It’s not unusual to wait several minutes for a response, then spend more time reviewing what it produced.
+
+Even when I keep tasks small, legacy systems often require a lot of context just to understand a seemingly simple change.
+
+That wasn’t the case here.
+
+Within a minute or two, the AI had finished the first story—and from what I could tell, had done all of the work correctly. I had it commit and push the changes, then opened a new chat and asked it to implement the next story.
+
+And so it went.
+
+Each story was implemented quickly and completely. That’s when the possibilities really started to sink in.
+
+---
+
+## **Why Simple Work Is Being Commoditized**
+
+If AI can move this fast, what’s stopping someone from building whatever simple project they want? In many cases, simply their own motivation to do so. This effectively commoditizes simple work, lowering the barrier to entry for people to build small systems without outside help.
+
+But then I thought about my day job.
+
+The system I work on is massive. As impressive as modern models are, there’s no realistic way they can hold the entire system in their context window. Still, AI is undeniably useful there, it just behaves differently.
+
+That contrast leads to an important question: what can we learn from both environments?
+
+---
+
+## **Lesson One: Context Is Everything**
+
+In small systems, the AI can hold most, or even all, of the relevant code in its context window. While you probably don’t want to do that, the key takeaway is that the system itself is simpler and easier to reason about.
+
+Want to add a new page? Provide the requirements and a bit of context, and you’ll likely have a solid implementation within minutes.
+
+In an enterprise system, the same change is possible but only if you’re far more deliberate. Instead of simply describing what you want, you need to provide the AI with the architectural context it lacks. What router are you using? What patterns are established for pages? Where should this code live? Is there an existing page it can model?
+
+Providing this information increases the probability of success dramatically. Yes, it takes longer than in a personal project, but without it you’ll end up thrashing—correcting misunderstandings as the context window fills and the model’s performance degrades.
+
+---
+
+## **Lesson Two: Small Chunks Are a Leadership Skill**
+
+Closely related to context is the ability to break work into small, manageable pieces. To me, this is fundamentally a tech lead skill.
+
+Tech leads work with product managers to translate user needs into technical requirements. We organize those requirements into small, workable chunks so teams can move quickly without getting bogged down.
+
+That same skill is invaluable when working with AI.
+
+The smaller the work item, the easier it is to provide complete context. The smoother that interaction is, the faster you get working software to test and refine. That faster feedback loop means you can ship sooner, learn sooner, and adjust sooner.
+
+It’s Agile software development on steroids.
+
+---
+
+## **AI Amplifies Constraints**
+
+All of this highlights a deeper issue: AI amplifies constraints.
+
+There have been plenty of takes recently along the lines of, “AI didn’t kill this company, it exposed a bad business model,” or, “AI didn’t cause these layoffs, it exposed poor performance.” While I don’t fully agree with those claims, I do agree with the underlying idea: as systems become more efficient, their weaknesses become more visible.
+
+As coding gets faster, bottlenecks shift elsewhere. If implementation takes minutes, what about UX research? Requirements gathering? Testing? Deployment? Maintenance? Architectural shifts?
+
+This is why small personal projects can move at breakneck speed while large enterprise systems often feel slow even with AI moving things along. It’s rarely the tools that are the problem. More often, it’s the surrounding process. That’s not a criticism of enterprise environments, it’s a reality of scale. The more customers, products, and revenue you have, the more those supporting processes matter.
+
+The real question is how we improve those areas alongside our tooling.
+
+---
+
+## **Where Senior Engineers Fit In**
+
+I don’t think there’s a single definitive answer, but part of it comes down to ownership. Owning as much of the product lifecycle as you reasonably can, and being a positive influence where you can’t, goes a long way.
+
+AI doesn’t eliminate senior engineering skills. It rewards them. The ability to manage constraints, provide context, break down work, and think systemically becomes even more valuable in an AI-assisted world.
+
+That’s not a threat to experienced engineers. It’s an opportunity.

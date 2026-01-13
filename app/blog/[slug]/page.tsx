@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { compilePostMdx } from "../../../lib/mdx";
@@ -53,10 +54,25 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const content = await compilePostMdx(postSource.source);
+  const heroImage = postSource.frontmatter.heroImage.trim();
 
   return (
     <article className="mx-auto max-w-3xl text-base leading-7 sm:text-lg sm:leading-8">
       <header className="mb-6 sm:mb-8">
+        {heroImage.length > 0 ? (
+          <div className="mb-5 overflow-hidden rounded-xl border border-border bg-surface shadow-elev">
+            <div className="relative aspect-[16/9]">
+              <Image
+                src={heroImage}
+                alt={postSource.frontmatter.title}
+                fill
+                priority
+                sizes="(min-width: 768px) 768px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        ) : null}
         <h1 className="mb-2">{postSource.frontmatter.title}</h1>
         <div className="text-sm text-fg-muted">
           {postSource.frontmatter.date}

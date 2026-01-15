@@ -20,7 +20,7 @@ When talking about AI in software engineering, I often hear things like:
 > “It’s just a statistical model.”
 > “It just writes slop.”
 
-As someone who has been invested in AI for nearly ten years, it can be frustrating to hear these. At the same time, they are not all wrong. Under the hood, modern AI really _is_ a statistical model. That does not mean it is not useful.
+These concerns are not all wrong. Under the hood, modern AI really _is_ a statistical model. That does not mean it is not useful.
 
 My goal here is not to sell you on AI or write an academic paper. It is to give you a clear, practical look at how today’s models actually work so you can better judge when they are valuable and when they are not.
 
@@ -52,29 +52,51 @@ So how did we get from that world to the generative models we use today?
 
 Several things changed, but three matter most.
 
-### **1. Transformers**
+### **1\. Transformers**
 
 The most important shift was the introduction of the transformer architecture.
 
-Before transformers, models processed language mostly sequentially. They looked at one word at a time and had limited ability to understand how all parts of a sentence related to each other. Disambiguating a word like “bank” often required awkward workarounds.
+Before transformers, models processed language mostly sequentially. They looked at one word at a time and had limited ability to understand how all parts of a sentence related to each other.
 
-Transformers changed this by allowing models to look at all the words in a piece of text at once and learn how they relate to one another. Instead of isolated tokens, the model reasons over relationships across an entire sentence, paragraph, or document.
+Consider a sentence like "The bank can guarantee deposits will eventually cover future tuition." To understand whether "bank" refers to a financial institution or a riverbank, you need to look at words that appear much later: "deposits," "cover," "tuition." Sequential models struggled with this because by the time they reached "deposits," the context around "bank" had faded or been compressed into a fixed representation.
+
+Transformers solved this through a mechanism called attention. Instead of processing words one at a time, attention allows the model to look at all words simultaneously and learn which ones are relevant to each other. When processing "bank," the model can directly attend to "deposits" and "tuition" regardless of how far apart they are, weighing their relevance to determine meaning.
+
+This doesn't happen just once, but multiple times across multiple layers, with the model learning increasingly sophisticated relationships. Early layers might connect "bank" to "deposits," while deeper layers connect "deposits" to "cover future tuition," building up a rich understanding of the entire sentence.
 
 This single change dramatically expanded what models could understand and generate. It moved machine learning beyond narrow classification tasks and made general-purpose language models possible.
 
-### **2. Scale and Generality**
+### **2\. Model-Native Context**
+
+Context changed as well, and this shift is more significant than it might initially seem.
+
+A decade ago, context was mostly managed by application code. If you wanted to use a model for sentiment analysis on customer reviews, you had to carefully preprocess each review into the exact format the model expected: maybe a few dozen words, stripped of anything extraneous.
+
+The model had no memory of previous reviews, no understanding of the product being discussed, no awareness of the customer's history. Each prediction was isolated. If you wanted to analyze patterns across reviews, you had to build that logic yourself, running hundreds of individual predictions and manually aggregating the results.
+
+The practical limit was often just a few hundred tokens per request. Models were stateless and forgot everything between calls.
+
+Today, context is largely model-native. Models manage it themselves across much larger windows, often hundreds of thousands of tokens.
+
+You can now give a model your entire product documentation, a collection of customer feedback, recent support tickets, and your current feature roadmap all at once. The model can identify that customers are frustrated with checkout because a feature you deprecated last month was solving a workflow problem you didn't realize existed.
+
+The model learns what to pay attention to. When you ask about customer pain points, it dynamically weights relevant context by connecting complaints across different channels, identifying patterns in how different user segments describe the same issue, and deprioritizing one-off complaints or unrelated feedback.
+
+This is why models can now help with tasks like synthesizing user research or generating documentation that accounts for multiple use cases. The limiting factor has shifted from "can the model see enough?" to "can it reason effectively about what it sees?”
+
+### **3\. Scale and Generality**
 
 Once transformers proved they could scale, we started training models on much broader datasets. These included publicly available text, code, documentation, books, and research.
 
-Instead of learning one task, models began learning general patterns across many domains. This shift is the foundation of what we now call generative AI.
+The old approach was to curate datasets for specific tasks. You would gather thousands of labeled spam emails to build a spam filter, or thousands of medical images to detect tumors. Each model was a specialist.
 
-### **3. Model-Native Context**
+The new approach flipped this. Instead of training different models for different tasks, we trained single models on enormous, diverse datasets and let them learn general patterns across all of it.
 
-Context changed as well.
+This matters because those patterns only emerge at scale. Train a model on a hundred Python scripts and it learns basic syntax. Train it on millions of repositories across dozens of languages and it learns deeper patterns: how architectural decisions lead to certain bugs, how testing strategies differ across ecosystems, how naming conventions signal intent.
 
-A decade ago, context was mostly managed by application code. Developers decided what data to send to a model, often in small and rigid chunks. This made systems fragile and limited.
+This is why you can ask a modern model to write Rust code even if you've never written Rust yourself, or explain a complex algorithm like you're explaining it to a friend. The model has seen enough examples that it can generalize to requests it has never encountered before.
 
-Today, context is largely model-native. Models manage it themselves by tracking, compressing, and prioritizing information across much larger windows. This enables longer conversations, richer reasoning, and multi-step workflows that simply were not practical before.
+We went from millions of parameters to billions. The payoff is a fundamentally different kind of tool—one that can work across domains rather than being locked into a single task.
 
 ---
 
@@ -106,14 +128,20 @@ In many ways, they behave like an overeager intern. They are genuinely helpful, 
 
 Chances are you already have access to these tools, whether through Copilot, Claude, Cursor, or something similar.
 
-The key is learning how to work with them.
+The key is learning how to work with them, and that comes from deliberate practice rather than occasional tinkering.
 
-A good starting point is simple. The next time you are working on something, ask yourself how you would explain it to an intern. Then try explaining it to an AI instead and see what it does.
+Start with low-stakes tasks where you can easily verify the output. The next time you need to write a test for a function you just wrote, try asking the model to generate it. Give it the function and a brief description of what edge cases matter. See what it produces. Check whether the tests actually cover what you care about or if they just look plausible.
 
-Start small. Observe where it helps and where it struggles. Experiment with how your prompts change the outcome.
+Pay attention to how you phrase requests. Vague prompts like "make this better" usually produce vague results. Specific prompts like "refactor this function to handle the case where the user list is empty" tend to work better. The model has no context beyond what you give it, so being explicit about constraints, requirements, or concerns makes a difference.
 
-Like any tool, the value comes with practice and with understanding its limits.
+Notice where the model gets lost. If you’re iterating on a complex change and the suggestions start drifting away from what you actually need, _that is a signal_. You might need to provide more context, break the problem into smaller steps, or just handle that piece yourself. The model is a tool, not a replacement for judgment.
+
+Experiment with different kinds of tasks. These models are often better at some things than others. Generating boilerplate, drafting documentation, explaining unfamiliar code, and suggesting test cases tend to work well. Architecting systems, making nuanced trade-off decisions, or debugging subtle concurrency issues are hit or miss.
+
+Treat early results as drafts, not solutions. Even when the output looks right, read it carefully. Models are confident even when they are wrong, and they will occasionally generate code that compiles but does the wrong thing or uses patterns that do not fit your codebase.
+
+Like any tool, the value comes from understanding what it is good at, what it struggles with, and how to adapt your workflow to make use of it effectively.
 
 ---
 
-If you want to explore this more or talk through how these tools fit into real engineering workflows, feel free to reach out.
+If you're experimenting with these tools, I'm curious what you're finding. What's worked? What hasn't? Where have you been surprised?

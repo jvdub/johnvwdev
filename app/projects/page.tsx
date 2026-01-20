@@ -18,11 +18,17 @@ export default function Projects() {
       <section aria-label="Project list" className="grid gap-3 sm:grid-cols-2">
         <div className="rounded-lg border border-border bg-surface p-5 shadow-elev">
           <h2 className="text-xl font-semibold tracking-tight">Project One</h2>
-          <p className="mt-2 text-fg-muted">Coming soon.</p>
-        </div>
-        <div className="rounded-lg border border-border bg-surface p-5 shadow-elev">
-          <h2 className="text-xl font-semibold tracking-tight">Project Two</h2>
-          <p className="mt-2 text-fg-muted">Coming soon.</p>
+          <p className="mt-2 text-fg-muted">
+            This portfolio website built with Next.js and TypeScript.
+          </p>
+          <a
+            href="https://github.com/jvdub/johnvwdev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block text-sm hover:underline"
+          >
+            View on GitHub →
+          </a>
         </div>
       </section>
     </div>

@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 
 import { compilePostMdx } from "../../../lib/mdx";
 import { getAllPosts, getPostSourceBySlug } from "../../../lib/posts";
-import { canonicalForPath } from "../../../lib/site";
+import { AUTHOR_HANDLE, canonicalForPath } from "../../../lib/site";
+
+import { ShareLinks } from "../../../components/ShareLinks";
 
 export const dynamicParams = false;
 
@@ -55,6 +57,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const content = await compilePostMdx(postSource.source);
   const heroImage = postSource.frontmatter.heroImage.trim();
+  const canonical =
+    postSource.frontmatter.canonicalUrl &&
+    postSource.frontmatter.canonicalUrl.trim().length > 0
+      ? postSource.frontmatter.canonicalUrl
+      : canonicalForPath(`/blog/${slug}`);
 
   return (
     <article className="mx-auto max-w-3xl text-base leading-7 sm:text-lg sm:leading-8">
@@ -77,6 +84,12 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="text-sm text-fg-muted">
           {postSource.frontmatter.date}
         </div>
+        <ShareLinks
+          url={canonical}
+          title={postSource.frontmatter.title}
+          handle={AUTHOR_HANDLE}
+          className="mt-4"
+        />
       </header>
 
       <div className="mdx-content space-y-6 sm:space-y-7">{content}</div>

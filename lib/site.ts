@@ -8,6 +8,8 @@ export const SITE_URL = normalizeBaseUrl(
   process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL,
 );
 
+export const AUTHOR_HANDLE = "@jtvanwage";
+
 export function canonicalForPath(pathname: string): string {
   const base = SITE_URL;
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;

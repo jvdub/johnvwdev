@@ -1,6 +1,6 @@
 ---
 title: "AI and Software Engineering: More Than Just Coding"
-date: "2026-01-10"
+date: "2026-01-19"
 description: "AI can help far beyond code generation: requirements, planning, documentation, review, and reducing the overhead that slows teams down."
 tags:
   - ai
@@ -8,7 +8,7 @@ tags:
   - engineering
   - productivity
   - leadership
-draft: true
+draft: false
 heroImage: "/images/posts/ai-and-software-engineering-more-than-just-coding.png"
 canonicalUrl: ""
 ---
@@ -57,7 +57,9 @@ Does the LLM make mistakes? Absolutely. Does it need correction and guidance? Of
 
 When I’m preparing a new feature and breaking it down into stories, I’ll provide the LLM with the relevant context (technical documentation, mock-ups, constraints, and any other material it needs) and give it clear instructions on how to structure the work.
 
-Once I’m comfortable with its understanding, I ask it to create the stories directly in Jira.
+When doing this, it'll come back with some great thoughts on the work; however, this is where the real work begins. While the AI will give a pretty good general understanding, it will often make many assumptions around the details that you didn't expliclty state. Your job now is to thoroughly review what it gave back to you to ensure it has an accurate understanding of what you want, correcting any details that it didn't quite get right.
+
+This will usually take at least a few back and forths with the LLM before it gets things right. Once I’m comfortable with its understanding, I ask it to create the stories directly in Jira.
 
 A few moments later, I have a feature with concrete, well-written stories underneath it, often with more detail and clarity than I’d normally write myself. The work is done faster, and the quality is higher.
 
@@ -79,7 +81,11 @@ This is also why I frequently use plan mode in tools like Cursor or Claude Code.
 
 Another limitation is context. Today’s LLMs still struggle to hold the full shape of a complex system in a single context window. That means you need to be deliberate about what information you provide and focus on giving only what’s relevant to the current problem. Yes, this can mean the model misses patterns or historical decisions. In practice, a quick reminder or correction is often enough to get it back on track.
 
+How do you decide what to include in the context? I like to think of how I'd explain this to a new employee. The employee may have a great general understanding of how things work, so I don't need to explain the very basics or why we chose an architecture, but I do need to explain what files are interesting and where the issue actually is. This will allow the LLM to quickly identify where the issue is as well as neighboring files or where the code is used that may be helpful to understand.
+
 There’s also the risk of **false progress**. Tickets get created, documentation gets updated, and diagrams get generated, but none of that guarantees the work is actually correct or well understood. Without deliberate review, it’s easy to confuse activity with understanding.
+
+This is where your work shifts. Instead of coding the things yourself, you're reviewing everything the AI generates, constantly checking its output against the desired outcomes and correcting quickly when things start to deviate. This is where the AI's eagerness to be helpful is beneficial. LLMs take correction extremely well and are quick to admit their mistakes. That doesn't mean they'll always get it right after that, but it does mean they take correction without any friction and do their best to make the corrections you note.
 
 The key is intent. The goal isn’t to delegate thinking to the AI. It’s to offload friction. When AI handles structure, synthesis, and repetition, engineers can focus on validation, tradeoffs, and decision-making. Those are the parts of the job that still require human judgment.
 
@@ -104,3 +110,5 @@ If you’re only using AI to help write code, you’re missing a significant par
 Try involving AI earlier and at higher levels of abstraction. Use it to clarify ideas, structure work, surface assumptions, and reduce the overhead that slows teams down.
 
 You may find that the biggest productivity gains don’t come from writing code faster, but from spending more of your time on the work that actually matters.
+
+This article focused entirely on the individual contributor aspects of the role of a senior engineer and didn't dive into how this can be applied at the team level. I'm interested in hearing your thoughts on this. How do AI tools and spec-driven development work at the team level? What challenges does this introduce and how are you addressing them? This will be a topic I revisit in future writings and I'd love to hear your thoughts about it.

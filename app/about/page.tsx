@@ -63,10 +63,11 @@ export default function About() {
       >
         <h2>Now</h2>
         <p className="mt-3 max-w-3xl text-fg-muted">
-          Right now, I’m focused on building reliable, maintainable systems and
-          tightening feedback loops for teams with better tests, better tooling,
-          and better docs. I’m also exploring practical AI-augmented workflows
-          that help engineers plan, communicate, and ship with more confidence.
+          Right now, I’m focused on incorporating AI into enterprise software
+          while building reliable, maintainable systems and tightening feedback
+          loops for teams with better tests, better tooling, and better docs.
+          I’m also exploring practical AI-augmented workflows that help
+          engineers plan, communicate, and ship with more confidence.
         </p>
       </section>
     </div>

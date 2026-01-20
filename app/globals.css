@@ -24,10 +24,19 @@
   --radius-md: 14px;
   --max: 1040px;
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
+  /* Scrollbars (theme-aware). */
+  --scrollbar-size: 12px;
+  /* Default (dark) uses brand gold. */
+  --scrollbar-track: rgba(202, 166, 74, 0.12);
+  --scrollbar-thumb: rgba(202, 166, 74, 0.42);
+  --scrollbar-thumb-hover: rgba(202, 166, 74, 0.62);
 }
 
 :root[data-theme="light"] {
@@ -40,6 +49,11 @@
   --border: rgba(2, 6, 23, 0.12);
   --shadow: 0 16px 34px rgba(2, 6, 23, 0.12);
   --focus: rgba(15, 42, 29, 0.35);
+
+  /* Light theme uses brand forest (subtle, less contrasty than pure black). */
+  --scrollbar-track: rgba(15, 42, 29, 0.16);
+  --scrollbar-thumb: rgba(15, 42, 29, 0.52);
+  --scrollbar-thumb-hover: rgba(15, 42, 29, 0.72);
 }
 
 :root[data-theme="dark"] {
@@ -60,6 +74,37 @@
 html,
 body {
   height: 100%;
+}
+
+html {
+  /* Avoid layout shift when scrollbars appear/disappear. */
+  scrollbar-gutter: stable;
+}
+
+/* Scrollbar styling: Firefox supports width + colors; Chromium/WebKit supports full pseudo-elements. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 999px;
+  /* Creates a little padding between thumb and track, without shrinking hit target too much. */
+  border: 3px solid var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
 }
 
 body {

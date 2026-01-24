@@ -11,9 +11,8 @@ export default function About() {
           <div className="min-w-0 flex-1">
             <h1 className="leading-tight">About</h1>
             <p className="mt-4 text-lg text-fg-muted">
-              I’m a senior software engineer and people-focused technical leader
-              with 10+ years of experience building, evolving, and operating
-              software systems.
+              Senior Software Engineer & Technical Leader Specializing in the
+              transition from traditional Full-Stack to AI-integrated systems.
             </p>
           </div>
 
@@ -32,27 +31,44 @@ export default function About() {
 
         <div className="mt-6 max-w-3xl">
           <p className="text-fg-muted">
-            I enjoy working across the stack, from modern frontend (React,
-            TypeScript, and contemporary tooling) to backend systems, data, and
-            cloud infrastructure. I’m comfortable in greenfield work and equally
-            comfortable improving large, long-lived systems.
+            I'm a software engineer and leader with 10+ years of experience
+            across the stack. My background is a mix of high-level product
+            engineering and deep technical foundations, including an M.S. in
+            Computer Science with an AI specialization (2018).
           </p>
           <p className="mt-4 text-fg-muted">
-            My leadership style is pragmatic and collaborative: I care about
-            clarity, good engineering hygiene, and helping teams do their best
-            work while delivering real business value. I’ve led and mentored
-            engineers, partnered closely with product and design, and invested
-            in continuous improvement.
+            I've spent my career moving between the layers that matter most for
+            the next decade of software:
           </p>
           <p className="mt-4 text-fg-muted">
-            I’m especially interested in how AI can augment software development
-            beyond code generation by improving planning, documentation,
-            architecture, and decision-making. I also enjoy teaching and
-            knowledge-sharing.
+            <strong>The Data Layer:</strong> Experience building ETL pipelines,
+            understanding that AI is only as effective as the data architecture
+            supporting it.
           </p>
           <p className="mt-4 text-fg-muted">
-            Education: M.S. in Computer Science (Georgia Tech) and B.S. in
-            Computer Science and Business (Utah State University).
+            <strong>The Interface:</strong> Years of focused frontend work,
+            ensuring that complex technical capabilities remain intuitive for
+            the end user.
+          </p>
+          <p className="mt-4 text-fg-muted">
+            <strong>The People:</strong> A history of team leadership and
+            teaching, focused on engineering hygiene and pragmatic adoption of
+            new tools.
+          </p>
+          <p className="mt-4 text-fg-muted">
+            My approach to AI is grounded in reality. While the industry focuses
+            on the 'hype,' I focus on the integration: how to realistically move
+            a product from deterministic logic to probabilistic models without
+            sacrificing reliability. I'm interested in the hard work of
+            preparing data environments and building the 'connective tissue'
+            between legacy systems and modern AI workflows.
+          </p>
+
+          <hr className="my-6 border-border" />
+
+          <p className="mt-4 text-fg-muted">
+            <strong>Education:</strong> M.S. in Computer Science (Georgia Tech)
+            and B.S. in Computer Science and Business (Utah State University).
           </p>
         </div>
       </section>
@@ -63,11 +79,15 @@ export default function About() {
       >
         <h2>Now</h2>
         <p className="mt-3 max-w-3xl text-fg-muted">
-          Right now, I’m focused on incorporating AI into enterprise software
-          while building reliable, maintainable systems and tightening feedback
-          loops for teams with better tests, better tooling, and better docs.
-          I’m also exploring practical AI-augmented workflows that help
-          engineers plan, communicate, and ship with more confidence.
+          Currently, I'm focused on the practical incorporation of AI into
+          enterprise software. This means identifying high-value, 'simple' AI
+          wins while simultaneously doing the foundational data work required
+          for more complex implementations.
+        </p>
+        <p className="mt-4 max-w-3xl text-fg-muted">
+          I'm working on tightening feedback loops for my teams—using AI to
+          assist in planning, documentation, and testing—while ensuring our core
+          systems remain maintainable and well-architected as we evolve.
         </p>
       </section>
     </div>

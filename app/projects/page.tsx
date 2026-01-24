@@ -30,6 +30,21 @@ export default function Projects() {
             View on GitHub →
           </a>
         </div>
+
+        <div className="rounded-lg border border-border bg-surface p-5 shadow-elev">
+          <h2 className="text-xl font-semibold tracking-tight">System Health MCP</h2>
+          <p className="mt-2 text-fg-muted">
+            Model Context Protocol server for system health monitoring.
+          </p>
+          <a
+            href="https://github.com/jvdub/system-health-mcp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block text-sm hover:underline"
+          >
+            View on GitHub →
+          </a>
+        </div>
       </section>
     </div>
   );

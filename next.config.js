@@ -1,13 +1,18 @@
-/** @type {import('next').NextConfig} */
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    // remarkPlugins: [remarkFrontmatter, remarkRemoveFrontmatter],
+  },
+});
+
 const isProd = process.env.NODE_ENV === "production";
 
-module.exports = {
+module.exports = withMDX({
   reactStrictMode: true,
-  // Keep dev server experience intact while still producing a fully static export
-  // for builds.
   ...(isProd ? { output: "export" } : {}),
   images: {
     unoptimized: true,
   },
   trailingSlash: true,
-};
+  pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
+});

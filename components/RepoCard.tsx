@@ -8,7 +8,11 @@ interface RepoCardProps {
   className?: string;
 }
 
-export default function RepoCard({ githubUrl, alt = "GitHub repository card", className }: RepoCardProps) {
+export default function RepoCard({
+  githubUrl,
+  alt = "GitHub repository card",
+  className,
+}: RepoCardProps) {
   const [loaded, setLoaded] = useState(false);
   const [mounted, setMounted] = useState(false);
 

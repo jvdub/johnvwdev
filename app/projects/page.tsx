@@ -17,11 +17,13 @@ export default function Projects() {
 
       <section aria-label="Project list" className="grid gap-3 sm:grid-cols-2">
         <Link
-          href="/projects/project-one"
-          className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition"
+          href="/projects/johnvw-dev"
+          className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition no-underline"
         >
-          <h2 className="text-xl font-semibold tracking-tight">Project One</h2>
-          <p className="mt-2 text-fg-muted">
+          <h2 className="text-xl font-semibold tracking-tight no-underline">
+            johnvw.dev
+          </h2>
+          <p className="mt-2 text-fg-muted no-underline">
             This portfolio website built with Next.js and TypeScript.
           </p>
           <span className="mt-3 inline-block text-sm text-blue-600 hover:underline">
@@ -31,12 +33,12 @@ export default function Projects() {
 
         <Link
           href="/projects/system-health-mcp"
-          className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition"
+          className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition no-underline"
         >
-          <h2 className="text-xl font-semibold tracking-tight">
+          <h2 className="text-xl font-semibold tracking-tight no-underline">
             System Health MCP
           </h2>
-          <p className="mt-2 text-fg-muted">
+          <p className="mt-2 text-fg-muted no-underline">
             Model Context Protocol server for system health monitoring.
           </p>
           <span className="mt-3 inline-block text-sm text-blue-600 hover:underline">
@@ -46,12 +48,12 @@ export default function Projects() {
 
         <Link
           href="/projects/city-code-mcp"
-          className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition"
+          className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition no-underline"
         >
-          <h2 className="text-xl font-semibold tracking-tight">
+          <h2 className="text-xl font-semibold tracking-tight no-underline">
             City Code MCP
           </h2>
-          <p className="mt-2 text-fg-muted">
+          <p className="mt-2 text-fg-muted no-underline">
             Model Context Protocol server for city code and ordinance data.
           </p>
           <span className="mt-3 inline-block text-sm text-blue-600 hover:underline">

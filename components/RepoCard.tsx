@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getGithubRepoCardUrl } from "./getGithubRepoCardUrl";
 
 interface RepoCardProps {
@@ -10,6 +10,11 @@ interface RepoCardProps {
 
 export default function RepoCard({ githubUrl, alt = "GitHub repository card", className }: RepoCardProps) {
   const [loaded, setLoaded] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const cardHeight = 150; // px, adjust to match actual card
 
   return (
@@ -34,17 +39,19 @@ export default function RepoCard({ githubUrl, alt = "GitHub repository card", cl
           aria-hidden="true"
         />
       )}
-      <img
-        src={getGithubRepoCardUrl(githubUrl)}
-        alt={alt}
-        style={{
-          maxWidth: "100%",
-          // borderRadius removed
-          boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-          display: loaded ? "block" : "none",
-        }}
-        onLoad={() => setLoaded(true)}
-      />
+      {mounted && (
+        <img
+          src={getGithubRepoCardUrl(githubUrl)}
+          alt={alt}
+          style={{
+            maxWidth: "100%",
+            // borderRadius removed
+            boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+            display: loaded ? "block" : "none",
+          }}
+          onLoad={() => setLoaded(true)}
+        />
+      )}
     </div>
   );
 }

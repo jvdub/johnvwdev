@@ -32,8 +32,9 @@ export default function Home() {
               John Van Wagenen
             </h1>
             <p className="mt-4 text-lg text-fg-muted">
-              I build software and write about what I’m learning—engineering
-              notes, patterns, and occasional project updates.
+              I build software and lead teams. Currently focused on the
+              pragmatic path from traditional full-stack to AI-integrated
+              systems.
             </p>
           </div>
 

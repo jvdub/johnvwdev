@@ -6,7 +6,8 @@ export default function Projects() {
       <header className="rounded-lg border border-border bg-surface p-6 shadow-elev sm:p-8">
         <h1>Projects</h1>
         <p className="mt-3 max-w-2xl text-fg-muted">
-          A lightweight list for now. Individual project pages can come later.
+          Explore my latest and ongoing projects below. Each project has its own
+          page with details and stories.
         </p>
         <p className="mt-4">
           <Link href="/" className="text-sm">

@@ -33,11 +33,39 @@ export async function generateMetadata({
         ? frontmatter.canonicalUrl
         : canonicalForPath(`/blog/${slug}`);
 
+    const imageUrl = frontmatter.heroImage?.startsWith("http")
+      ? frontmatter.heroImage
+      : `${canonicalForPath(frontmatter.heroImage)}`;
+
     return {
       title: frontmatter.title,
       description: frontmatter.description,
       alternates: {
         canonical,
+      },
+      openGraph: {
+        title: frontmatter.title,
+        description: frontmatter.description,
+        url: canonical,
+        type: "article",
+        images: [
+          {
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+            alt: frontmatter.title,
+          },
+        ],
+        siteName: "John Van Wagenen",
+        publishedTime: frontmatter.date,
+        tags: frontmatter.tags,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: frontmatter.title,
+        description: frontmatter.description,
+        images: [imageUrl],
+        creator: AUTHOR_HANDLE,
       },
     };
   } catch {

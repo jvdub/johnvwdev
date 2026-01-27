@@ -1,7 +1,41 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import type { Metadata } from "next";
 import { getAllPosts } from "../lib/posts";
+import { SITE_URL } from "../lib/site";
+
+export const metadata: Metadata = {
+  title: "John Van Wagenen – Software Engineer & AI Leader",
+  description:
+    "Portfolio and blog of John Van Wagenen, software engineer and technical leader focused on pragmatic AI integration and full-stack development.",
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    title: "John Van Wagenen – Software Engineer & AI Leader",
+    description:
+      "Portfolio and blog of John Van Wagenen, software engineer and technical leader focused on pragmatic AI integration and full-stack development.",
+    url: SITE_URL,
+    siteName: "John Van Wagenen",
+    type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/jvw_headshot.jpg`,
+        width: 400,
+        height: 400,
+        alt: "Headshot of John Van Wagenen",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "John Van Wagenen – Software Engineer & AI Leader",
+    description:
+      "Portfolio and blog of John Van Wagenen, software engineer and technical leader focused on pragmatic AI integration and full-stack development.",
+    images: [`${SITE_URL}/jvw_headshot.jpg`],
+    creator: "@jtvanwage",
+  },
+};
 
 function formatPostDate(date: string): string {
   // Frontmatter dates are ISO (YYYY-MM-DD). Pin to UTC midnight for stability.

@@ -1,4 +1,3 @@
-
 import ProjectLayout from "../../../components/ProjectLayout";
 import { compilePostMdx } from "../../../lib/mdx";
 import { getProjectStoryBySlug } from "../../../lib/projects";

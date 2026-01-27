@@ -1,0 +1,95 @@
+---
+title: "The Most Dangerous Thing AI Gives Engineers: False Confidence"
+date: "2026-02-02"
+description: "AI makes it easy to feel done before you understand what you’ve changed."
+tags:
+  - ai
+  - software engineering
+  - confidence
+  - best practices
+draft: true
+heroImage: "/images/posts/the-most-dangerous-thing-ai-gives-engineers-false-confidence.png"
+canonicalUrl: ""
+---
+
+For the last few years, I've primarily been a frontend engineer. I'll hop into the backend every once in a while to fix simple issues when we don't have the bandwidth to otherwise do it, but the focus of my work has been on the frontend.
+
+With the assistance of AI tools, I've recently been doing more backend work. I had a feature that needed a new POST endpoint along with some database updates. The changes were straightforward enough but more involved than I've done in a while, and in a service I wasn't familiar with. I'd done a lot of backend work in a nearby service but hadn't done much in this one. Still, I didn't think much of it since the changes seemed simple.
+
+So I got going. I pointed my AI tools at it and let them loose. Everything was looking great\! Sure, I had to correct it from time to time, but things seemed to be making sense. I kept moving through the tasks, generating more code and making updates as needed. Soon enough, things were done\!
+
+Or so I thought.
+
+I opened a PR and immediately had multiple failing jobs. "No worries," I thought, "I'll work through these pretty quickly."
+
+Or, maybe not.
+
+I eventually did get everything in order, but I learned a lot about that service along the way. Checks that are required that weren't apparent. Jobs that run in the PR but not on commit/push. And architectural decisions I had no idea about.
+
+What surprised me was not that things failed. That happens all the time. What surprised me was how confident I felt before opening the pull request. I felt like I understood the system well enough to make the change. The AI helped me move quickly, but it also hid how shallow my understanding really was.
+
+That confidence, more than the failures themselves, is the most dangerous thing AI has given me as an engineer.
+
+## **Why False Confidence Is Worse Than Ignorance**
+
+When you know you're unfamiliar with a system, you move carefully. You ask questions. You read surrounding code. You trace how data flows through the system. You rely on your knowledge, like an internal compass, and move through the system.
+
+When you think you understand it, you move fast and stop asking questions.
+
+This is the trap. AI tools are designed to be maximally helpful. They generate code that looks clean, follows patterns, and appears reasonable. Because the output feels familiar, it creates the illusion of understanding. And that illusion is contagious, especially for experienced engineers who can pattern-match the AI's output to similar problems they've solved before.
+
+The code the AI generated for me was good code. It followed conventions, used appropriate design patterns, and compiled without errors. But "good code" and "code that works in this specific system" aren't the same thing. The AI didn't know about the implicit constraints, the architectural boundaries, or the CI pipeline checks that would catch my mistakes.
+
+This is especially dangerous for experienced engineers. Our past success fills in the gaps that the AI cannot see. The code looks familiar enough that we assume we know what's happening. But familiarity is not the same thing as knowing how a system behaves under pressure.
+
+## **What AI Can't See**
+
+AI tools reason well when systems are well-documented, patterns are consistent, and common paradigms apply. But real-world enterprise systems rarely look like this.
+
+**Large systems accumulate history.** Decisions live in code, not documentation. Architecture degrades over time. Patterns are loosely followed. Sometimes you compromise certain aspects to deliver critical fixes to a customer. The system becomes a historical artifact. Millions of lines shaped by constraints, trade-offs, and political realities that no AI can infer from the code alone.
+
+**Architecture exists as invisible fences.** You may have a strict boundary that certain models don't leave certain layers. If that's not clearly documented, the AI will miss it. You might have a rule that all database tables must include specific audit columns. The AI won't know until the CI pipeline fails. These boundaries are enforced by people and processes, not compilers.
+
+**Implicit knowledge decides survival.** In my case, I didn't discover the constraints by reading documentation or code. I discovered them when my pull request failed in ways I didn't know were possible. There were checks hidden in the CI pipeline, architectural patterns enforced only in code review, and assumptions about the system that everyone on the team just "knew."
+
+No AI tool can currently read minds or easily infer all the decisions ever made in a complex system. Until then, we need humans in the loop to do the deep thinking and course correcting. In systems like this, correctness is not just about logic. It's about history, risk, and context that exists outside the code.
+
+## **What I Should Have Done**
+
+Looking back, my mistake wasn't using AI. It was trusting the confidence I felt.
+
+Before letting the AI touch any code, I should have spent 30 minutes reading the service's architecture documentation and the surrounding code. I should have looked at recent PRs to see what patterns the team follows and what checks typically flag issues. I should have asked someone on the team: "What are the gotchas in this service?"
+
+Instead, I let the AI make me feel like I already knew these things.
+
+The solution is not to avoid AI tools. That would mean throwing away a real advantage\! The solution is to change how we relate to them. Good engineers don't use AI as an authority. They use it as an accelerator.
+
+## **How to Use AI Without the False Confidence**
+
+AI can generate options, surface patterns, and reduce mechanical effort. It cannot replace building a mental model of the system.
+
+When working in unfamiliar or complex codebases, confidence must be rebuilt intentionally. That means:
+
+- **Read the surrounding code** before accepting AI-generated changes. Understand the patterns the codebase follows, not just the patterns the AI knows.
+
+- **Trace data flows.** Follow how data moves through the system. Where does it come from? Where does it go? What transforms it along the way?
+
+- **Ask people who know the system** why things are the way they are. There are always reasons—technical debt, past incidents, customer requirements, performance constraints—that aren't visible in the code.
+
+- **Assume something important is missing** from the AI's output until proven otherwise. This isn't paranoia; it's calibration.
+
+One shift that helps: use AI to generate questions instead of just answers. What assumptions does this change make? What could break if this endpoint is used in unexpected ways? What parts of the system does this touch indirectly?
+
+The AI is very good at helping us move faster. It is not good at telling us when to slow down. That responsibility still belongs to the engineer.
+
+## **The Real Cost**
+
+AI has changed how quickly we can produce code. It has not changed what it means to understand a system.
+
+Confidence still has to be earned through context, experience, and judgment. If an AI tool makes you feel confident without making you more curious, it is already putting you at risk.
+
+The next time AI makes a change feel easy, pause. Ask yourself what you might be missing. Not because the AI is wrong, but because the confidence it gives you might be covering up the gaps in your understanding that matter most.
+
+This week, pick one AI-generated change you made recently and trace it through your system. See what you missed the first time.
+
+The next time Claude or Cursor makes you feel like a 10x engineer, remember: you might just be a 1x engineer moving at 10x speed toward a problem you don't yet see.

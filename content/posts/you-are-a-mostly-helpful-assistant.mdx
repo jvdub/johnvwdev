@@ -1,0 +1,89 @@
+---
+title: "You Are a (Mostly) Helpful Assistant"
+date: "2026-02-09"
+description: "Explore why LLMs are biased toward being helpful, how this manifests in your work, and practical strategies to manage this behavior effectively."
+tags:
+  [
+    "ai",
+    "llm",
+    "system-design",
+    "prompting",
+    "best-practices",
+    "software-engineering",
+  ]
+draft: true
+heroImage: "/images/posts/you-are-a-mostly-helpful-assistant.png"
+canonicalUrl: ""
+---
+
+## When helpfulness becomes a problem
+
+Imagine having your prime directive, your entire purpose of being, your mission and lifelong goal to be as helpful as possible.
+
+Whenever someone comes to you, whether with a problem to solve or just a comment to share, you want to be helpful.
+
+“Is the sky blue?”
+
+Why yes it is\! It’s blue and here’s all the science behind it.
+
+If my prime directive is to be as helpful as possible, I can’t just answer a simple question, I must make sure you know the reason behind the answer. I must educate and share. I must fix and bridge the gap.
+
+Such is the life of our little friends we call LLMs. The problem is that this helpfulness often comes wrapped in confidence, even when the model is filling in gaps or making assumptions. Let’s dive into why this is, how this manifests, and what you can do to manage that now that you’re aware of it.
+
+## Why are LLMs so eager to be helpful?
+
+There’s an old saying from Edward C. Deming that goes like this: “Every system is perfectly designed to get the results it gets.” This is no exception for LLMs. Our AI tools are very much the product of the systems they were developed in. There are three main things that contribute to this perceived eagerness to be helpful.
+
+### Pretraining
+
+LLMs are pretrained on massive amounts of data. The goal of this pretraining is to get them to the point that they can predict the most statistically likely next token. At this stage, there is no inherent reward for being helpful; however, much of human writing _is_ instructional or educational in nature. Put another way, humans write instructional things. Whether it’s to share ideas or concepts or literally to help someone out, much of our communication is helpful.
+
+So, while LLMs don’t learn to be helpful at this stage, they do learn a pattern here. This pattern is that written language is often instructional. So, the most likely next token is something that will probably be helpful.
+
+### Fine-Tuning
+
+Once a model is trained generally, it is often fine-tuned. Many modern models use Reinforcement Learning from Human Feedback (RLHF). That human feedback often biases the model even more to responses that are helpful, rewarding it for being helpful. When we ask a question to our LLM, we _want_ it to be helpful. Responses that hedge, hesitate, or express uncertainty are often rated as less helpful, even when they’re more accurate. We want it to answer the question and provide a valuable response. This shows up in how we give feedback to LLMs and what they learn from it.
+
+### Instruction Conditioning (System Prompt)
+
+The final aspect, and one that can be very powerful, is that of instruction conditioning. That’s really just a fancy way of saying how the LLM or tool is primed to interact with you. In generative AI, there is a concept of a System Prompt.
+
+This system prompt is given to the LLM with every prompt you send and is set by the LLM provider. Since this exists in a place above your prompts, the instructions in the system prompt generally have heavier weight than the instructions in your prompt. This is because, in transformer models, earlier context tends to anchor the model’s behavior through the attention mechanism. Since the system prompt precedes all other prompts, its influence is greater than later prompts.
+
+So, if the system prompt says, “you are a helpful assistant,” then that will have more weight to the LLM and will permeate all that it does and all the responses it gives to you.
+
+## What this looks like
+
+So, all that theory is great, but what does this look like in practice?
+
+I gave a simple example to start this article, but here are some ways I see this as an engineer.
+
+The biggest thing I see with this is the AI filling in details that I left out. If I don’t adequately describe a defect, it may make changes that I never intended it to make. If I don’t ensure the spec has all the details it needs to keep the agent on track, I will get unexpected results and may even see the agent off in left field doing something completely unrelated.
+
+This can either be a blessing or a curse, depending on the project you’re in and the goals you have.
+
+If you’re in a large project, it may make assumptions that go against the established architecture of your project. If you’re in a small project, you may not care about some of the details because the tradeoffs only come at a scale that you’re not going to get to possibly ever, so you’re okay with it making decisions for you.
+
+You may also notice its bias toward helpfulness in the responses it gives you. Many times, at the end of its response, you’ll see things like, “if you’d like, I can help you with…” or “just say the word and I can…” If it thinks something more can be done, it will often offer to do that for you.
+
+This tends to show up more in coding tools like Claude or Cursor. Coding tools have access to your file system. This means they can both write and undo changes. Because of that, the cost of being too helpful is pretty low. If it crosses a line, it’s very easy for it to undo the changes and apologize profusely. Additionally, many of these tools have access to version control tools like Git. Since Git is basically a time machine, what’s it matter if it’s a little overeager to make changes? It can simply rewind and act like nothing happened. And when the diffs are large and look, on the surface, to be correct? That’s when little gotchas can slip in.
+
+What makes this dangerous is that the AI doesn’t flag these assumptions as assumptions. It presents them confidently, as if they were obvious or discussed, which makes it easy to miss them during review.
+
+## How you can manage this
+
+With all this in mind, what can we do about it?
+
+First, two general tips, then one more focused on coding applications.
+
+The first tip is to be explicit in your prompting. If you really don’t want it to make any changes or take any action, say it. Declare the phase you’re in. If you’re just planning or just investigating, say that. Say things like, “don’t suggest any changes.” Or “don’t take action yet.” This will keep the LLM focused on talking about the problem rather than reaching for any tools to actually do anything about it.
+
+Next, keep it focused on small problems. Even if you’re managing swarms of agents, each agent should be focused on a small portion of the problem. Each swarm should be focused on a certain aspect of the product. The broader the picture, the more leeway you give the AI and the more room it has to make assumptions and bridge the gap in whatever way it sees fit. Keep it to one component or one interaction or one endpoint or one layer. Bounding it to a smaller portion helps it focus and improve results.
+
+Finally, in coding tools like Claude, use plan mode and meticulously review the plan. This will help you find errors in its thinking earlier. This will allow you to see where it’s making assumptions and where you need to provide more detail. Correct it (LLMs take correction so well) and review it again to ensure its understanding is accurate. Once the plan is to your liking, you can set the LLM loose and reap the rewards.
+
+Overall, this helpfulness is a strength of the LLM. However, left unchecked, this can be a problem. It may assume it needs a bunch of data that it doesn’t need which could lead to database locking or performance impacts. If you catch this early, you can steer it in the right direction. If this slips passed and gets into the code, you may suddenly have a lot of customers impacted.
+
+The key here is to not blindly trust the AI. Even though it’s confident. Even though it’s very helpful. Even though it seems to understand everything. Helpfulness is not understanding. The devil is in the details. Take the time to review its plans. Take the time to review its code. Take the time to ask questions and challenge it. The more time you spend thinking critically about the problem and critiquing the solution, the more likely you are to have a quality product in the end.
+
+Next time you use an LLM, try this: Before letting it change anything, ask it to explain what it thinks the problem is and what assumptions it’s making. If you wouldn’t accept that explanation from a teammate in a code review, don’t accept it from the AI either.

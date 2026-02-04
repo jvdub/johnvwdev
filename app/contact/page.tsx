@@ -1,6 +1,7 @@
 import { AtSign, Github, Linkedin, X } from "lucide-react";
 
 import { BlueskyIcon } from "../../components/BlueskyIcon";
+import { ExternalLink } from "../../components/ExternalLink";
 
 export default function Contact() {
   return (
@@ -19,10 +20,10 @@ export default function Contact() {
         aria-label="Social links"
         className="grid w-full gap-4 sm:grid-cols-3"
       >
-        <a
+        <ExternalLink
           href="https://x.com/jtvanwage"
           target="_blank"
-          rel="noopener noreferrer me"
+          rel="me"
           className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
           <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
@@ -31,12 +32,12 @@ export default function Contact() {
           </div>
           <p className="mt-2 text-base font-semibold text-fg">@jtvanwage</p>
           <p className="mt-3 text-sm text-fg-muted">Open profile →</p>
-        </a>
+        </ExternalLink>
 
-        <a
+        <ExternalLink
           href="https://www.linkedin.com/in/john-van-wagenen/"
           target="_blank"
-          rel="noopener noreferrer me"
+          rel="me"
           className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
           <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
@@ -47,12 +48,12 @@ export default function Contact() {
             John Van Wagenen
           </p>
           <p className="mt-3 text-sm text-fg-muted">Open profile →</p>
-        </a>
+        </ExternalLink>
 
-        <a
+        <ExternalLink
           href="https://github.com/jvdub"
           target="_blank"
-          rel="noopener noreferrer me"
+          rel="me"
           className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
           <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
@@ -61,12 +62,12 @@ export default function Contact() {
           </div>
           <p className="mt-2 text-base font-semibold text-fg">@jvdub</p>
           <p className="mt-3 text-sm text-fg-muted">Open profile →</p>
-        </a>
+        </ExternalLink>
 
-        <a
+        <ExternalLink
           href="https://bsky.app/profile/jtvanwage.bsky.social"
           target="_blank"
-          rel="noopener noreferrer me"
+          rel="me"
           className="rounded-lg border border-border bg-surface p-5 no-underline shadow-elev hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
           <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
@@ -77,7 +78,7 @@ export default function Contact() {
             @jtvanwage.bsky.social
           </p>
           <p className="mt-3 text-sm text-fg-muted">Open profile →</p>
-        </a>
+        </ExternalLink>
 
         <a
           href="mailto:johnvwdev@gmail.com"

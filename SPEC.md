@@ -147,3 +147,19 @@ Implementation guidance (v1):
 - Site is readable and usable on mobile, tablet, and desktop (responsive typography and layout; navigation remains accessible without horizontal scrolling at common viewport widths).
 - Static export completes successfully.
 - `sitemap.xml` and RSS feed are generated at build time.
+
+## Status & Future Development
+
+**Current Status:** Initial build complete ✅
+
+All v1 acceptance criteria met. The site is live and functional with:
+- Blog with MDX support
+- Projects section
+- Dark/light theme
+- Static export
+- SEO basics (sitemap, RSS, metadata)
+- Google Analytics
+
+**Future Enhancements:** See [ROADMAP.md](ROADMAP.md) for planned features and improvements organized by priority.
+
+**Risk Management:** See [RISKS.md](RISKS.md) for identified risks and mitigation strategies.

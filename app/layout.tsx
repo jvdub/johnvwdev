@@ -8,6 +8,7 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { GaPageView } from "../components/GaPageView";
 import { SITE_URL } from "../lib/site";
+import { generateScriptHash, buildCSPContent } from "../lib/csp-utils";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -76,10 +77,53 @@ const THEME_INIT_SCRIPT = `(() => {
   }
 })();`;
 
+const GA_CONFIG_SCRIPT = `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`;
+
+// Generate CSP hashes for inline scripts
+const themeScriptHash = generateScriptHash(THEME_INIT_SCRIPT);
+const gaConfigScriptHash = generateScriptHash(GA_CONFIG_SCRIPT);
+
+// Build CSP directive
+const cspContent = buildCSPContent({
+  "default-src": ["'self'"],
+  "script-src": [
+    "'self'",
+    themeScriptHash,
+    gaConfigScriptHash,
+    "https://www.googletagmanager.com",
+  ],
+  "style-src": ["'self'", "'unsafe-inline'"], // Required for Tailwind
+  "img-src": [
+    "'self'",
+    "data:",
+    "https://github-readme-stats.vercel.app", // For GitHub repo cards
+    "https://www.google-analytics.com", // GA tracking pixel
+  ],
+  "font-src": ["'self'"],
+  "connect-src": [
+    "'self'",
+    "https://www.google-analytics.com",
+    "https://www.googletagmanager.com",
+    "https://analytics.google.com", // GA4 endpoint
+  ],
+  "frame-src": ["'none'"],
+  "frame-ancestors": ["'none'"], // Prevent clickjacking
+  "object-src": ["'none'"],
+  "base-uri": ["'self'"],
+  "form-action": ["'self'"],
+  "upgrade-insecure-requests": [], // Auto-upgrade HTTP to HTTPS
+  "worker-src": ["'self'"],
+  "manifest-src": ["'self'"],
+});
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta httpEquiv="Content-Security-Policy" content={cspContent} />
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
 
         <script
@@ -88,10 +132,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`,
+            __html: GA_CONFIG_SCRIPT,
           }}
         />
       </head>

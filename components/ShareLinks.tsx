@@ -1,6 +1,7 @@
 import { Linkedin, X } from "lucide-react";
 
 import { BlueskyIcon } from "./BlueskyIcon";
+import { ExternalLink } from "./ExternalLink";
 
 type Props = {
   url: string;
@@ -32,38 +33,35 @@ export function ShareLinks({ url, title, handle, className }: Props) {
   return (
     <div className={className} aria-label="Share">
       <div className="flex items-center gap-2">
-        <a
+        <ExternalLink
           href={xHref}
           target="_blank"
-          rel="noopener noreferrer"
           aria-label="Share on X"
           title="Share on X"
           className={itemClassName}
         >
           <X className="h-4 w-4" aria-hidden="true" />
-        </a>
+        </ExternalLink>
 
-        <a
+        <ExternalLink
           href={blueskyHref}
           target="_blank"
-          rel="noopener noreferrer"
           aria-label="Share on Bluesky"
           title="Share on Bluesky"
           className={itemClassName}
         >
           <BlueskyIcon className="h-4 w-4" />
-        </a>
+        </ExternalLink>
 
-        <a
+        <ExternalLink
           href={linkedinHref}
           target="_blank"
-          rel="noopener noreferrer"
           aria-label="Share on LinkedIn"
           title="Share on LinkedIn"
           className={itemClassName}
         >
           <Linkedin className="h-4 w-4" aria-hidden="true" />
-        </a>
+        </ExternalLink>
       </div>
     </div>
   );

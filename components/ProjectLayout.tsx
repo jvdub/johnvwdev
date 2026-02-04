@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import { ExternalLink } from "./ExternalLink";
 import { getGithubRepoCardUrl } from "./getGithubRepoCardUrl";
 import RepoCard from "./RepoCard";
 
@@ -26,15 +27,14 @@ export default function ProjectLayout({
         <h1 className="mb-2 text-3xl font-bold tracking-tight">{title}</h1>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
           {/* GitHub Repo Card */}
-          <a
+          <ExternalLink
             href={githubUrl}
             target="_blank"
-            rel="noopener noreferrer"
             className="block"
             aria-label="GitHub repository card"
           >
             <RepoCard githubUrl={githubUrl} />
-          </a>
+          </ExternalLink>
         </div>
       </header>
       <div className="mdx-content space-y-6 sm:space-y-7">{children}</div>

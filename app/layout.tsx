@@ -8,7 +8,7 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { GaPageView } from "../components/GaPageView";
 import { SITE_URL } from "../lib/site";
-import { generateScriptHash, buildCSPContent } from "../lib/csp-utils";
+import { buildCSPContent } from "../lib/csp-utils";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -82,17 +82,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}');`;
 
-// Generate CSP hashes for inline scripts
-const themeScriptHash = generateScriptHash(THEME_INIT_SCRIPT);
-const gaConfigScriptHash = generateScriptHash(GA_CONFIG_SCRIPT);
-
 // Build CSP directive
+// Note: 'unsafe-inline' is required for Next.js-generated inline scripts in static export.
 const cspContent = buildCSPContent({
   "default-src": ["'self'"],
   "script-src": [
     "'self'",
-    themeScriptHash,
-    gaConfigScriptHash,
+    "'unsafe-inline'", // Required for Next.js inline scripts in static export
     "https://www.googletagmanager.com",
   ],
   "style-src": ["'self'", "'unsafe-inline'"], // Required for Tailwind
@@ -110,7 +106,6 @@ const cspContent = buildCSPContent({
     "https://analytics.google.com", // GA4 endpoint
   ],
   "frame-src": ["'none'"],
-  "frame-ancestors": ["'none'"], // Prevent clickjacking
   "object-src": ["'none'"],
   "base-uri": ["'self'"],
   "form-action": ["'self'"],

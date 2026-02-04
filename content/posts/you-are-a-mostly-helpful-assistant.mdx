@@ -48,7 +48,7 @@ Once a model is trained generally, it is often fine-tuned. Many modern models us
 
 The final aspect, and one that can be very powerful, is that of instruction conditioning. That’s really just a fancy way of saying how the LLM or tool is primed to interact with you. In generative AI, there is a concept of a System Prompt.
 
-This system prompt is given to the LLM with every prompt you send and is set by the LLM provider. Since this exists in a place above your prompts, the instructions in the system prompt generally have heavier weight than the instructions in your prompt. This is because, in transformer models, earlier context tends to anchor the model’s behavior through the attention mechanism. Since the system prompt precedes all other prompts, its influence is greater than later prompts.
+This system prompt is given to the LLM with every prompt you send and is set by the LLM provider. Since this exists in a place above your prompts, the instructions in the system prompt generally have heavier weight than the instructions in your prompt. This is because, in transformer models, earlier context tends to anchor the model’s behavior through the attention mechanism. Since the system prompt precedes all other prompts, its influence is generally greater than later prompts.
 
 So, if the system prompt says, “you are a helpful assistant,” then that will have more weight to the LLM and will permeate all that it does and all the responses it gives to you.
 

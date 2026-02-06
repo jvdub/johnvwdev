@@ -85,8 +85,42 @@ export function slugFromPostFilename(filename: string): string {
   return filename.replace(/\.(md|mdx)$/, "");
 }
 
+function detectSlugCollisions(posts: Array<{ slug: string; filePath: string }>): void {
+  const slugMap = new Map<string, string[]>();
+
+  for (const post of posts) {
+    if (!slugMap.has(post.slug)) {
+      slugMap.set(post.slug, []);
+    }
+    slugMap.get(post.slug)!.push(post.filePath);
+  }
+
+  const collisions = Array.from(slugMap.entries())
+    .filter(([_, filePaths]) => filePaths.length > 1);
+
+  if (collisions.length > 0) {
+    const conflictDetails = collisions
+      .map(([slug, filePaths]) => {
+        const relativePaths = filePaths.map((fp) => path.relative(process.cwd(), fp));
+        return `  - Slug "${slug}":\n    ${relativePaths.map((p) => `• ${p}`).join("\n    ")}`;
+      })
+      .join("\n");
+
+    throw new Error(
+      `Slug collision detected! Multiple files would create the same route:\n${conflictDetails}`,
+    );
+  }
+}
+
 export function getAllPosts(): Post[] {
   const filePaths = getPostFilePaths();
+
+  // First, detect slug collisions before processing
+  const slugCollisionCheck = filePaths.map((filePath) => ({
+    slug: slugFromPostFilename(path.basename(filePath)),
+    filePath,
+  }));
+  detectSlugCollisions(slugCollisionCheck);
 
   const posts: Post[] = filePaths
     .map((filePath) => {

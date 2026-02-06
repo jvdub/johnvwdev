@@ -89,22 +89,33 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Slug Collision Detection 🔴
+### Slug Collision Detection �
 
 **Description:** Prevent duplicate filenames from creating conflicting routes.
 
 **Tasks:**
 
-- Add validation in `getAllPosts()` to detect duplicate slugs
-- Fail build if collision detected
-- Log helpful error message with conflicting file paths
-- Extend to projects if/when more projects are added
+- Add validation in `getAllPosts()` to detect duplicate slugs ✅
+- Fail build if collision detected ✅
+- Log helpful error message with conflicting file paths ✅
+- Extend to projects if/when more projects are added ✅
 
 **Acceptance Criteria:**
 
-- Build fails with clear error if duplicate slugs exist
-- Error message identifies both conflicting files
-- No runtime issues from slug conflicts
+- Build fails with clear error if duplicate slugs exist ✅
+- Error message identifies both conflicting files ✅
+- No runtime issues from slug conflicts ✅
+
+**Completed:** February 5, 2026
+
+**Implementation Details:**
+
+- Added `detectSlugCollisions()` validation helper in [lib/posts.ts](lib/posts.ts) that checks for duplicate post slugs before processing
+- Updated `getAllPosts()` to run collision detection early; lists all conflicting files with relative paths
+- Extended functionality to projects with `getAllProjectSlugs()` and `detectProjectSlugCollisions()` in [lib/projects.ts](lib/projects.ts)
+- Error messages clearly identify the slug and all files creating that slug
+- Bill fails at build time with clear error diagnostics if any collisions are detected
+- No performance impact; validation runs once at build time
 
 ---
 

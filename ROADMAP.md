@@ -33,23 +33,34 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Tag/Category Filtering 🔴
+### Tag/Category Filtering 🟢
 
 **Description:** Enable filtering blog posts by tags (already collected in frontmatter but not displayed).
 
 **Tasks:**
 
-- Display tags on blog post pages
-- Create tag index/listing page at `/blog/tags`
-- Add tag-based filtering on `/blog` page
-- Generate tag pages at `/blog/tags/[tag]` or use client-side filtering
-- Update sitemap generation to include tag pages
+- Display tags on blog post pages ✅
+- Create tag index/listing page at `/blog/tags` ✅
+- Add tag-based filtering on `/blog` page ✅ (static tag pages at `/blog/tags/[tag]`)
+- Generate tag pages at `/blog/tags/[tag]` or use client-side filtering ✅ (static generation with `generateStaticParams`)
+- Update sitemap generation to include tag pages ✅
 
 **Acceptance Criteria:**
 
-- Tags visible on individual posts and blog index
-- Clicking a tag filters/navigates to posts with that tag
-- Tag pages have proper SEO metadata
+- Tags visible on individual posts and blog index ✅
+- Clicking a tag filters/navigates to posts with that tag ✅
+- Tag pages have proper SEO metadata ✅
+
+**Completed:** February 5, 2026
+
+**Implementation Details:**
+
+- Created [components/Tag.tsx](components/Tag.tsx) with `Tag` and `TagList` components
+- Updated [app/blog/page.tsx](app/blog/page.tsx) to display tags and link to `/blog/tags`
+- Created [app/blog/tags/page.tsx](app/blog/tags/page.tsx) with tag index showing all tags with post counts
+- Created [app/blog/tags/[tag]/page.tsx](app/blog/tags/%5Btag%5D/page.tsx) for static generation of individual tag pages
+- Updated sitemap generation script to include all tag pages
+- All pages are 100% static with no runtime dependencies
 
 ---
 

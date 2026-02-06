@@ -123,7 +123,7 @@ export function Search({ items }: SearchProps) {
           stroke="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
-          style={{ color: 'var(--muted)' }}
+          style={{ color: "var(--muted)" }}
         >
           <path
             strokeLinecap="round"
@@ -146,20 +146,21 @@ export function Search({ items }: SearchProps) {
           }}
           className="w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           style={{
-            borderColor: 'var(--border)',
-            backgroundColor: 'var(--surface)',
-            color: 'var(--text)',
+            borderColor: "var(--border)",
+            backgroundColor: "var(--surface)",
+            color: "var(--text)",
           }}
           aria-label="Search"
           aria-autocomplete="list"
           aria-controls="search-results"
           aria-expanded={isOpen}
         />
-        <kbd className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded border px-2 py-0.5 text-xs sm:inline-block"
+        <kbd
+          className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded border px-2 py-0.5 text-xs sm:inline-block"
           style={{
-            borderColor: 'var(--border)',
-            backgroundColor: 'var(--surface2)',
-            color: 'var(--muted)',
+            borderColor: "var(--border)",
+            backgroundColor: "var(--surface2)",
+            color: "var(--muted)",
           }}
         >
           {isMac ? "⌘K" : "Ctrl+K"}
@@ -172,8 +173,8 @@ export function Search({ items }: SearchProps) {
           role="listbox"
           className="absolute z-50 mt-2 max-h-96 w-full overflow-auto rounded-lg border shadow-lg"
           style={{
-            borderColor: 'var(--border)',
-            backgroundColor: 'var(--surface)',
+            borderColor: "var(--border)",
+            backgroundColor: "var(--surface)",
           }}
         >
           {results.map((item, index) => (
@@ -188,17 +189,23 @@ export function Search({ items }: SearchProps) {
               }}
               className={`block border-b px-4 py-3 no-underline transition-colors last:border-b-0`}
               style={{
-                borderBottomColor: 'var(--border)',
-                backgroundColor: index === selectedIndex ? 'var(--surface2)' : 'var(--surface)',
+                borderBottomColor: "var(--border)",
+                backgroundColor:
+                  index === selectedIndex
+                    ? "var(--surface2)"
+                    : "var(--surface)",
               }}
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0 flex-1">
-                  <div className="font-medium" style={{ color: 'var(--text)' }}>
+                  <div className="font-medium" style={{ color: "var(--text)" }}>
                     {item.title}
                   </div>
                   {item.description && (
-                    <div className="mt-1 line-clamp-2 text-sm" style={{ color: 'var(--muted)' }}>
+                    <div
+                      className="mt-1 line-clamp-2 text-sm"
+                      style={{ color: "var(--muted)" }}
+                    >
                       {item.description}
                     </div>
                   )}
@@ -209,8 +216,8 @@ export function Search({ items }: SearchProps) {
                           key={tag}
                           className="rounded px-2 py-0.5 text-xs"
                           style={{
-                            backgroundColor: 'var(--bg2)',
-                            color: 'var(--muted)',
+                            backgroundColor: "var(--bg2)",
+                            color: "var(--muted)",
                           }}
                         >
                           {tag}
@@ -219,10 +226,13 @@ export function Search({ items }: SearchProps) {
                     </div>
                   )}
                 </div>
-                <span className="shrink-0 rounded px-2 py-0.5 text-xs font-medium" style={{
-                  backgroundColor: 'var(--accent)',
-                  color: 'var(--bg)',
-                }}>
+                <span
+                  className="shrink-0 rounded px-2 py-0.5 text-xs font-medium"
+                  style={{
+                    backgroundColor: "var(--accent)",
+                    color: "var(--bg)",
+                  }}
+                >
                   {item.type}
                 </span>
               </div>
@@ -232,13 +242,14 @@ export function Search({ items }: SearchProps) {
       )}
 
       {isOpen && query && results.length === 0 && (
-        <div className="absolute z-50 mt-2 w-full rounded-lg border px-4 py-8 text-center shadow-lg"
+        <div
+          className="absolute z-50 mt-2 w-full rounded-lg border px-4 py-8 text-center shadow-lg"
           style={{
-            borderColor: 'var(--border)',
-            backgroundColor: 'var(--surface)',
+            borderColor: "var(--border)",
+            backgroundColor: "var(--surface)",
           }}
         >
-          <p className="text-sm" style={{ color: 'var(--muted)' }}>
+          <p className="text-sm" style={{ color: "var(--muted)" }}>
             No results found for &quot;{query}&quot;
           </p>
         </div>

@@ -8,6 +8,7 @@ import { AUTHOR_HANDLE, canonicalForPath } from "../../../lib/site";
 
 import { ShareLinks } from "../../../components/ShareLinks";
 import { ReadingProgressBar } from "../../../components/ReadingProgressBar";
+import { TagList } from "../../../components/Tag";
 
 export const dynamicParams = false;
 
@@ -120,6 +121,9 @@ export default async function BlogPostPage({ params }: PageProps) {
           <h1 className="mb-2">{postSource.frontmatter.title}</h1>
           <div className="text-sm text-fg-muted">
             {postSource.frontmatter.date}
+          </div>
+          <div className="mt-4">
+            <TagList tags={postSource.frontmatter.tags} />
           </div>
           <ShareLinks
             url={canonical}

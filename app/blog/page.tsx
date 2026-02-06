@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { getAllPosts } from "../../lib/posts";
 import { canonicalForPath } from "../../lib/site";
+import { TagList } from "../../components/Tag";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -21,6 +22,11 @@ export default function Blog() {
       <header className="mb-8">
         <h1 className="mb-2">Blog</h1>
         <p className="text-fg-muted">Notes on engineering, AI, and building.</p>
+        <p className="mt-2 text-sm">
+          <Link href="/blog/tags" className="text-brand hover:underline">
+            Browse by tag →
+          </Link>
+        </p>
       </header>
 
       {posts.length === 0 ? (
@@ -57,6 +63,9 @@ export default function Blog() {
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h2>
                   <p className="text-fg-muted">{post.description}</p>
+                  <div className="mt-3">
+                    <TagList tags={post.tags} />
+                  </div>
                 </div>
               </div>
             </li>

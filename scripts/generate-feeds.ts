@@ -33,7 +33,7 @@ type SitemapEntry = {
   changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 };
 
-const STATIC_PATHS: string[] = ["/", "/about", "/blog", "/contact", "/projects"];
+const STATIC_PATHS: string[] = ["/", "/about", "/blog", "/blog/tags", "/contact", "/projects"];
 
 function generateSitemapXml(entries: SitemapEntry[]): string {
   const urls = entries
@@ -113,6 +113,11 @@ function generateRssXml(posts: ReturnType<typeof getAllPosts>): string {
 function main(): void {
   const posts = getAllPosts();
 
+  // Get all unique tags
+  const allTags = Array.from(
+    new Set(posts.flatMap((post) => post.tags)),
+  ).sort();
+
   const buildDate = isoDateOnly(new Date());
   const sitemapEntries: SitemapEntry[] = [
     ...STATIC_PATHS.map((pathname) => ({
@@ -121,6 +126,7 @@ function main(): void {
       changefreq: pathname === "/" || pathname === "/blog" ? "weekly" : undefined,
     })),
     ...posts.map((post) => ({ pathname: `/blog/${post.slug}`, lastmod: post.date })),
+    ...allTags.map((tag) => ({ pathname: `/blog/tags/${tag}`, lastmod: buildDate })),
   ];
 
   const sitemapXml = generateSitemapXml(sitemapEntries);

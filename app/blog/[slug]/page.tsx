@@ -3,12 +3,22 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { compilePostMdx } from "../../../lib/mdx";
-import { getAllPosts, getPostSourceBySlug } from "../../../lib/posts";
-import { AUTHOR_HANDLE, canonicalForPath } from "../../../lib/site";
+import {
+  getAllPosts,
+  getPostSourceBySlug,
+  getRelatedPosts,
+} from "../../../lib/posts";
+import { AUTHOR_HANDLE, canonicalForPath, SITE_URL } from "../../../lib/site";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  renderJsonLd,
+} from "../../../lib/json-ld";
 
 import { ShareLinks } from "../../../components/ShareLinks";
 import { ReadingProgressBar } from "../../../components/ReadingProgressBar";
 import { TagList } from "../../../components/Tag";
+import { RelatedPosts } from "../../../components/RelatedPosts";
 
 export const dynamicParams = false;
 
@@ -93,8 +103,32 @@ export default async function BlogPostPage({ params }: PageProps) {
       ? postSource.frontmatter.canonicalUrl
       : canonicalForPath(`/blog/${slug}`);
 
+  const relatedPosts = getRelatedPosts(slug);
+
+  const imageUrl = heroImage?.startsWith("http")
+    ? heroImage
+    : `${SITE_URL}${heroImage}`;
+
+  const articleSchema = generateArticleSchema({
+    title: postSource.frontmatter.title,
+    description: postSource.frontmatter.description,
+    url: canonical,
+    imageUrl,
+    datePublished: postSource.frontmatter.date,
+    dateModified: postSource.frontmatter.date,
+    keywords: postSource.frontmatter.tags,
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Blog", url: `${SITE_URL}/blog` },
+    { name: postSource.frontmatter.title },
+  ]);
+
   return (
     <>
+      {renderJsonLd(articleSchema)}
+      {renderJsonLd(breadcrumbSchema)}
       <ReadingProgressBar
         colorClass="bg-green-700"
         targetSelector="#post-content"
@@ -135,6 +169,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         <div className="mdx-content space-y-6 sm:space-y-7">{content}</div>
       </article>
+
+      <div className="mx-auto max-w-3xl">
+        <RelatedPosts posts={relatedPosts} />
+      </div>
     </>
   );
 }

@@ -168,3 +168,44 @@ export function getPostSourceBySlug(slug: string): {
     source: content,
   };
 }
+
+/**
+ * Get related posts based on shared tags.
+ * Returns up to 5 posts with the most tag overlap, excluding the current post.
+ */
+export function getRelatedPosts(currentSlug: string, maxResults: number = 5): Post[] {
+  const allPosts = getAllPosts();
+  const currentPost = allPosts.find((p) => p.slug === currentSlug);
+
+  if (!currentPost || currentPost.tags.length === 0) {
+    return [];
+  }
+
+  const currentTags = new Set(currentPost.tags.map((t) => t.toLowerCase()));
+
+  const relatedPosts = allPosts
+    .filter((post) => post.slug !== currentSlug)
+    .map((post) => {
+      const postTags = new Set(post.tags.map((t) => t.toLowerCase()));
+      const sharedTags = Array.from(currentTags).filter((tag) => postTags.has(tag));
+      const similarityScore = sharedTags.length;
+
+      return {
+        post,
+        similarityScore,
+        sharedTags,
+      };
+    })
+    .filter((item) => item.similarityScore > 0)
+    .sort((a, b) => {
+      // Sort by similarity score (descending), then by date (newest first)
+      if (b.similarityScore !== a.similarityScore) {
+        return b.similarityScore - a.similarityScore;
+      }
+      return a.post.date < b.post.date ? 1 : -1;
+    })
+    .slice(0, maxResults)
+    .map((item) => item.post);
+
+  return relatedPosts;
+}

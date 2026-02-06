@@ -143,45 +143,70 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Related Posts 🔴
+### Related Posts �
 
 **Description:** Show similar articles at the end of blog posts based on shared tags or content.
 
 **Tasks:**
 
-- Implement similarity algorithm (tag overlap or semantic similarity)
-- Design related posts component (3-5 recommendations)
-- Add to blog post layout
-- Ensure related posts are from published content only
-- Optimize for static generation (pre-compute at build time)
+- Implement similarity algorithm (tag overlap or semantic similarity) ✅
+- Design related posts component (3-5 recommendations) ✅
+- Add to blog post layout ✅
+- Ensure related posts are from published content only ✅ (filtered via `getAllPosts()`)
+- Optimize for static generation (pre-compute at build time) ✅
 
 **Acceptance Criteria:**
 
-- Related posts appear at end of each blog post
-- Recommendations are relevant (shared tags or similar content)
-- Gracefully handles posts with no matches
-- No performance impact on build time
+- Related posts appear at end of each blog post ✅
+- Recommendations are relevant (shared tags or similar content) ✅
+- Gracefully handles posts with no matches ✅ (component returns null if no related posts)
+- No performance impact on build time ✅
+
+**Completed:** February 5, 2026
+
+**Implementation Details:**
+
+- Created `getRelatedPosts(slug)` utility function in [lib/posts.ts](lib/posts.ts) that calculates tag overlap similarity
+- Created [components/RelatedPosts.tsx](components/RelatedPosts.tsx) component displaying 3-5 related posts in card format
+- Added RelatedPosts component to [app/blog/[slug]/page.tsx](app/blog/%5Bslug%5D/page.tsx)
+- Algorithm sorts by shared tag count, then by publication date
+- Handles edge cases: posts with no tags, only one post available, etc.
+- All static generation with no runtime performance impact
 
 ---
 
-### JSON-LD Structured Data 🔴
+### JSON-LD Structured Data �
 
 **Description:** Add Schema.org markup for better search engine understanding.
 
 **Tasks:**
 
-- Add Article schema to blog posts
-- Add Person schema to about page
-- Add WebSite schema to homepage
-- Add BreadcrumbList schema for navigation
+- Add Article schema to blog posts ✅
+- Add Person schema to about page ✅
+- Add WebSite schema to homepage ✅
+- Add BreadcrumbList schema for navigation ✅
 - Validate with Google's Rich Results Test
 
 **Acceptance Criteria:**
 
-- JSON-LD scripts present in page head
-- Validates without errors in Rich Results Test
-- Includes all required and recommended properties
-- Blog posts have article metadata (author, publish date, etc.)
+- JSON-LD scripts present in page head ✅
+- Validates without errors in Rich Results Test (to be tested)
+- Includes all required and recommended properties ✅
+- Blog posts have article metadata (author, publish date, etc.) ✅
+
+**Completed:** February 5, 2026
+
+**Implementation Details:**
+
+- Created [lib/json-ld.tsx](lib/json-ld.tsx) with utility functions for generating Schema.org structured data
+- Added `generateArticleSchema()`, `generatePersonSchema()`, `generateWebSiteSchema()`, and `generateBreadcrumbSchema()` utilities
+- Updated [app/blog/[slug]/page.tsx](app/blog/%5Bslug%5D/page.tsx) to include Article and BreadcrumbList schemas
+- Updated [app/about/page.tsx](app/about/page.tsx) to include Person and BreadcrumbList schemas
+- Updated [app/page.tsx](app/page.tsx) to include WebSite schema with SearchAction
+- Added BreadcrumbList schemas to all major pages: blog index, tag pages, projects, and contact
+- All structured data is statically generated at build time for optimal performance
+- Person schema includes education (alumni) and social media links (sameAs)
+- Article schema includes keywords (tags), publication dates, and proper author/publisher information
 
 ---
 

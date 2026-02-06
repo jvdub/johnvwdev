@@ -2,7 +2,7 @@ import Image from "next/image";
 import {
   generatePersonSchema,
   generateBreadcrumbSchema,
-  renderJsonLd,
+  JsonLd,
 } from "../../lib/json-ld";
 import { SITE_URL } from "../../lib/site";
 
@@ -15,8 +15,8 @@ export default function About() {
 
   return (
     <>
-      {renderJsonLd(personSchema)}
-      {renderJsonLd(breadcrumbSchema)}
+      <JsonLd data={personSchema} id="person-schema" />
+      <JsonLd data={breadcrumbSchema} id="breadcrumb-schema-about" />
       <div className="flex flex-col gap-8">
         <section
           aria-label="About"

@@ -12,7 +12,6 @@ import { AUTHOR_HANDLE, canonicalForPath, SITE_URL } from "../../../lib/site";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
-  renderJsonLd,
 } from "../../../lib/json-ld";
 
 import { ShareLinks } from "../../../components/ShareLinks";
@@ -105,6 +104,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const relatedPosts = getRelatedPosts(slug);
 
+  // Generate JSON-LD inline to avoid wrapper divs
   const imageUrl = heroImage?.startsWith("http")
     ? heroImage
     : `${SITE_URL}${heroImage}`;
@@ -127,8 +127,16 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <>
-      {renderJsonLd(articleSchema)}
-      {renderJsonLd(breadcrumbSchema)}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        suppressHydrationWarning
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        suppressHydrationWarning
+      />
       <ReadingProgressBar
         colorClass="bg-green-700"
         targetSelector="#post-content"

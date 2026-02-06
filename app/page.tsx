@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { getAllPosts } from "../lib/posts";
 import { SITE_URL } from "../lib/site";
-import { generateWebSiteSchema, renderJsonLd } from "../lib/json-ld";
+import { generateWebSiteSchema, JsonLd } from "../lib/json-ld";
 
 export const metadata: Metadata = {
   title: "John Van Wagenen – Software Engineer & AI Leader",
@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <>
-      {renderJsonLd(websiteSchema)}
+      <JsonLd data={websiteSchema} id="website-schema" />
       <div className="flex flex-col gap-10">
         <section
           aria-label="Intro"

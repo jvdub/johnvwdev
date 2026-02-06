@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { generateBreadcrumbSchema, renderJsonLd } from "../../lib/json-ld";
+import { generateBreadcrumbSchema, JsonLd } from "../../lib/json-ld";
 import { SITE_URL } from "../../lib/site";
 
 export default function Projects() {
@@ -10,7 +10,7 @@ export default function Projects() {
 
   return (
     <>
-      {renderJsonLd(breadcrumbSchema)}
+      <JsonLd data={breadcrumbSchema} id="breadcrumb-schema-projects" />
       <div className="flex flex-col gap-8">
         <header className="rounded-lg border border-border bg-surface p-6 shadow-elev sm:p-8">
           <h1>Projects</h1>

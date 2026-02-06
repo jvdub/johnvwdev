@@ -7,6 +7,8 @@ import type { Metadata } from "next";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { GaPageView } from "../components/GaPageView";
+import { ServiceWorkerRegistration } from "../components/ServiceWorkerRegistration";
+import { OfflineIndicator } from "../components/OfflineIndicator";
 import { SITE_URL } from "../lib/site";
 import { buildCSPContent } from "../lib/csp-utils";
 
@@ -135,6 +137,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Suspense fallback={null}>
           <GaPageView measurementId={GA_MEASUREMENT_ID} />
         </Suspense>
+        <ServiceWorkerRegistration />
+        <OfflineIndicator />
         <SiteHeader />
         <main className="mx-auto w-full max-w-content flex-1 px-4 py-8 sm:py-10">
           {children}

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getAllPosts } from "../../lib/posts";
 import { canonicalForPath, SITE_URL } from "../../lib/site";
 import { TagList } from "../../components/Tag";
-import { generateBreadcrumbSchema, renderJsonLd } from "../../lib/json-ld";
+import { generateBreadcrumbSchema, JsonLd } from "../../lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -24,7 +24,7 @@ export default function Blog() {
 
   return (
     <>
-      {renderJsonLd(breadcrumbSchema)}
+      <JsonLd data={breadcrumbSchema} id="breadcrumb-schema-blog" />
       <section>
         <header className="mb-8">
           <h1 className="mb-2">Blog</h1>

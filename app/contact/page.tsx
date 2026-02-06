@@ -2,7 +2,7 @@ import { AtSign, Github, Linkedin, X } from "lucide-react";
 
 import { BlueskyIcon } from "../../components/BlueskyIcon";
 import { ExternalLink } from "../../components/ExternalLink";
-import { generateBreadcrumbSchema, renderJsonLd } from "../../lib/json-ld";
+import { generateBreadcrumbSchema, JsonLd } from "../../lib/json-ld";
 import { SITE_URL } from "../../lib/site";
 
 export default function Contact() {
@@ -13,7 +13,7 @@ export default function Contact() {
 
   return (
     <>
-      {renderJsonLd(breadcrumbSchema)}
+      <JsonLd data={breadcrumbSchema} id="breadcrumb-schema-contact" />
       <div className="flex flex-col gap-8">
         <section
           aria-label="Contact"

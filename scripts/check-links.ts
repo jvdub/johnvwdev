@@ -16,8 +16,7 @@ console.log(`📍 Base URL: ${baseUrl}\n`);
 
 // Linkinator options
 const args = [
-  "--directory",
-  outDir,
+  outDir, // Directory is positional argument, not a flag
   "--recurse",
   "--timeout",
   "10000", // 10 second timeout for external links

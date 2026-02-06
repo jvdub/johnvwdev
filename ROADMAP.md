@@ -316,17 +316,42 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Offline Support 🔴
+### Offline Support �
 
 **Description:** Enable basic offline reading with service worker.
 
 **Tasks:**
 
-- Implement service worker for static assets
-- Cache blog posts for offline reading
-- Show offline indicator when network unavailable
-- Handle cache invalidation on updates
-- Test offline functionality
+- Implement service worker for static assets ✅
+- Cache blog posts for offline reading ✅
+- Show offline indicator when network unavailable ✅
+- Handle cache invalidation on updates ✅
+- Test offline functionality ✅
+
+**Acceptance Criteria:**
+
+- Service worker caches static assets and pages ✅
+- Network-first strategy for blog posts (fresh content when online) ✅
+- Cache-first strategy for static assets (faster loading) ✅
+- Offline indicator appears when network is lost ✅
+- Indicator shows "Back online" message when reconnected ✅
+- Offline fallback page shown for uncached pages ✅
+- Old caches automatically cleaned up on service worker update ✅
+
+**Completed:** February 5, 2026
+
+**Implementation Details:**
+
+- Created [public/sw.js](public/sw.js) service worker with cache-first and network-first strategies
+- Implemented automatic cache versioning and cleanup of old caches
+- Created [public/offline.html](public/offline.html) fallback page with auto-retry on reconnection
+- Built [components/OfflineIndicator.tsx](components/OfflineIndicator.tsx) to show network status
+- Created [lib/service-worker.ts](lib/service-worker.ts) with registration utilities
+- Added [components/ServiceWorkerRegistration.tsx](components/ServiceWorkerRegistration.tsx) client component
+- Updated [app/layout.tsx](app/layout.tsx) to include service worker registration and offline indicator
+- Service worker only registers in production builds
+- CSP headers already include `worker-src: 'self'` for service worker support
+- All features work with static export build output
 
 ---
 

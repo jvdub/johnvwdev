@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import { getAllPosts } from "../../../lib/posts";
 import { canonicalForPath, SITE_URL } from "../../../lib/site";
-import { generateBreadcrumbSchema, renderJsonLd } from "../../../lib/json-ld";
+import { generateBreadcrumbSchema, JsonLd } from "../../../lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Tags - Blog",
@@ -37,7 +37,7 @@ export default function TagsPage() {
 
   return (
     <>
-      {renderJsonLd(breadcrumbSchema)}
+      <JsonLd data={breadcrumbSchema} id="breadcrumb-schema-tags" />
       <section>
         <header className="mb-8">
           <nav className="mb-4 text-sm" style={{ color: "var(--muted)" }}>

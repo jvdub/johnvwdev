@@ -6,10 +6,7 @@ import { notFound } from "next/navigation";
 import { getAllPosts } from "../../../../lib/posts";
 import { canonicalForPath, SITE_URL } from "../../../../lib/site";
 import { TagList } from "../../../../components/Tag";
-import {
-  generateBreadcrumbSchema,
-  renderJsonLd,
-} from "../../../../lib/json-ld";
+import { generateBreadcrumbSchema, JsonLd } from "../../../../lib/json-ld";
 
 export const dynamicParams = false;
 
@@ -33,19 +30,21 @@ type PageProps = {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { tag } = await params;
+  const { tag: rawTag } = await params;
+  const tag = decodeURIComponent(rawTag);
 
   return {
     title: `Posts tagged with "${tag}" - Blog`,
     description: `Browse blog posts tagged with "${tag}".`,
     alternates: {
-      canonical: canonicalForPath(`/blog/tags/${tag}`),
+      canonical: canonicalForPath(`/blog/tags/${encodeURIComponent(tag)}`),
     },
   };
 }
 
 export default async function TagPage({ params }: PageProps) {
-  const { tag } = await params;
+  const { tag: rawTag } = await params;
+  const tag = decodeURIComponent(rawTag);
   const posts = getAllPosts();
 
   const filteredPosts = posts.filter((post) => post.tags.includes(tag));
@@ -63,7 +62,7 @@ export default async function TagPage({ params }: PageProps) {
 
   return (
     <>
-      {renderJsonLd(breadcrumbSchema)}
+      <JsonLd data={breadcrumbSchema} id={`breadcrumb-schema-tag-${tag}`} />
       <section>
         <header className="mb-8">
           <nav className="mb-4 text-sm" style={{ color: "var(--muted)" }}>

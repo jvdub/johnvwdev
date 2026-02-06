@@ -1,4 +1,3 @@
-import React from "react";
 import { AUTHOR_HANDLE, SITE_URL } from "./site";
 
 /**
@@ -132,7 +131,7 @@ export function generatePersonSchema(): PersonSchema {
     description:
       "Software engineer and technical leader focused on pragmatic AI integration and full-stack development.",
     sameAs: [
-      `https://github.com${AUTHOR_HANDLE.replace("@", "/")}`,
+      "https://github.com/jvdub",
       `https://bsky.app/profile/${AUTHOR_HANDLE.replace("@", "")}`,
       `https://x.com/${AUTHOR_HANDLE}`,
     ],
@@ -195,13 +194,20 @@ export function generateBreadcrumbSchema(
 }
 
 /**
- * Helper function to render JSON-LD script tag
+ * Component to render JSON-LD scripts in the document head.
+ * For Next.js static export, we render as a plain script tag.
+ * Must be placed as early as possible in the component tree.
  */
-export function renderJsonLd(data: object): React.ReactElement {
+export function JsonLd({ data, id }: { data: object; id: string }) {
+  const jsonString = JSON.stringify(data);
+
+  // Return the script tag directly without any wrapper
   return (
     <script
+      key={id}
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: jsonString }}
+      suppressHydrationWarning
     />
   );
 }

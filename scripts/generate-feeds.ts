@@ -126,7 +126,7 @@ function main(): void {
       changefreq: pathname === "/" || pathname === "/blog" ? "weekly" : undefined,
     })),
     ...posts.map((post) => ({ pathname: `/blog/${post.slug}`, lastmod: post.date })),
-    ...allTags.map((tag) => ({ pathname: `/blog/tags/${tag}`, lastmod: buildDate })),
+    ...allTags.map((tag) => ({ pathname: `/blog/tags/${encodeURIComponent(tag)}`, lastmod: buildDate })),
   ];
 
   const sitemapXml = generateSitemapXml(sitemapEntries);

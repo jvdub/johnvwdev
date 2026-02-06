@@ -23,7 +23,8 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "remark-frontmatter": "^5.0.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "web-vitals": "^3.5.0"
   },
   "devDependencies": {
     "@types/node": "25.0.3",

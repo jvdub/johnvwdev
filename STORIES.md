@@ -398,6 +398,25 @@ Status legend:
 - Uses App Router hooks (`usePathname`, `useSearchParams`) to fire `gtag('config', 'G-43P9QM2K0N', { page_path, page_location })` on navigation.
 - Skips initial page load to avoid double-counting (initial pageview is handled by the existing layout scripts).
 
+### [x] S21 — Web Vitals tracking
+
+**Goal:** Send Core Web Vitals to Google Analytics for performance monitoring.
+
+**Deliverables**
+
+- Collect LCP, FID, CLS, and TTFB metrics in the client.
+- Send metrics to the existing GA4 property using `gtag` events.
+
+**Done when**
+
+- Web vitals events appear in GA for page loads.
+
+**Progress**
+
+- Added `components/WebVitalsReporter.tsx` using the `web-vitals` library.
+- Sends `gtag('event', metric.name, ...)` with metric metadata for CLS/LCP/FID/TTFB.
+- Wired the reporter in `app/layout.tsx` so it runs on all pages.
+
 ### [x] S18 — Update README runbook
 
 **Goal:** Make the repo self-serve for future sessions/agents.

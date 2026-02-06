@@ -355,7 +355,7 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Web Vitals Tracking 🔴
+### Web Vitals Tracking 🟢
 
 **Description:** Send Core Web Vitals to analytics for performance monitoring.
 
@@ -366,6 +366,15 @@ This document outlines planned features and enhancements for the personal websit
 - Track LCP, FID, CLS, TTFB
 - Set up dashboards/alerts for regressions
 - Monitor and optimize based on data
+
+**Completed:** February 6, 2026
+
+**Implementation Details:**
+
+- Added [components/WebVitalsReporter.tsx](components/WebVitalsReporter.tsx) to collect Core Web Vitals
+- Sends `gtag('event', metric.name, ...)` events to the existing GA4 property
+- Tracks LCP, FID, CLS, and TTFB with CLS scaled to an integer for GA
+- Wired reporter into [app/layout.tsx](app/layout.tsx) so it runs on all pages
 
 ---
 

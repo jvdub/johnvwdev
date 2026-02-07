@@ -18,6 +18,8 @@ console.log(`📍 Base URL: ${baseUrl}\n`);
 const args = [
   outDir, // Directory is positional argument, not a flag
   "--recurse",
+  "--skip",
+  "linkedin.com",
   "--timeout",
   "10000", // 10 second timeout for external links
   "--retry",

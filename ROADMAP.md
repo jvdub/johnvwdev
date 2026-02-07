@@ -391,17 +391,26 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Image Enhancements 🔴
+### Image Enhancements 🟢
 
 **Description:** Improve image handling with captions and zoom functionality.
 
 **Tasks:**
 
-- Create MDX image component with caption support
-- Add click-to-zoom functionality
-- Support image galleries/carousels
-- Add loading states for images
-- Optimize alt text enforcement
+- Create MDX image component with caption support ✅
+- Add click-to-zoom functionality ✅
+- Support image galleries/carousels ✅
+- Add loading states for images ✅
+- Optimize alt text enforcement ✅
+
+**Completed:** February 6, 2026
+
+**Implementation Details:**
+
+- Added `MdxImage` and `MdxGallery` MDX components with caption, zoom, and gallery support
+- Wired MDX compilation to use the new image and gallery components
+- Added global styles for image frames, loading shimmer, and zoom overlay
+- Documented MDX usage in README
 
 ---
 

@@ -90,3 +90,58 @@ npm run build
 If it builds cleanly, the post should be available at:
 
 - `/blog/<slug>/` in the exported site
+
+## MDX image components
+
+Standard Markdown images are enhanced automatically with caption, loading shimmer,
+and click-to-zoom support.
+
+Markdown usage (caption from the title string):
+
+```md
+![Alt text](/images/posts/example.png "Optional caption")
+```
+
+MDX component usage (caption optional):
+
+```mdx
+<Image
+  src="/images/posts/example.png"
+  alt="Alt text"
+  caption="Optional caption"
+/>
+```
+
+Notes:
+
+- `alt` is required unless `decorative={true}` is set.
+- Set `zoom={false}` to disable click-to-zoom.
+- `caption` falls back to `title` when provided.
+
+### Galleries
+
+Grid gallery:
+
+```mdx
+<Gallery
+  variant="grid"
+  columns={3}
+  images={[
+    { src: "/images/posts/one.png", alt: "First" },
+    { src: "/images/posts/two.png", alt: "Second", caption: "Caption" },
+    { src: "/images/posts/three.png", alt: "Third" },
+  ]}
+/>
+```
+
+Carousel gallery:
+
+```mdx
+<Gallery
+  variant="carousel"
+  images={[
+    { src: "/images/posts/one.png", alt: "First" },
+    { src: "/images/posts/two.png", alt: "Second" },
+  ]}
+/>
+```

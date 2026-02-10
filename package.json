@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "generate:redirects": "tsx scripts/generate-redirects.ts",
     "generate:feeds": "tsx scripts/generate-feeds.ts",
-    "prebuild": "npm run generate:feeds",
+    "prebuild": "npm run generate:redirects && npm run generate:feeds",
     "build": "next build",
     "check-links": "tsx scripts/check-links.ts",
     "postbuild": "npm run check-links",

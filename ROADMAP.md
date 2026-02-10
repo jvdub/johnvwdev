@@ -458,17 +458,26 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Redirect Management 🔴
+### Redirect Management 🟢
 
 **Description:** Handle URL changes when posts/projects are renamed.
 
 **Tasks:**
 
-- Add `redirectFrom` field to frontmatter
-- Generate redirects at build time (Amplify format)
-- Create redirect mapping file
-- Document redirect process in SPEC
-- Test redirect functionality
+- Add `redirectFrom` field to frontmatter ✅
+- Generate redirects at build time (Amplify format) ✅
+- Create redirect mapping file ✅
+- Document redirect process in SPEC ✅
+- Test redirect functionality 🔶 (no redirects yet)
+
+**Completed:** February 9, 2026
+
+**Implementation Details:**
+
+- Added `redirectFrom` support and validation for posts/projects
+- Added redirect generator that writes `amplify.yml` and `public/redirects-map.json`
+- Wired redirects generation into `prebuild`
+- Documented authoring and workflow in SPEC
 
 ---
 
@@ -498,12 +507,6 @@ This document outlines planned features and enhancements for the personal websit
 - Run `npm audit` and fix vulnerabilities
 - Set up Dependabot or Renovate for automated PRs
 - Test thoroughly after updates
-
----
-
-## Completed Features
-
-_(This section will track completed items as they're implemented)_
 
 ---
 

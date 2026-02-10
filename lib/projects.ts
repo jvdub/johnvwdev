@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
+import { normalizeRedirectFrom } from "./redirects";
+
 const PROJECTS_DIR = path.join(process.cwd(), "app", "projects");
 
 function getProjectDirs(): string[] {
@@ -72,4 +74,27 @@ export function getProjectStoryBySlug(slug: string): {
     frontmatter: data,
     source: content,
   };
+}
+
+export function getAllProjectRedirects(): Array<{
+  slug: string;
+  redirectFrom: string[];
+}> {
+  const dirs = getProjectDirs();
+
+  return dirs.map((dir) => {
+    const storyPath = path.join(PROJECTS_DIR, dir, "story.mdx");
+    if (!fs.existsSync(storyPath)) {
+      throw new Error(`Project story not found for slug '${dir}'.`);
+    }
+
+    const raw = fs.readFileSync(storyPath, "utf8");
+    const { data } = matter(raw);
+    const redirectFrom = normalizeRedirectFrom(data.redirectFrom, `project '${dir}'`);
+
+    return {
+      slug: dir,
+      redirectFrom,
+    };
+  });
 }

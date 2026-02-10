@@ -3,6 +3,8 @@ import path from "node:path";
 
 import matter from "gray-matter";
 
+import { normalizeRedirectFrom } from "./redirects";
+
 export type PostFrontmatter = {
   title: string;
   date: string;
@@ -11,6 +13,7 @@ export type PostFrontmatter = {
   draft: boolean;
   heroImage: string;
   canonicalUrl: string;
+  redirectFrom?: string[];
 };
 
 export type Post = PostFrontmatter & {
@@ -54,6 +57,8 @@ function assertFrontmatter(slug: string, data: unknown): PostFrontmatter {
     );
   }
 
+  const redirectFrom = normalizeRedirectFrom(record.redirectFrom, `post '${slug}'`);
+
   // Basic sanity check; ISO date string expected (YYYY-MM-DD)
   if (!/^\d{4}-\d{2}-\d{2}/.test(date)) {
     throw new Error(
@@ -69,6 +74,7 @@ function assertFrontmatter(slug: string, data: unknown): PostFrontmatter {
     draft: draftValue,
     heroImage,
     canonicalUrl,
+    ...(redirectFrom.length > 0 ? { redirectFrom } : {}),
   };
 }
 

@@ -60,6 +60,7 @@ Each post must define the following frontmatter fields:
 - `draft` (boolean; should be `false` in `main`)
 - `heroImage` (string; path/URL; optional for v1 display but reserved)
 - `canonicalUrl` (string; optional; used for canonical meta if present)
+- `redirectFrom` (string[]; optional; absolute paths that should redirect to this post)
 
 Notes:
 
@@ -79,7 +80,7 @@ Notes:
   - Pros: stable URLs even if filenames change; enables reorganizing content without breaking links.
   - Cons: now you have two identifiers to keep consistent; risk of duplicate slugs; requires validation to avoid collisions.
 
-**Future option:** if/when you care about permalinks and 301s, switch to explicit `slug` + add a `redirectFrom` list (and generate redirects at the hosting layer).
+**Redirects:** if a post or project is renamed, add the old path(s) to `redirectFrom` so redirects can be generated at build time.
 
 ## Rendering & MDX
 
@@ -136,6 +137,30 @@ Implementation guidance (v1):
 - Avoid server-only Next.js features (server actions, runtime API routes, dynamic rendering).
 - Ensure routes and assets work when served from a static host.
 
+## Redirect Management (Amplify)
+
+- Add `redirectFrom` to post or project frontmatter as a list of absolute paths.
+- Redirects are generated at build time into `amplify.yml` and `public/redirects-map.json`.
+- Paths must start with `/` and should not include a full URL.
+- Commit the updated `amplify.yml` so Amplify picks up the new rules.
+
+Example (post frontmatter):
+
+```mdx
+---
+title: "My Post"
+date: "2026-02-09"
+description: "..."
+tags: ["notes"]
+draft: false
+heroImage: ""
+canonicalUrl: ""
+redirectFrom:
+  - /blog/my-old-post
+  - /blog/very-old-post
+---
+```
+
 ## Acceptance Criteria
 
 - Visiting `/` shows the landing content and navigation to Blog/About/Contact.
@@ -153,6 +178,7 @@ Implementation guidance (v1):
 **Current Status:** Initial build complete ✅
 
 All v1 acceptance criteria met. The site is live and functional with:
+
 - Blog with MDX support
 - Projects section
 - Dark/light theme

@@ -8,7 +8,7 @@ function isAbsoluteUrl(value: string): boolean {
   return /^https?:\/\//i.test(value);
 }
 
-export function normalizeRedirectFrom(value: RedirectFromValue, context: string): string[] {
+export function normalizeRedirectFrom(value: unknown, context: string): string[] {
   if (value === undefined || value === null) return [];
 
   const list = typeof value === "string" ? [value] : isStringArray(value) ? value : null;

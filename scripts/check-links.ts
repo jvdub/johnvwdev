@@ -10,6 +10,14 @@ import path from "path";
 
 const outDir = path.join(process.cwd(), "out");
 const baseUrl = "http://localhost:3000";
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://johnvw.dev").replace(
+  /\/+$/,
+  "",
+);
+
+function escapeForRegex(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
 console.log(`🔗 Starting link check on ${outDir}...`);
 console.log(`📍 Base URL: ${baseUrl}\n`);
@@ -20,6 +28,8 @@ const args = [
   "--recurse",
   "--skip",
   "linkedin.com",
+  "--skip",
+  `${escapeForRegex(siteUrl)}(/.*)?$`,
   "--timeout",
   "10000", // 10 second timeout for external links
   "--retry",

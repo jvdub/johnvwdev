@@ -65,6 +65,14 @@ function generateRssXml(posts: ReturnType<typeof getAllPosts>): string {
   const channelTitle = "John Van Wagenen";
   const channelLink = SITE_URL;
   const channelDescription = "Writing and projects by John Van Wagenen.";
+  const channelImageUrl = `${SITE_URL}/images/jvw_headshot.jpg`;
+  const channelImageTitle = channelTitle;
+  const channelImageLink = channelLink;
+  const rssDocsUrl = "https://www.rssboard.org/rss-specification";
+  const rssGenerator = "johnvwdev (generate-feeds)";
+  const rssTtlMinutes = 60;
+  const rssSelfPath = "/rss.xml";
+  const rssSelfUrl = canonicalForPath(rssSelfPath);
 
   const mostRecentDate = posts.length > 0 ? posts[0].date : isoDateOnly(new Date());
   const lastBuildDate = rfc822DateFromIsoDate(mostRecentDate);
@@ -96,13 +104,23 @@ function generateRssXml(posts: ReturnType<typeof getAllPosts>): string {
 
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<rss version="2.0">',
+    '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
     "  <channel>",
     `    <title>${escapeXml(channelTitle)}</title>`,
     `    <link>${escapeXml(channelLink)}</link>`,
+    `    <atom:link href="${escapeXml(rssSelfUrl)}" rel="self" type="application/rss+xml" />`,
     `    <description>${escapeXml(channelDescription)}</description>`,
     "    <language>en</language>",
     `    <lastBuildDate>${escapeXml(lastBuildDate)}</lastBuildDate>`,
+    `    <pubDate>${escapeXml(lastBuildDate)}</pubDate>`,
+    `    <docs>${escapeXml(rssDocsUrl)}</docs>`,
+    `    <generator>${escapeXml(rssGenerator)}</generator>`,
+    `    <ttl>${rssTtlMinutes}</ttl>`,
+    "    <image>",
+    `      <url>${escapeXml(channelImageUrl)}</url>`,
+    `      <title>${escapeXml(channelImageTitle)}</title>`,
+    `      <link>${escapeXml(channelImageLink)}</link>`,
+    "    </image>",
     items,
     "  </channel>",
     "</rss>",

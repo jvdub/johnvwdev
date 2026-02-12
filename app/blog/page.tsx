@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import Image from "next/image";
+import { ResponsiveImage } from "../../components/ResponsiveImage";
 
 import { getAllPosts } from "../../lib/posts";
 import { canonicalForPath, SITE_URL } from "../../lib/site";
@@ -55,7 +55,7 @@ export default function Blog() {
                       aria-label={post.title}
                     >
                       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md border border-border bg-bg">
-                        <Image
+                        <ResponsiveImage
                           src={post.heroImage}
                           alt={post.title}
                           fill

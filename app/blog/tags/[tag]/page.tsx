@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import Image from "next/image";
+import { ResponsiveImage } from "../../../../components/ResponsiveImage";
 import { notFound } from "next/navigation";
 
 import { getAllPosts } from "../../../../lib/posts";
@@ -97,7 +97,7 @@ export default async function TagPage({ params }: PageProps) {
                     aria-label={post.title}
                   >
                     <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md border border-border bg-bg">
-                      <Image
+                      <ResponsiveImage
                         src={post.heroImage}
                         alt={post.title}
                         fill

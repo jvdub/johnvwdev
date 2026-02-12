@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ResponsiveImage } from "../../components/ResponsiveImage";
 import {
   generatePersonSchema,
   generateBreadcrumbSchema,
@@ -32,7 +32,7 @@ export default function About() {
             </div>
 
             <div className="shrink-0">
-              <Image
+              <ResponsiveImage
                 src="/jvw_headshot.jpg"
                 alt="Headshot of John Van Wagenen"
                 width={112}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { ResponsiveImage } from "../components/ResponsiveImage";
 import type { Metadata } from "next";
 import { getAllPosts } from "../lib/posts";
 import { SITE_URL } from "../lib/site";
@@ -77,7 +77,7 @@ export default function Home() {
             </div>
 
             <div className="shrink-0">
-              <Image
+              <ResponsiveImage
                 src="/jvw_headshot.jpg"
                 alt="Headshot of John Van Wagenen"
                 width={112}

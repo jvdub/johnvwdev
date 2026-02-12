@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "generate:images": "tsx scripts/generate-images.ts",
     "generate:redirects": "tsx scripts/generate-redirects.ts",
     "generate:feeds": "tsx scripts/generate-feeds.ts",
-    "prebuild": "npm run generate:redirects && npm run generate:feeds",
+    "prebuild": "npm run generate:images && npm run generate:redirects && npm run generate:feeds",
     "build": "next build",
     "check-links": "tsx scripts/check-links.ts",
     "postbuild": "npm run check-links",
@@ -34,6 +35,7 @@
     "autoprefixer": "^10.4.0",
     "linkinator": "^7.5.3",
     "postcss": "^8.4.0",
+    "sharp": "^0.33.3",
     "tailwindcss": "^3.4.8",
     "tsx": "^4.19.2",
     "typescript": "5.2.2"

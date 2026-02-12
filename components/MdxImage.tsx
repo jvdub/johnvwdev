@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import { DEFAULT_IMAGE_SIZES, getImageSources } from "../lib/image-variants";
+
 type MdxImageProps = {
   src?: string;
   alt?: string;
@@ -12,6 +14,7 @@ type MdxImageProps = {
   decorative?: boolean;
   className?: string;
   align?: "left" | "center" | "right";
+  sizes?: string;
 };
 
 function normalizeText(value: string | undefined): string {
@@ -28,6 +31,7 @@ export function MdxImage({
   decorative = false,
   className,
   align = "center",
+  sizes,
 }: MdxImageProps) {
   const resolvedSrc = normalizeText(src);
   const resolvedAlt = normalizeText(alt);
@@ -44,6 +48,8 @@ export function MdxImage({
   const [isLoaded, setIsLoaded] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const allowZoom = zoom === true;
+  const imageSources = getImageSources(resolvedSrc);
+  const resolvedSizes = sizes ?? DEFAULT_IMAGE_SIZES;
 
   useEffect(() => {
     if (!isZoomed) return undefined;
@@ -73,7 +79,39 @@ export function MdxImage({
     .filter(Boolean)
     .join(" ");
 
-  const imageElement = (
+  const imageElement = imageSources ? (
+    <picture>
+      {imageSources.avifSrcSet ? (
+        <source
+          type="image/avif"
+          srcSet={imageSources.avifSrcSet}
+          sizes={resolvedSizes}
+        />
+      ) : null}
+      {imageSources.webpSrcSet ? (
+        <source
+          type="image/webp"
+          srcSet={imageSources.webpSrcSet}
+          sizes={resolvedSizes}
+        />
+      ) : null}
+      <img
+        src={imageSources.fallbackSrc}
+        srcSet={imageSources.fallbackSrcSet}
+        sizes={resolvedSizes}
+        width={imageSources.width}
+        height={imageSources.height}
+        alt={decorative ? "" : resolvedAlt}
+        aria-hidden={decorative ? true : undefined}
+        className="mdx-image"
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={priority ? "high" : "auto"}
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setIsLoaded(true)}
+      />
+    </picture>
+  ) : (
     <img
       src={resolvedSrc}
       alt={decorative ? "" : resolvedAlt}

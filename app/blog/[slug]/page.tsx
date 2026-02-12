@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { ResponsiveImage } from "../../../components/ResponsiveImage";
 import { notFound } from "next/navigation";
 
 import { compilePostMdx } from "../../../lib/mdx";
@@ -149,7 +149,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           {heroImage.length > 0 ? (
             <div className="mb-5 overflow-hidden rounded-xl border border-border bg-surface shadow-elev">
               <div className="relative aspect-[16/9]">
-                <Image
+                <ResponsiveImage
                   src={heroImage}
                   alt={postSource.frontmatter.title}
                   fill

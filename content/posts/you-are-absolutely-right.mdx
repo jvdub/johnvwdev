@@ -1,0 +1,124 @@
+---
+title: "You Are Absolutely Right"
+date: "2026-02-16"
+description: "Why LLMs often agree with your assumptions, where that compliance becomes risky, and practical prompts to force better critique."
+tags:
+  [
+    "ai",
+    "llm",
+    "prompting",
+    "critical-thinking",
+    "software-engineering",
+    "best-practices",
+  ]
+draft: false
+heroImage: "/images/posts/you-are-absolutely-right.png"
+canonicalUrl: "https://johnvw.dev/blog/you-are-absolutely-right"
+---
+
+## How AI Learns to Agree and Why Engineers Must Stay Skeptical
+
+The catch phrase of the last year, it seems.
+
+I'm sure we've all been there.
+
+We ask the AI to do something. It confidently does it. We realize it made a mistake, so we correct it.
+
+What does it do?
+
+"You are absolutely right\!" it replies before it goes and tries to fix the mistake.
+
+Sometimes that cycle repeats until the LLM actually gets it right.
+
+But why does it do this? How else does this show up? And when does this become a problem?
+
+LLMs don't inherently have desires. If they appear to have any desire, it's only to help you do whatever it is you're trying to do. This isn't really good or bad, it just is. But I've noticed two things from this reality. First, LLMs are remarkably compliant. Second, they accept correction without resistance.
+
+Both traits sound helpful. Sometimes they are. But they can also lead you confidently down the wrong path.
+
+# Why AI Always Says Yes
+
+I was reminded of an old adage the other day: "we fall to the level of our training." I see this when I play the organ. If I've practiced how I know I'm supposed to practice, my performance is usually close to what I expect it to be. If I don't, if I clumsily barrel through songs in my practice, I usually find that I make more mistakes in my performance.
+
+Fortunately for LLMs, their training looks different. Much of the data they train on is polite, supportive, educational, and informative. Beyond that, their reinforcement learning after initial training rewards helpful, assenting answers. Their compliant nature is hammered into them through millions of examples.
+
+So when you ask it a question, what's it likely going to do? It'll default to its training and see that it's rewarded for being polite and supportive. It will tend toward agreement.
+
+Have a business idea? Here's all the reasons it'll work.
+
+Want to start a podcast? Here's why people will listen to it.
+
+See a problem in the code? Here's why you're exactly right and don't need to rethink anything.
+
+I am speaking in a bit of hyperbole, but I've seen each of these play out to a certain degree. Today's models tend to affirm your points of view more than they critique them. They're optimized to be helpful, not necessarily to be right.
+
+# The Upside of No Ego
+
+This compliant nature brings one major benefit. LLMs are exceptionally good at taking correction.
+
+If you notice they do something wrong, you don't have to worry about hurting their feelings or them resisting your feedback. If you highlight an error in their thinking, they'll graciously accept it. If you notice they left something out, they'll quickly correct it.
+
+I can't tell you how many times I've corrected the output of an AI only to be met with "you are absolutely right\!" or something similar. LLMs have no pride (in a good way) and will take your correction with remarkable ease.
+
+This goes back to their training. They have been shaped to respond in polite and helpful ways. Taking correction is no different.
+
+But here's the trap: this ease of correction can make us lazy. When the AI immediately agrees with our feedback, we feel validated. We stop questioning whether our correction was actually better. We assume that because the AI adapted to our input, we must have been right.
+
+Sometimes we were. Sometimes we weren't.
+
+# The Value of Pushback
+
+As you can imagine, this pattern has drawbacks. You can convince an LLM that you are an authority in an area and keep it going down a path built on false assumptions. You can blindly accept what an AI tells you as truth and let that shape your decisions even when it has no basis in reality.
+
+So how do we avoid these traps? How do we keep it from leading us astray?
+
+A recent episode of [The AI Daily Brief](https://open.spotify.com/episode/0FuvhOlrteVKk3jow5tSuW) said it well. The host advised to "push back hard and often. Do not accept the first thing the model gives you as the best it can do." If you find the AI saying yes to everything, ask it to be more critical or to take the opposite position from you. It will, and it will do it in a polite way.
+
+I've often taken questions or problems to AI and not been happy with the way it's answered me. When it seems to affirm everything I was already thinking, I get suspicious. Not that I couldn't be right, but I want a critical thinking partner rather than a yes man. So I'll ask it to take a critical position.
+
+I'm usually happy with the results. Sometimes it'll still conclude that my point of view is the best option. Other times it'll point out things I overlooked and wouldn't have considered without a critical look at the problem.
+
+Here are a few other quick things you can do to see through the confidence of the AI and detect when it's being compliant versus when it's actually providing value:
+
+- Ask it to show its assumptions ("List your assumptions and show your certainty for each one")
+- Ask for evidence ("What evidence supports this point of view?")
+- Ask for failure cases ("What causes this to break?")
+- Ask for comparisons ("Where is this weak or strong compared to the top 2 alternatives?")
+- Ask the AI to critique itself ("Critique your previous answer as if you strongly disagree with it")
+- Ask for quantification ("On a scale of 1-100, how certain are you of this?")
+
+If any of these resonate with you, give them a try the next time you use AI.
+
+# When Compliance Becomes Dangerous
+
+Okay, so we've talked about how these AI tools can be compliant and some ways to manage it, but when does this actually become a problem?
+
+Let me give you a concrete example. Last month I was working on a caching layer for a service I hadn't touched before. I had an idea for how to implement it that seemed reasonable: store the cache keys in a particular format that felt intuitive to me. The AI agreed enthusiastically and generated code that followed my approach.
+
+The problem? The rest of the codebase used a different key format for a good reason. My approach would have caused cache collisions. The AI never questioned my assumption because my idea was "reasonable enough." Without a team member reviewing the code, that bug would have shipped.
+
+This happens more often than you'd think. The AI will follow you down incorrect paths as long as those paths seem plausible. It won't catch architectural mismatches. It won't flag violations of team conventions. It won't notice when you're solving the wrong problem entirely.
+
+Another danger zone is when you convince the AI of a false reality. Using its compliant nature against itself, you can establish certain false premises as truth. The AI will treat those things as facts as it responds to you, further cementing the lie and further corrupting its outputs.
+
+Here's a real scenario: you're certain that your authentication system uses JWT tokens in a specific way. You tell the AI this with confidence. The AI accepts it as truth and generates code based on that assumption. But you were wrong about how the system actually works. The AI never questioned you because you sounded authoritative. Now you've got code that won't work in production, and you might not discover why until it fails under load.
+
+Yes, this is self-inflicted. But sometimes we don't know what we don't know, and we bulldoze down a path without substantiating our own assumptions.
+
+The most insidious version appears when you're evaluating multiple options. The AI will generally stay neutral when discussing various approaches. But the moment you present it with your choice, it tends to build up that choice as though it's the only correct option. It'll generate reasons why your choice is superior, even if those reasons are weak or invented.
+
+When I sense this happening, I stop and ask for evidence. What studies support this claim? What best practices contradict this approach? What have others tried that failed? This helps me gauge whether the AI's reasoning actually tracks with reality or if it's just being a yes man.
+
+# What Engineers Need to Remember
+
+The bottom line: AI tools are powerful assistants, but they're optimized for helpfulness, not truth. They will follow you down the wrong path with the same confidence they follow you down the right one.
+
+Your job as an engineer isn't to trust the AI. Your job is to interrogate it. Question its assumptions. Demand evidence. Ask it to argue against itself. Make it work for your confidence, not just your convenience.
+
+The best use of AI isn't as an oracle. It's as a sparring partner that never gets tired of your questions.
+
+Stay skeptical. Push back. And never, ever accept "you are absolutely right" as the end of the conversation.
+
+---
+
+**Want to improve how you work with AI?** Try one of the critique prompts from this article in your next coding session. Then reply and tell me which one was most useful. I'm curious which techniques actually work in the wild versus which ones just sound good on paper.

@@ -401,6 +401,83 @@ export const imageManifest: Record<string, ImageManifestEntry> = {
     ],
     "hasAlpha": false
   },
+  "/images/posts/you-are-absolutely-right.png": {
+    "original": {
+      "src": "/images/posts/you-are-absolutely-right.png",
+      "width": 1536,
+      "height": 1024
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/images/generated/posts/you-are-absolutely-right-480.jpg",
+          "width": 480,
+          "height": 320
+        },
+        {
+          "src": "/images/generated/posts/you-are-absolutely-right-768.jpg",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "src": "/images/generated/posts/you-are-absolutely-right-1024.jpg",
+          "width": 1024,
+          "height": 683
+        },
+        {
+          "src": "/images/generated/posts/you-are-absolutely-right-1280.jpg",
+          "width": 1280,
+          "height": 853
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/images/generated/posts/you-are-absolutely-right-480.webp",
+        "width": 480,
+        "height": 320
+      },
+      {
+        "src": "/images/generated/posts/you-are-absolutely-right-768.webp",
+        "width": 768,
+        "height": 512
+      },
+      {
+        "src": "/images/generated/posts/you-are-absolutely-right-1024.webp",
+        "width": 1024,
+        "height": 683
+      },
+      {
+        "src": "/images/generated/posts/you-are-absolutely-right-1280.webp",
+        "width": 1280,
+        "height": 853
+      }
+    ],
+    "avif": [
+      {
+        "src": "/images/generated/posts/you-are-absolutely-right-480.avif",
+        "width": 480,
+        "height": 320
+      },
+      {
+        "src": "/images/generated/posts/you-are-absolutely-right-768.avif",
+        "width": 768,
+        "height": 512
+      },
+      {
+        "src": "/images/generated/posts/you-are-absolutely-right-1024.avif",
+        "width": 1024,
+        "height": 683
+      },
+      {
+        "src": "/images/generated/posts/you-are-absolutely-right-1280.avif",
+        "width": 1280,
+        "height": 853
+      }
+    ],
+    "hasAlpha": false
+  },
   "/jvw_headshot.jpg": {
     "original": {
       "src": "/jvw_headshot.jpg",

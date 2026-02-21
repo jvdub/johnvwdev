@@ -1,0 +1,164 @@
+---
+title: "Systems Thinking in the Age of AI"
+date: "2026-02-23"
+description: "How stepping back from tasks unlocks more reliable, agentic workflows."
+tags:
+  - ai
+  - software-engineering
+  - systems-thinking
+  - workflows
+  - best-practices
+draft: true
+heroImage: "/images/posts/systems-thinking-in-the-age-of-ai.png"
+canonicalUrl: ""
+---
+
+## **The Dishwasher Was Not the Problem**
+
+Years ago, my family and I lived in a small townhouse. One night, we were doing the dishes. We had just finished loading the dishwasher, put the soap in, closed the door, and pressed the buttons to start it.
+
+But nothing happened.
+
+No lights. No noises. Just dirty dishes and a sudden increase in cortisol.
+
+The dishwasher was not working.
+
+So we started troubleshooting. Was the power on? Yes. Did a circuit breaker flip? No. Is there something wrong with the dishwasher? Well, who knows?
+
+Eventually, through the suggestion of a cousin, we found that one of the GFCI outlets had tripped. We reset it.
+
+One press of a button later, we were once again on our way to clean dishes.
+
+Why share this story?
+
+Because the visible failure was not the root failure.
+
+The dishwasher was fine. The problem lived in the electrical system that supported it. Until we zoomed out and looked at the larger system, we kept blaming the wrong component.
+
+Systems are everywhere. And the more complex the environment, the more important it is to understand how the parts interact.
+
+## **Systems Exist in Software Too**
+
+In software, we are surrounded by systems.
+
+There are problem discovery systems. Planning and refinement systems. Development systems. Deployment systems. Marketing systems. Sales systems.
+
+Inside those are supporting systems. Issue tracking. CI pipelines. Code review. Testing frameworks. Observability. On call rotations.
+
+When something breaks, we often focus on the most visible failure. A flaky test. A slow endpoint. A messy pull request.
+
+But often the root cause lives elsewhere. Poor feedback loops. Missing standards. Incentives that reward speed over stability. A planning process that skips reproduction and root cause analysis.
+
+The same pattern shows up with AI.
+
+When AI generates slop, we blame the model. But many times the failure is upstream. The instructions were vague. The workflow was undefined. The expectations were implicit instead of explicit.
+
+A tool is only as good as the system surrounding it.
+
+## **Most of Us Use AI at the Task Level**
+
+AI is [more than a coding tool](https://johnvw.dev/blog/ai-and-software-engineering-more-than-just-coding/). It can design, plan, critique, coordinate, and execute. But many of us treat it like a smarter autocomplete or a chat partner.
+
+I have done this plenty of times.
+
+We optimize for answers because we have a problem and we want a solution now. Answers feel productive. They give a quick hit of progress.
+
+But problems resurface when the underlying system stays the same.
+
+If we only use AI at the task level, we get task level gains. Faster code. Quicker summaries. Cleaner refactors.
+
+If we use it at the system level, we can change how work happens.
+
+## **Turning Bug Fixing Into a System**
+
+I decided to experiment with this while fixing bugs.
+
+Normally, I would open a defect and start chatting with AI like a pair programming partner. I would ask for help debugging, refactoring, or writing a test.
+
+Instead, I asked a different question.
+
+How do _I_ fix bugs?
+
+What process do I actually follow? What standards do I apply? What do I wish I did more consistently?
+
+I wrote it all down as if I were training another engineer.
+
+I described how I read the bug carefully. How I try to reproduce it. If I cannot reproduce it, I reach out for more details. If I can reproduce it, I trace it to the root cause.
+
+I wrote about evaluating the scope of the fix. Is it isolated? Does it impact shared code? Does it introduce risk elsewhere?
+
+I described writing automated tests. Verifying the fix. Reviewing it against coding standards. Submitting a pull request with context.
+
+What I was really doing was extracting tacit knowledge and turning it into an explicit system.
+
+Then, with all that written down, I did the only sensible thing to do (that was a joke): I asked AI to help me turn that into a structured prompt.
+
+## **Separate Planning from Execution**
+
+We landed on a two phase approach: planning and implementation.
+
+If you let AI jump straight to implementation, you often get something that looks good at first glance. But it may hide subtle issues. Missed edge cases. Violations of your architecture.
+
+If you do not force planning, you are debugging the AI’s thinking after it has already created damage.
+
+Planning first changes that.
+
+The planning prompt generates a clear outline of steps. Reproduce the issue. Identify root cause. Propose solution. Define tests. Validate against standards.
+
+Now you can inspect the thinking before any code is written.
+
+You catch flawed assumptions early. You refine the approach before it touches the codebase. You turn reasoning into something observable.
+
+This is systems thinking applied to AI.
+
+## **Introducing Orchestration**
+
+Once the planning prompt was solid, I moved to the implementation prompt.
+
+Instead of asking AI to simply write code, I framed it as an orchestrator. Its job was to track progress, create tasks, and coordinate subagents that perform specific pieces of work.
+
+The orchestrator does not do the implementation itself. It assigns, reviews, and verifies.
+
+With clear instructions about standards, architecture, and expectations, the system becomes far more reliable.
+
+This is not novel. Variations of this approach are [floating around](https://www.reddit.com/r/GithubCopilot/comments/1qapkdg/ralph_wiggum_technic_in_vs_code_copilot_with/). But the key insight is not the cleverness of the prompt.
+
+The key insight is that I stopped thinking in terms of individual responses and started thinking in terms of workflow design.
+
+## **The Real Win**
+
+The result is not just speed.
+
+Yes, I can run the planning prompt against a defect and generate a structured plan. Once I approve it, I can run the implementation prompt and let it execute.
+
+An hour later, I often have a working solution and a pull request ready for review.
+
+But the deeper benefit is consistency.
+
+Architecture and coding standards are baked in. Reviews become easier because the expectations were explicit from the beginning. Cognitive load shifts from doing every step manually to supervising a well defined process.
+
+Sometimes it goes off the rails. Sometimes it asks for help. Sometimes it needs correction.
+
+That is fine.
+
+Even then, I am intervening at the system level, not scrambling at the task level.
+
+## **Designing the System Around the Tool**
+
+What I did was not write two fancy prompts.
+
+I externalized a workflow. I separated planning from execution. I defined roles and responsibilities. I made implicit standards explicit.
+
+In other words, I designed a system.
+
+AI becomes far more powerful when you stop asking, “What answer can you give me?” and start asking, “What process should you follow?”
+
+The dishwasher was never the problem.
+
+Sometimes the model is not either.
+
+The question is whether the system surrounding it is designed well enough to support the outcome you want.
+
+If your AI usage still looks like a smarter chat window, you might be thinking too small.
+
+What system could you design instead?

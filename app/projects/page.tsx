@@ -30,6 +30,21 @@ export default function Projects() {
           className="grid gap-3 sm:grid-cols-2"
         >
           <Link
+            href="/projects/asteroids-evolved"
+            className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition no-underline"
+          >
+            <h2 className="text-xl font-semibold tracking-tight no-underline">
+              Asteroids Evolved
+            </h2>
+            <p className="mt-2 text-fg-muted no-underline">
+              An evolved take on the classic Asteroids arcade game.
+            </p>
+            <span className="mt-3 inline-block text-sm text-blue-600 hover:underline">
+              View details →
+            </span>
+          </Link>
+
+          <Link
             href="/projects/johnvw-dev"
             className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition no-underline"
           >

@@ -10,7 +10,10 @@ const STATIC_ASSETS = [
   "/blog/",
   "/contact/",
   "/projects/",
-  "/globals.css",
+  "/manifest.webmanifest",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png",
+  "/icons/apple-touch-icon.png",
   "/offline.html",
 ];
 
@@ -63,14 +66,23 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then((cache) => {
+      .then(async (cache) => {
         console.log("[SW] Caching static assets");
-        return cache
-          .addAll(STATIC_ASSETS.filter((url) => url !== "/offline.html"))
-          .catch((err) => {
-            // Don't fail install if some assets fail to cache
-            console.error("[SW] Failed to cache some assets:", err);
-          });
+
+        const results = await Promise.allSettled(
+          STATIC_ASSETS.map((assetUrl) => cache.add(assetUrl)),
+        );
+
+        const failedAssets = results
+          .map((result, index) => ({ result, assetUrl: STATIC_ASSETS[index] }))
+          .filter(({ result }) => result.status === "rejected");
+
+        if (failedAssets.length > 0) {
+          console.error(
+            "[SW] Failed to cache some assets:",
+            failedAssets.map(({ assetUrl }) => assetUrl),
+          );
+        }
       })
       .then(() => {
         console.log("[SW] Installation complete");

@@ -103,8 +103,33 @@ export function Search({ items }: SearchProps) {
 
   // Keyboard shortcut (Cmd/Ctrl + K)
   useEffect(() => {
+    function isEditableTarget(target: EventTarget | null): boolean {
+      if (!(target instanceof HTMLElement)) {
+        return false;
+      }
+
+      const tag = target.tagName.toLowerCase();
+      if (tag === "input" || tag === "textarea" || tag === "select") {
+        return true;
+      }
+
+      return target.isContentEditable;
+    }
+
     function handleGlobalKeyDown(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        inputRef.current?.focus();
+        return;
+      }
+
+      if (
+        e.key === "/" &&
+        !e.metaKey &&
+        !e.ctrlKey &&
+        !e.altKey &&
+        !isEditableTarget(e.target)
+      ) {
         e.preventDefault();
         inputRef.current?.focus();
       }
@@ -144,7 +169,7 @@ export function Search({ items }: SearchProps) {
               setIsOpen(true);
             }
           }}
-          className="w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
           style={{
             borderColor: "var(--border)",
             backgroundColor: "var(--surface)",
@@ -187,7 +212,7 @@ export function Search({ items }: SearchProps) {
                 setQuery("");
                 setIsOpen(false);
               }}
-              className={`block border-b px-4 py-3 no-underline transition-colors last:border-b-0`}
+              className={`block border-b px-4 py-3 no-underline transition-colors last:border-b-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus`}
               style={{
                 borderBottomColor: "var(--border)",
                 backgroundColor:

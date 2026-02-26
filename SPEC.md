@@ -125,6 +125,17 @@ Implementation guidance (v1):
 - Canonicals:
   - Use `canonicalUrl` if present, otherwise the site URL + path.
 
+### Pagination SEO (Static Export)
+
+- Listing pagination uses query params for static compatibility:
+  - Blog: `/blog?page=N`
+  - Tag pages: `/blog/tags/[tag]?page=N`
+- Canonical URLs stay on first-page listing routes:
+  - `/blog`
+  - `/blog/tags/[tag]`
+- Pagination controls include crawlable page-number links plus `rel="prev"` and `rel="next"` on adjacent links.
+- `sitemap.xml` includes canonical listing routes and post/tag pages, not query-param pagination variants.
+
 ## Analytics
 
 - Include Google Analytics using the existing measurement id `G-43P9QM2K0N`.

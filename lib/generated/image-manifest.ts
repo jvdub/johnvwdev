@@ -16,6 +16,166 @@ export type ImageManifestEntry = {
 };
 
 export const imageManifest: Record<string, ImageManifestEntry> = {
+  "/icons/apple-touch-icon.png": {
+    "original": {
+      "src": "/icons/apple-touch-icon.png",
+      "width": 180,
+      "height": 180
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/generated/icons/apple-touch-icon-180.jpg",
+          "width": 180,
+          "height": 180
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/generated/icons/apple-touch-icon-180.webp",
+        "width": 180,
+        "height": 180
+      }
+    ],
+    "avif": [
+      {
+        "src": "/generated/icons/apple-touch-icon-180.avif",
+        "width": 180,
+        "height": 180
+      }
+    ],
+    "hasAlpha": false
+  },
+  "/icons/favicon-16x16.png": {
+    "original": {
+      "src": "/icons/favicon-16x16.png",
+      "width": 16,
+      "height": 16
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/generated/icons/favicon-16x16-16.jpg",
+          "width": 16,
+          "height": 16
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/generated/icons/favicon-16x16-16.webp",
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "avif": [
+      {
+        "src": "/generated/icons/favicon-16x16-16.avif",
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "hasAlpha": false
+  },
+  "/icons/favicon-32x32.png": {
+    "original": {
+      "src": "/icons/favicon-32x32.png",
+      "width": 32,
+      "height": 32
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/generated/icons/favicon-32x32-32.jpg",
+          "width": 32,
+          "height": 32
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/generated/icons/favicon-32x32-32.webp",
+        "width": 32,
+        "height": 32
+      }
+    ],
+    "avif": [
+      {
+        "src": "/generated/icons/favicon-32x32-32.avif",
+        "width": 32,
+        "height": 32
+      }
+    ],
+    "hasAlpha": false
+  },
+  "/icons/icon-192.png": {
+    "original": {
+      "src": "/icons/icon-192.png",
+      "width": 192,
+      "height": 192
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/generated/icons/icon-192-192.jpg",
+          "width": 192,
+          "height": 192
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/generated/icons/icon-192-192.webp",
+        "width": 192,
+        "height": 192
+      }
+    ],
+    "avif": [
+      {
+        "src": "/generated/icons/icon-192-192.avif",
+        "width": 192,
+        "height": 192
+      }
+    ],
+    "hasAlpha": false
+  },
+  "/icons/icon-512.png": {
+    "original": {
+      "src": "/icons/icon-512.png",
+      "width": 512,
+      "height": 512
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/generated/icons/icon-512-480.jpg",
+          "width": 480,
+          "height": 480
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/generated/icons/icon-512-480.webp",
+        "width": 480,
+        "height": 480
+      }
+    ],
+    "avif": [
+      {
+        "src": "/generated/icons/icon-512-480.avif",
+        "width": 480,
+        "height": 480
+      }
+    ],
+    "hasAlpha": false
+  },
   "/images/posts/ai-and-software-engineering-more-than-just-coding.png": {
     "original": {
       "src": "/images/posts/ai-and-software-engineering-more-than-just-coding.png",

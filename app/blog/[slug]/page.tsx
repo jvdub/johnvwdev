@@ -8,6 +8,8 @@ import {
   getPostSourceBySlug,
   getRelatedPosts,
 } from "../../../lib/posts";
+import { extractTocHeadingsFromMdx } from "../../../lib/toc";
+import { formatReadingTime } from "../../../lib/reading-time";
 import { AUTHOR_HANDLE, canonicalForPath, SITE_URL } from "../../../lib/site";
 import {
   generateArticleSchema,
@@ -18,6 +20,7 @@ import { ShareLinks } from "../../../components/ShareLinks";
 import { ReadingProgressBar } from "../../../components/ReadingProgressBar";
 import { TagList } from "../../../components/Tag";
 import { RelatedPosts } from "../../../components/RelatedPosts";
+import { TableOfContents } from "../../../components/TableOfContents";
 
 export const dynamicParams = false;
 
@@ -94,7 +97,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const content = await compilePostMdx(postSource.source);
+  const tocHeadings = extractTocHeadingsFromMdx(postSource.source);
+  const content = await compilePostMdx(postSource.source, { addHeadingIds: true });
   const heroImage = postSource.frontmatter.heroImage.trim();
   const canonical =
     postSource.frontmatter.canonicalUrl &&
@@ -137,13 +141,25 @@ export default async function BlogPostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         suppressHydrationWarning
       />
-      <ReadingProgressBar
-        colorClass="bg-green-700"
-        targetSelector="#post-content"
-      />
+      <div className="print-hide">
+        <ReadingProgressBar
+          colorClass="bg-green-700"
+          targetSelector="#post-content"
+        />
+      </div>
+      <div className="print-hide hidden xl:block">
+        <div
+          className="fixed top-24 z-30 w-64 max-h-[calc(100vh-7rem)] overflow-y-auto"
+          style={{
+            left: "max(1rem, calc((100vw - var(--max)) / 2 - 16rem - 0.75rem))",
+          }}
+        >
+          <TableOfContents headings={tocHeadings} variant="desktop-only" />
+        </div>
+      </div>
       <article
         id="post-content"
-        className="mx-auto max-w-3xl text-base leading-7 sm:text-lg sm:leading-8"
+        className="mx-auto max-w-content text-base leading-7 sm:text-lg sm:leading-8"
       >
         <header className="mb-6 sm:mb-8">
           {heroImage.length > 0 ? (
@@ -162,8 +178,11 @@ export default async function BlogPostPage({ params }: PageProps) {
           ) : null}
           <h1 className="mb-2">{postSource.frontmatter.title}</h1>
           <div className="text-sm text-fg-muted">
-            {postSource.frontmatter.date}
+            {postSource.frontmatter.date} · {formatReadingTime(postSource.readingTimeMinutes)}
           </div>
+          <p className="print-only print-post-url">
+            URL: <a href={canonical}>{canonical}</a>
+          </p>
           <div className="mt-4">
             <TagList tags={postSource.frontmatter.tags} />
           </div>
@@ -171,14 +190,17 @@ export default async function BlogPostPage({ params }: PageProps) {
             url={canonical}
             title={postSource.frontmatter.title}
             handle={AUTHOR_HANDLE}
-            className="mt-4"
+            className="mt-4 print-hide"
           />
+          <div className="print-hide mt-4 xl:hidden">
+            <TableOfContents headings={tocHeadings} variant="mobile-only" />
+          </div>
         </header>
 
         <div className="mdx-content space-y-6 sm:space-y-7">{content}</div>
       </article>
 
-      <div className="mx-auto max-w-3xl">
+      <div className="print-hide mx-auto max-w-content">
         <RelatedPosts posts={relatedPosts} />
       </div>
     </>

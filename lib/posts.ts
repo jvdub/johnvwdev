@@ -4,6 +4,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 import { normalizeRedirectFrom } from "./redirects";
+import { getReadingTimeMinutesFromSource } from "./reading-time";
 
 export type PostFrontmatter = {
   title: string;
@@ -18,6 +19,7 @@ export type PostFrontmatter = {
 
 export type Post = PostFrontmatter & {
   slug: string;
+  readingTimeMinutes: number;
 };
 
 const POSTS_DIR = path.join(process.cwd(), "content", "posts");
@@ -133,11 +135,13 @@ export function getAllPosts(): Post[] {
       const filename = path.basename(filePath);
       const slug = slugFromPostFilename(filename);
       const raw = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(raw);
+      const { data, content } = matter(raw);
       const frontmatter = assertFrontmatter(slug, data);
+      const readingTimeMinutes = getReadingTimeMinutesFromSource(content);
 
       return {
         slug,
+        readingTimeMinutes,
         ...frontmatter,
       };
     })
@@ -155,6 +159,7 @@ export function getPostSourceBySlug(slug: string): {
   slug: string;
   frontmatter: PostFrontmatter;
   source: string;
+  readingTimeMinutes: number;
 } {
   const mdxPath = path.join(POSTS_DIR, `${slug}.mdx`);
   const mdPath = path.join(POSTS_DIR, `${slug}.md`);
@@ -167,11 +172,13 @@ export function getPostSourceBySlug(slug: string): {
   const raw = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(raw);
   const frontmatter = assertFrontmatter(slug, data);
+  const readingTimeMinutes = getReadingTimeMinutesFromSource(content);
 
   return {
     slug,
     frontmatter,
     source: content,
+    readingTimeMinutes,
   };
 }
 

@@ -121,25 +121,37 @@ This document outlines planned features and enhancements for the personal websit
 
 ## Medium Priority
 
-### Blog Pagination 🔴
+### Blog Pagination 🟢
 
 **Description:** Split blog listing into pages as content grows (currently showing all posts on one page).
 
 **Tasks:**
 
-- Add pagination component
-- Create `/blog/page/[number]` routes or use client-side pagination
-- Decide page size (10-15 posts per page recommended)
-- Update sitemap to include pagination pages
-- Add prev/next navigation
-- Handle SEO (canonical URLs, rel=prev/next)
+- Add pagination component ✅
+- Create client-side pagination with query params (`?page=N`) for static export compatibility ✅
+- Decide page size (10 posts/page) ✅
+- Keep sitemap focused on canonical listing routes (query-param pages are non-canonical variants) ✅
+- Add prev/next navigation ✅
+- Handle SEO (canonical URLs on listing pages, rel=prev/next links, crawlable page-number links) ✅
 
 **Acceptance Criteria:**
 
-- Blog index shows limited posts per page
-- Pagination controls clear and accessible
-- URL structure supports direct linking to page numbers
-- First page is `/blog`, subsequent pages are `/blog/page/2`, etc.
+- Blog index shows limited posts per page ✅
+- Pagination controls clear and accessible ✅
+- URL structure supports direct linking to page numbers ✅
+- First page is `/blog`; subsequent pages use `/blog?page=2`, etc. ✅
+
+**Completed:** February 25, 2026
+
+**Implementation Details:**
+
+- Added reusable pagination UI in [components/BlogPagination.tsx](components/BlogPagination.tsx) with prev/next and page-number links
+- Added reusable paginated feed in [components/BlogPaginatedFeed.tsx](components/BlogPaginatedFeed.tsx)
+- Added reusable post list extraction in [components/BlogPostList.tsx](components/BlogPostList.tsx)
+- Added shared pagination config in [lib/blog-pagination.ts](lib/blog-pagination.ts) with 10 posts/page
+- Updated [app/blog/page.tsx](app/blog/page.tsx) to paginate `/blog` via `?page=N`
+- Updated [app/blog/tags/[tag]/page.tsx](app/blog/tags/%5Btag%5D/page.tsx) to paginate tag listings via `?page=N`
+- Kept canonical metadata on listing pages (`/blog`, `/blog/tags/[tag]`) to avoid duplicate-content indexing from query variants
 
 ---
 
@@ -210,22 +222,31 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Reading Time Estimates 🔴
+### Reading Time Estimates 🟢
 
 **Description:** Display estimated reading time on blog posts.
 
 **Tasks:**
 
-- Calculate word count from MDX content
-- Use standard reading speed (200-250 words/minute)
-- Display on blog index and post pages
-- Round to nearest minute (show "< 1 min" for very short posts)
+- Calculate word count from MDX content ✅
+- Use standard reading speed (200-250 words/minute) ✅ (225 words/minute)
+- Display on blog index and post pages ✅
+- Round to nearest minute (show "< 1 min" for very short posts) ✅
 
 **Acceptance Criteria:**
 
-- Reading time visible on blog index cards
-- Reading time shown near publish date on post pages
-- Calculation accurate and reasonable
+- Reading time visible on blog index cards ✅
+- Reading time shown near publish date on post pages ✅
+- Calculation accurate and reasonable ✅
+
+**Completed:** February 25, 2026
+
+**Implementation Details:**
+
+- Added [lib/reading-time.ts](lib/reading-time.ts) with MDX-aware word counting, nearest-minute calculation, and `< 1 min read` formatting
+- Updated [lib/posts.ts](lib/posts.ts) to compute `readingTimeMinutes` for both listing data and per-slug post source loading
+- Updated [components/BlogPostList.tsx](components/BlogPostList.tsx) to show reading time on blog cards next to publish date
+- Updated [app/blog/[slug]/page.tsx](app/blog/%5Bslug%5D/page.tsx) to show reading time near publish date on post pages
 
 ---
 
@@ -251,68 +272,103 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Table of Contents 🔴
+### Table of Contents 🟢
 
 **Description:** Auto-generate TOC for longer blog posts from heading structure.
 
 **Tasks:**
 
-- Parse MDX headings to build TOC structure
-- Create TOC component with anchor links
-- Add smooth scrolling to headings
-- Make sticky on desktop, collapsible on mobile
-- Highlight current section while scrolling
+- Parse MDX headings to build TOC structure ✅
+- Create TOC component with anchor links ✅
+- Add smooth scrolling to headings ✅
+- Make sticky on desktop, collapsible on mobile ✅
+- Highlight current section while scrolling ✅
 
 **Acceptance Criteria:**
 
-- TOC shows h2 and h3 headings
-- Links scroll smoothly to sections
-- Current section highlighted
-- Responsive design (mobile-friendly)
+- TOC shows h2 and h3 headings ✅
+- Links scroll smoothly to sections ✅
+- Current section highlighted ✅
+- Responsive design (mobile-friendly) ✅
+
+**Completed:** February 25, 2026
+
+**Implementation Details:**
+
+- Added TOC extraction and stable heading-id utilities in [lib/toc.ts](lib/toc.ts)
+- Updated MDX compilation to inject deterministic `h2`/`h3` IDs in [lib/mdx.tsx](lib/mdx.tsx)
+- Added interactive TOC with active-section highlighting and mobile collapse in [components/TableOfContents.tsx](components/TableOfContents.tsx)
+- Integrated TOC into blog post layout with desktop left rail and mobile placement after share links in [app/blog/[slug]/page.tsx](app/blog/%5Bslug%5D/page.tsx)
+- Added smooth-scroll and heading anchor offset behavior in [app/globals.css](app/globals.css)
 
 ---
 
 ## Low Priority
 
-### Scroll to Top Button 🔴
+### Scroll to Top Button 🟢
 
 **Description:** Floating button to quickly return to top of long pages.
 
 **Tasks:**
 
-- Create ScrollToTop component
-- Show/hide based on scroll position
-- Add smooth scroll behavior
-- Style to match site design
-- Make accessible (keyboard + screen reader)
+- Create ScrollToTop component ✅
+- Show/hide based on scroll position ✅
+- Add smooth scroll behavior ✅
+- Style to match site design ✅
+- Make accessible (keyboard + screen reader) ✅
+
+**Completed:** February 25, 2026
+
+**Implementation Details:**
+
+- Added floating scroll-to-top component with reduced-motion support in [components/ScrollToTopButton.tsx](components/ScrollToTopButton.tsx)
+- Integrated button globally in [app/layout.tsx](app/layout.tsx)
+- Added keyboard/screen-reader-safe visibility behavior (`aria-hidden` + conditional tab focus)
 
 ---
 
-### Print Stylesheet 🔴
+### Print Stylesheet 🟢
 
 **Description:** Optimize blog posts for printing/PDF generation.
 
 **Tasks:**
 
-- Add print-specific CSS
-- Hide navigation, footer, share buttons when printing
-- Ensure code blocks and images print well
-- Add page break controls for long posts
-- Include post URL in printed version
+- Add print-specific CSS ✅
+- Hide navigation, footer, share buttons when printing ✅
+- Ensure code blocks and images print well ✅
+- Add page break controls for long posts ✅
+- Include post URL in printed version ✅
+
+**Completed:** February 25, 2026
+
+**Implementation Details:**
+
+- Added comprehensive `@media print` styles, compact print typography, and page-break controls in [app/globals.css](app/globals.css)
+- Hid non-print UI (header/footer/share/TOC/reading progress) using `print-hide` hooks in [components/SiteHeader.tsx](components/SiteHeader.tsx), [components/SiteFooter.tsx](components/SiteFooter.tsx), and [app/blog/[slug]/page.tsx](app/blog/%5Bslug%5D/page.tsx)
+- Added print-only canonical URL output on blog posts in [app/blog/[slug]/page.tsx](app/blog/%5Bslug%5D/page.tsx)
 
 ---
 
-### Keyboard Navigation Enhancements 🔴
+### Keyboard Navigation Enhancements 🟢
 
 **Description:** Improve keyboard accessibility throughout site.
 
 **Tasks:**
 
-- Add skip-to-content link
-- Improve focus indicators (more visible)
-- Test tab order on all pages
-- Add keyboard shortcuts for common actions
-- Ensure all interactive elements are keyboard accessible
+- Add skip-to-content link ✅
+- Improve focus indicators (more visible) ✅
+- Test tab order on all pages ✅
+- Add keyboard shortcuts for common actions ✅
+- Ensure all interactive elements are keyboard accessible ✅
+
+**Completed:** February 25, 2026
+
+**Implementation Details:**
+
+- Added global skip-to-content behavior and stable main-content target in [app/layout.tsx](app/layout.tsx)
+- Improved focus-visible styles and keyboard clarity in [app/globals.css](app/globals.css), [components/SiteHeader.tsx](components/SiteHeader.tsx), and [components/Search.tsx](components/Search.tsx)
+- Added/verified keyboard shortcuts for search (`Ctrl/Cmd+K` and `/`) in [components/Search.tsx](components/Search.tsx)
+- Ensured mobile TOC toggle and links are keyboard-operable in [components/TableOfContents.tsx](components/TableOfContents.tsx)
 
 ---
 
@@ -492,6 +548,27 @@ This document outlines planned features and enhancements for the personal websit
 - Add missing recommended fields ✅
 - Test in various feed readers
 - Document feed URL prominently
+
+---
+
+### Testing Foundation 🔴
+
+**Description:** Establish a lightweight automated testing baseline for core logic and critical pages.
+
+**Tasks:**
+
+- Choose and configure a test runner (prefer minimal setup first)
+- Add `npm test` script and CI-friendly test command
+- Add initial unit tests for core utilities (e.g., reading time, pagination, slug/redirect helpers)
+- Add a small integration/smoke test for key routes (`/`, `/blog`, one blog post)
+- Document testing conventions and how to run tests locally
+
+**Acceptance Criteria:**
+
+- Tests can be run with a single command from repo root
+- At least one utility test suite and one route smoke/integration test are passing
+- Tests run in CI/non-interactive environments without manual steps
+- Basic testing guidance is documented in README or docs
 
 ---
 

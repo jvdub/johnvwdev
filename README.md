@@ -37,6 +37,29 @@ npm run serve
 
 This serves `out/` via `npx serve`.
 
+## PWA / Add to Home Screen
+
+This site is configured as a Progressive Web App (PWA), which enables:
+
+- **Android (Chrome/Edge):** install prompt / "Install app"
+- **iOS (Safari):** Share → "Add to Home Screen"
+
+### PWA assets
+
+- Manifest: `public/manifest.webmanifest`
+- Service worker: `public/sw.js`
+- Offline fallback: `public/offline.html`
+- App icons: `public/icons/`
+
+### After changing icons or manifest
+
+1. Run `npm run build`
+2. Serve/export locally with `npm run serve`
+3. In browser DevTools (Application tab), verify:
+  - Manifest is detected and icons load
+  - Service worker is active
+  - Offline navigation falls back gracefully
+
 ## Adding a blog post
 
 Published posts live in `content/posts/` as `.mdx` files.

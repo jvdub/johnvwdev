@@ -16,13 +16,13 @@ export function SiteHeader() {
   const searchItems = getAllSearchableContent();
 
   return (
-    <header className="border-b border-border bg-surface">
+    <header className="print-hide border-b border-border bg-surface">
       <div className="mx-auto max-w-content px-4 py-3">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
             <Link
               href="/"
-              className="text-base font-semibold tracking-tight text-fg no-underline hover:text-fg"
+              className="rounded-md px-1 py-1 text-base font-semibold tracking-tight text-fg no-underline hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
             >
               John Van Wagenen
             </Link>

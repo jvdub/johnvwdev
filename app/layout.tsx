@@ -2,7 +2,7 @@ import "./globals.css";
 
 import type { ReactNode } from "react";
 import { Suspense } from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
@@ -10,15 +10,40 @@ import { GaPageView } from "../components/GaPageView";
 import { WebVitalsReporter } from "../components/WebVitalsReporter";
 import { ServiceWorkerRegistration } from "../components/ServiceWorkerRegistration";
 import { OfflineIndicator } from "../components/OfflineIndicator";
+import { ScrollToTopButton } from "../components/ScrollToTopButton";
 import { SITE_URL } from "../lib/site";
 import { buildCSPContent } from "../lib/csp-utils";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: "John Van Wagenen",
+  description: "Personal site and engineering blog by John Van Wagenen.",
+  manifest: "/manifest.webmanifest",
   title: {
     default: "John Van Wagenen",
     template: "%s | John Van Wagenen",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "JohnVW",
+  },
+  icons: {
+    icon: [
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7fafc" },
+    { media: "(prefers-color-scheme: dark)", color: "#081a33" },
+  ],
 };
 
 const GA_MEASUREMENT_ID = "G-43P9QM2K0N";
@@ -135,6 +160,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body className="min-h-screen flex flex-col">
+        <a href="#main-content" className="skip-to-content-link">
+          Skip to main content
+        </a>
         <Suspense fallback={null}>
           <GaPageView measurementId={GA_MEASUREMENT_ID} />
         </Suspense>
@@ -142,9 +170,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ServiceWorkerRegistration />
         <OfflineIndicator />
         <SiteHeader />
-        <main className="mx-auto w-full max-w-content flex-1 px-4 py-8 sm:py-10">
+        <main
+          id="main-content"
+          className="mx-auto w-full max-w-content flex-1 px-4 py-8 sm:py-10"
+        >
           {children}
         </main>
+        <ScrollToTopButton />
         <SiteFooter />
       </body>
     </html>

@@ -1,0 +1,134 @@
+---
+title: "Congrats! You're a Manager Now!"
+date: "2026-03-02"
+description: "AI gives engineers leverage, but also shifts them into a management mindset: define constraints, success criteria, and non-goals to ship better outcomes."
+tags:
+  - ai
+  - llms
+  - leadership
+  - software-engineering
+  - systems-thinking
+draft: false
+heroImage: "/images/posts/congrats-you-are-a-manager-now.png"
+canonicalUrl: ""
+---
+
+### How to approach work in the age of AI
+
+Oh, you hadn't heard?
+
+Well, this is awkward. I thought someone would've told you by now.
+
+But, long story short, you now have an intern. Well, it's kinda like a team of interns — but only one at a time.
+
+The good news is they're super eager to help. Like, super, super eager. And they're surprisingly fast and accurate. More than you'd expect.
+
+The bad news? They need a lot of direction. Sometimes you have to be very, very specific. They have a short memory unless you front-load them with the right context. And sometimes they do way more than you asked — or somehow manage to do less.
+
+Exciting, right?
+
+The truth is, whether you wanted to manage or not, you now have leverage. While some of us looked forward to management, others avoided it as long as possible. But those leadership skills — the ones you might've been quietly ignoring — are now core to how you do your job.
+
+The good news? Chances are you've already been developing them.
+
+Let's get into it.
+
+---
+
+## Management Skills
+
+### Problem Decomposition
+
+If you drop a big, vague idea on an AI, like "build me a music app," you might get something that technically compiles and kinda resembles what you had in mind. But it won't be what you actually wanted.
+
+The better approach is to break the problem into manageable chunks, then break those into actionable tasks, all pointing toward the finished goal. You wouldn't hand a new hire a napkin sketch and walk away. Same idea here.
+
+This is why structured workflows work well with AI. You spend the time up front doing the decomposition, defining each piece clearly, then the AI can do large chunks of work uninterrupted. The more you define the problem, the less you have to babysit the solution.
+
+### Identifying Constraints
+
+You've probably been here: you're deep into a project, everything's going smoothly, then something surfaces that you didn't account for and it ripples through everything.
+
+Or maybe you've got that one coworker who's great at spotting the "yeah but what about..." scenarios before they become problems. That person is invaluable.
+
+With AI, you're that person. You need to identify the constraints early and build them in. Architecture to follow? Coding standards? Some weird edge case in the problem domain? Tell AI upfront. Better yet, build it into the system prompt so it never forgets.
+
+Once AI knows the constraints, it can work within them and check itself against them. Without that, you'll spend a lot of time cleaning up stuff that could've been avoided.
+
+### Defining Success
+
+"Done" is not self-evident to AI. You need to tell it what done looks like.
+
+Clear problem framing helps. But if you also tell it what success looks like, what tests need to pass, what checks need to be green, what the output should actually do, it has something to work toward. The agent keeps going until those conditions are met instead of calling it done when it gets tired of trying.
+
+Think of it as writing an acceptance criteria before the work starts. You've probably done this before. The skill transfers directly.
+
+### Systems Thinking
+
+Instead of thinking about AI as a really smart autocomplete or a search engine you can have a conversation with, try thinking of it in terms of processes and [systems](https://johnvw.dev/blog/systems-thinking-in-the-age-of-ai/).
+
+As a leader, you often need to map out how work flows, from idea to shipped feature. You define processes so people can follow them without confusion. Same skill, new application.
+
+What does your SDLC actually look like? What steps do you go through to implement a feature? What's your process for handling a bug vs. a greenfield build?
+
+Write it out. Then explain it to your AI. Once it understands the system, ask it where it can help or ask it to generate a prompt that encodes that process.
+
+You'll need to iterate and refine, but this does something important: it takes tacit knowledge out of your head and makes it explicit. Instead of living in some outdated Confluence doc (or nowhere at all), it lives as a reusable prompt in your system.
+
+### Non-goals
+
+This one doesn't get enough credit.
+
+How often do we get off track as humans? We go to fix a defect, notice something else that could be cleaner, start refactoring... and suddenly we're a week deep into work that has nothing to do with the original ticket.
+
+I'm not against the boy scout rule. Leaving things better than you found them is a good instinct. But there's a difference between cleaning up a mess and remodeling the kitchen when you came to fix a leaky faucet.
+
+As a manager, sometimes your job is to tell people: don't worry about X, just focus on Y.
+
+AI needs this, too. These tools are eager. If you don't define what's out of scope, they'll happily expand scope on your behalf.
+
+I ran into this recently on something I was working on. The changes touched about 10 files. The AI had modified nearly 20. When I pushed back, it acknowledged it had gone overboard. I asked it to revert the unnecessary changes and, a few minutes later, I had a tight, focused PR that was actually easy to review.
+
+Anyone can generate code now. Not everyone can shape it into something coherent and durable.
+
+Defining non-goals isn't just about containing AI. It's about shipping clean work.
+
+---
+
+## A Shift in Responsibility
+
+As people move from individual contributor roles into leadership, the shift isn't just in what they do, it's in what they're responsible for. You go from doing the work to ensuring the work gets done. Clear communication. Delegation. Follow-through.
+
+AI is pushing engineers through a similar transition: instead of writing every line, you're ensuring the right lines get written.
+
+But here's the part that's easy to gloss over: the responsibility for the output doesn't shift with the workload. When output becomes cheap, unintended consequences become easier to ship.
+
+If the AI ships slop, that's your slop. If it misses a requirement, you missed the requirement. You don't get to blame the intern.
+
+That's not a knock on AI tools, it's just the reality of ownership. The work is delegated. The accountability isn't.
+
+Delegation is powerful. Abdication is dangerous.
+
+---
+
+## The Engineer AI Amplifies
+
+Every major technological shift creates a divide: people who adapt and use the new thing to get better, and people who don't and get left behind.
+
+This one's no different.
+
+But here's the catch. AI makes it tempting to use leverage to produce more without understanding more. To ship faster without thinking deeper. To let the output volume mask the shallowness of the thinking behind it.
+
+That's a trap.
+
+The engineers who thrive won't be the ones with the highest output. They'll be the ones who understand the most. The systems, the business, the tradeoffs, the "why" behind the decisions.
+
+You're probably already doing some of this. You already make architecture tradeoffs. You already think about what changes affect what. You already understand things that newer engineers don't.
+
+AI gives you leverage to apply that understanding at a larger scale. But if you use it to do less thinking instead of wider thinking, you'll produce more noise, not more value.
+
+Don't let AI replace your understanding. Let it extend it. Don’t shrink your role. Grow into it.
+
+Learn your systems. Learn your business. Learn why things work the way they do.
+
+AI makes building easier. That means the bar for understanding has to go higher.

@@ -103,6 +103,21 @@ export default function Projects() {
               View details →
             </span>
           </Link>
+
+          <Link
+            href="/projects/neon-dodge"
+            className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition no-underline"
+          >
+            <h2 className="text-xl font-semibold tracking-tight no-underline">
+              Neon Dodge
+            </h2>
+            <p className="mt-2 text-fg-muted no-underline">
+              A neon-styled dodge game focused on quick reflexes and survival.
+            </p>
+            <span className="mt-3 inline-block text-sm text-blue-600 hover:underline">
+              View details →
+            </span>
+          </Link>
         </section>
       </div>
     </>

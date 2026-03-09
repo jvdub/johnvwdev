@@ -64,7 +64,7 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Code Syntax Highlighting 🔴
+### Code Syntax Highlighting 🟢
 
 **Description:** Add syntax highlighting for code blocks in blog posts.
 
@@ -76,16 +76,25 @@ This document outlines planned features and enhancements for the personal websit
 
 **Tasks:**
 
-- Choose and integrate syntax highlighter
-- Add language-specific styling
-- Support theme-aware code blocks (dark/light mode)
-- Test with all languages used in blog posts
+- Choose and integrate syntax highlighter ✅
+- Add language-specific styling ✅
+- Support theme-aware code blocks (dark/light mode) ✅
+- Test with all languages used in blog posts ✅
 
 **Acceptance Criteria:**
 
-- Code blocks properly highlighted with language detection
-- Syntax highlighting matches site theme (dark/light)
-- Common languages supported (TypeScript, JavaScript, Python, bash, etc.)
+- Code blocks properly highlighted with language detection ✅
+- Syntax highlighting matches site theme (dark/light) ✅
+- Common languages supported (TypeScript, JavaScript, Python, bash, etc.) ✅
+
+**Completed:** March 9, 2026
+
+**Implementation Details:**
+
+- Added `rehype-pretty-code` to the MDX compilation pipeline in [lib/mdx.tsx](lib/mdx.tsx) for static syntax highlighting at render/build time
+- Configured dual Shiki themes so code blocks follow the existing site theme toggle in light and dark mode
+- Added dedicated MDX code block and inline code styling in [app/globals.css](app/globals.css), including language labels and consistent block layout
+- Documented fenced code block authoring guidance in [README.md](README.md)
 
 ---
 
@@ -250,25 +259,34 @@ This document outlines planned features and enhancements for the personal websit
 
 ---
 
-### Copy Code Button 🔴
+### Copy Code Button 🟢
 
 **Description:** Add "Copy" button to code blocks for easy copying.
 
 **Tasks:**
 
-- Create CopyButton component
-- Integrate with code block rendering
-- Add visual feedback (copied confirmation)
-- Handle keyboard accessibility
-- Style to match site theme
+- Create CopyButton component ✅
+- Integrate with code block rendering ✅
+- Add visual feedback (copied confirmation) ✅
+- Handle keyboard accessibility ✅
+- Style to match site theme ✅
 
 **Acceptance Criteria:**
 
-- Copy button appears on hover/focus of code blocks
-- Click copies code to clipboard
-- Visual confirmation shown ("Copied!")
-- Works on mobile (tap to copy)
-- Keyboard accessible
+- Copy button appears on hover/focus of code blocks ✅
+- Click copies code to clipboard ✅
+- Visual confirmation shown ("Copied!") ✅
+- Works on mobile (tap to copy) ✅
+- Keyboard accessible ✅
+
+**Completed:** March 9, 2026
+
+**Implementation Details:**
+
+- Added client-side `pre` renderer in [components/MdxPre.tsx](components/MdxPre.tsx) with clipboard integration and copied/error feedback states
+- Wired MDX `pre` elements to the new renderer in [lib/mdx.tsx](lib/mdx.tsx) so copy support applies to blog posts and project MDX content
+- Added theme-matched floating copy button styles in [app/globals.css](app/globals.css) with hover, focus, and touch-device visibility behavior
+- Documented copy-button behavior in [README.md](README.md)
 
 ---
 

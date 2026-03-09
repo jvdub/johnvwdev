@@ -1,10 +1,13 @@
 import React from "react";
 
+import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
 import { compileMDX } from "next-mdx-remote/rsc";
+import type { Pluggable } from "unified";
 
 import { MdxGallery } from "../components/MdxGallery";
 import { MdxImage } from "../components/MdxImage";
+import { MdxPre } from "../components/MdxPre";
 
 import type { PostFrontmatter } from "./posts";
 import { createHeadingIdFactory } from "./toc";
@@ -53,13 +56,33 @@ function withHeadingIds() {
   };
 }
 
+const prettyCodeOptions = {
+  theme: {
+    dark: "github-dark-default",
+    light: "github-light-default",
+  },
+  defaultLang: {
+    block: "plaintext",
+    inline: "plaintext",
+  },
+  keepBackground: false,
+  onVisitLine(node: MdxNode) {
+    if (!Array.isArray(node.children) || node.children.length === 0) {
+      node.children = [{ type: "text", value: " " }];
+    }
+  },
+};
+
 export async function compilePostMdx(
   source: string,
   options?: {
     addHeadingIds?: boolean;
   },
 ): Promise<React.ReactElement> {
-  const rehypePlugins = options?.addHeadingIds ? [withHeadingIds] : [];
+  const rehypePlugins: Pluggable[] = [
+    [rehypePrettyCode, prettyCodeOptions],
+    ...(options?.addHeadingIds ? [withHeadingIds] : []),
+  ];
 
   const { content } = await compileMDX<PostFrontmatter>({
     source,
@@ -67,6 +90,7 @@ export async function compilePostMdx(
       img: MdxImage,
       Image: MdxImage,
       Gallery: MdxGallery,
+      pre: MdxPre,
     },
     options: {
       mdxOptions: {

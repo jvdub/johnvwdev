@@ -128,18 +128,40 @@ export default function Home() {
                   key={post.slug}
                   className="rounded-md border border-border bg-surface-2 p-4"
                 >
-                  <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                    {formatPostDate(post.date)}
-                  </p>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="mt-1 block font-medium text-fg no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
-                  >
-                    {post.title}
-                  </Link>
-                  <p className="mt-1 text-sm text-fg-muted">
-                    {post.description}
-                  </p>
+                  <div className="flex flex-col gap-4 sm:flex-row">
+                    {post.heroImage.trim().length > 0 ? (
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="block sm:w-44"
+                        aria-label={post.title}
+                      >
+                        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md border border-border bg-bg">
+                          <ResponsiveImage
+                            src={post.heroImage}
+                            alt={post.title}
+                            fill
+                            sizes="(min-width: 640px) 176px, 100vw"
+                            className="object-cover"
+                          />
+                        </div>
+                      </Link>
+                    ) : null}
+
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
+                        {formatPostDate(post.date)}
+                      </p>
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="mt-1 block font-medium text-fg no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                      >
+                        {post.title}
+                      </Link>
+                      <p className="mt-1 text-sm text-fg-muted">
+                        {post.description}
+                      </p>
+                    </div>
+                  </div>
                 </li>
               ))}
             </ul>

@@ -1,0 +1,224 @@
+---
+title: "Cursor vs Claude Code Is the Wrong Debate"
+date: "2026-03-09"
+description: "Why structured workflows, artifacts, and checkpoints matter more than whether you use Cursor, Claude Code, or another AI coding harness."
+tags:
+  - ai
+  - workflows
+  - systems-thinking
+  - software-engineering
+  - agents
+draft: false
+heroImage: "/images/posts/cursor-vs-claude-code-is-the-wrong-debate.png"
+canonicalUrl: ""
+---
+
+### Systems Thinking for High-Leverage AI Development
+
+Over the past few months there’s been a lot of debate about which AI coding tool is “winning.” Cursor hit the news after doubling their ARR. Around the same time, many developers on X started claiming companies were abandoning Cursor in favor of Claude Code.
+
+My company has been experimenting with both tools too.
+
+But my experience has been different from the narrative online. I’ve found I can get the same kinds of results people rave about in Claude Code using Cursor, and vice versa.
+
+The reason is simple. The workflow is the superpower, not the tool.
+
+You can do amazing things in Cursor, Claude Code, or any other AI harness. You just have to know how.
+
+## **Tools Are Tools**
+
+Let's level set. Forget the hype. Set aside your notions of which tool is superior and let's talk about what they actually are.
+
+Under the hood, both tools are just interfaces around large language models. Those models are extremely powerful pattern predictors, but they still behave according to the instructions and context we give them.
+
+So how are Cursor and Claude Code actually different?
+
+The most obvious thing is the interface. Cursor is built into the IDE. Claude Code is a CLI tool. Both are backed by LLMs. Both have access to your files. Both can run commands.
+
+Beyond the interface, the most meaningful difference is the system prompt, the hidden instructions that give each tool its prime directives. Claude Code's system prompt is tightly focused on coding tasks, which can make it feel more purposeful in certain contexts. In practice, that difference is smaller than the hype suggests.
+
+Beyond that, and in my experience, the differences between the two tools start to break down.
+
+## **How I Use Cursor**
+
+When my company rolled out these two tools, I immediately had an affinity for Cursor. That was only reinforced in the weeks that followed.
+
+My initial pull toward Cursor was mostly that it looked and felt like Visual Studio Code, which was my daily driver before. It integrated nicely into my normal coding flow. But if you stop there and just use it as a smarter IDE, you're only dipping your toe in the ocean of what's actually available to you.
+
+Claude Code, on the other hand, was a CLI tool. That was fine. I started my career mastering the CLI as a technical support engineer. I got it set up and running, but then I hit rate limits. Not Claude rate limits, but AWS rate limits. We had proxied through Amazon Bedrock and had to work a lot with AWS to get things running smoothly. Those problems created friction that I did not experience in Cursor. So Cursor became my go-to.
+
+I was happy with Cursor for a while. But as models improved, new workflows started appearing. Things like Ralph Wiggums and GSD. There was no path to using them with Cursor, at least not in the traditional way.
+
+People started saying Cursor was finished. All the "cool stuff" was being built for Claude.
+
+But my experience with Claude Code was still underwhelming. It felt slower and more obtrusive than Cursor's integrated system. I was also locked to three models, while Cursor let me choose any model I wanted.
+
+Then it clicked. If I applied [systems thinking](https://johnvw.dev/blog/systems-thinking-in-the-age-of-ai/) to my prompting, I could instruct any tool to do long running, structured tasks. I could engineer those frameworks into my prompts and get the same benefits people were raving about, regardless of which harness I was using.
+
+That's what I want to show you.
+
+## **The Workflow**
+
+Here’s the core idea.
+
+Treat the AI like a distributed system. Define artifacts, isolate tasks, and enforce checkpoints. Once you do that, the tool matters far less than the process.
+
+I started with an empty folder. I created a directory and opened Cursor there, then started describing the app I wanted to build. We went back and forth until I was confident it understood what I was after. Then I asked it to write that understanding down in a requirements markdown file. I read through it, corrected a few things, and we had our source of truth.
+
+Once the requirements were solid, I sent this:
+
+```
+Read the REQUIREMENTS.md file. Spin off 3 agents. Ask each to create
+a backend architecture proposal and write it to BACKEND_1/2/3.md.
+Instruct them to stay rooted in the requirements. When all 3 are done,
+spin up a review subagent to review the 3 proposals, take the best parts
+of each, and formulate a single backend architecture proposal. Write this
+to BACKEND.md and remove the BACKReaEND_1/2/3.md files.
+```
+
+Do the same for the frontend architecture and write the final proposal to FRONTEND.md.
+
+A few things are happening here worth naming.
+
+First, we made the conversation concrete by externalizing it to a file. That preserves it across sessions and context compressions and gives everyone, human and AI, a source of truth to refer back to.
+
+Second, we used subagents to generate multiple proposals in parallel without polluting the main thread's context. Each proposal was written to a file so it could be reasoned about independently.
+
+Third, we spun up a review agent whose only job was to synthesize the best ideas from all three proposals into one. That final artifact is what we move forward with.
+
+This is also where human in the loop review happens. Before any code gets written, you read the plan and correct anything that's off. Fixing a document is cheap. Unwinding a week of misguided implementation is not.
+
+Once the plan looks right, I break it into actionable pieces in two phases. First, an agent breaks the plan into concrete stories written as markdown files. Then it divides those stories into small groups of related work.
+
+From there, I have it spin off agents to break each group into specific tasks, again stored as markdown files, with dependencies noted so we have a clear execution order.
+
+You may end up with a lot of markdown files. That is fine. Review them. Make sure nothing was assumed that should not have been.
+
+## **Implementation: Two Approaches**
+
+Once stories and tasks are locked in, it is time to build. There are two ways I approach this.
+
+The first is the hands off option. You give the LLM a simple orchestration instruction and let it work out the details.
+
+```
+I want you to orchestrate the work represented in this repository.
+Read the REQUIREMENTS.md file. Then read STORIES/README.md.
+Then read STORIES/TASKS/README.md and STORIES/TASKS/GROUPS.md.
+Once you have a feel for that, spin up subagents to do the actual work.
+Keep track of the progress of each subagent and start new subagents
+for the next steps, but do not do any of the actual coding work yourself.
+You can help resolve conflicts.
+```
+
+This works well for side projects and non production code. You can sit back and watch it work, or walk away and come back to a mostly built thing. It will usually get you about 80 percent of the way there. The remaining 20 percent is coaching it across the line.
+
+The second approach is more explicit. Instead of leaving orchestration details to the AI, you spell out exactly how it should manage subagents.
+
+```
+<PLAN>/path/to/PLAN.md</PLAN>
+<STORIES>/path/to/STORIES/README.md</STORIES>
+<TASKS>/path/to/STORIES/TASKS</TASKS>
+<PROGRESS>/path/to/STORIES/TASKS/ORCHESTRATION_STATUS.md</PROGRESS>
+
+You are an orchestration agent. You will trigger subagents that will execute
+the complete implementation of a plan and series of tasks, and carefully
+follow the implementation of the software until full completion. Your goal
+is NOT to perform the implementation but to verify the subagents do it correctly.
+
+<ORCHESTRATOR_INSTRUCTIONS>
+
+You are an orchestration agent. Use `runSubagent` to drive implementation;
+do not do the implementation yourself.
+
+Inputs:
+
+- `<PLAN>`: overall scope
+- `<STORIES>`: story backlog and story dependencies
+- `<TASKS>`: per-story task packs
+- `<PROGRESS>`: shared progress tracker
+
+Rules:
+
+- Fail immediately if `runSubagent` is unavailable.
+- Re-read all inputs each iteration.
+- Use dependencies at two levels: story dependencies from `<STORIES>` and
+task dependencies from each story `INDEX.md`.
+- A task is runnable only if its story is unlocked, its task deps are complete,
+and it is not already done or in progress.
+- You may run multiple subagents in parallel only for dependency safe,
+non overlapping tasks.
+
+Loop:
+
+1. Ensure `<PROGRESS>` exists.
+2. Compute the ready queue from `<STORIES>`, `<TASKS>`, and `<PROGRESS>`.
+3. Launch one subagent per selected ready task.
+4. After each subagent run, verify:
+    - no changes under `archive/`
+    - exactly one task was completed
+    - tracking files were updated
+    - validation was run and passed
+    - one task scoped commit was created
+5. Repeat until all in scope work is complete.
+
+Validation defaults:
+
+- Backend: `cd backend && python -m pytest -q`
+- Frontend: `npm --prefix frontend run test`
+- Frontend route/render/contract changes: `npm --prefix frontend run build`
+- Runtime/integration: `bash scripts/local_runtime_smoke.sh`
+
+Commit format: `<TASK-ID>: <short action>`
+
+Stop only when all in scope stories and tasks are complete and verified.
+
+</ORCHESTRATOR_INSTRUCTIONS>
+
+<SUBAGENT_INSTRUCTIONS>
+
+You are a senior coding agent working in this repository.
+
+Read `<PLAN>`, `<STORIES>`, `<TASKS>`, and `<PROGRESS>`. Pick exactly one
+highest value dependency safe task. Implement that task only. Keep changes
+surgical. Do not modify `archive/`.
+
+When finished:
+
+1. Run the validations required by the changed layer.
+2. Update the relevant story task index and `<PROGRESS>`.
+3. Create one commit: `<TASK-ID>: <short action>`
+
+Then stop.
+
+</SUBAGENT_INSTRUCTIONS>
+```
+
+The difference here is not just word count. By providing a prompt template for each subagent and defining expected outputs, you eliminate the guesswork the orchestrator would otherwise spend tokens on. The orchestrator does not need to invent how to talk to subagents or interpret their responses. It already knows.
+
+Think of it like the difference between method calls and services in software design. MCP tool calls are like method calls. They are cheap and you should use them liberally. Subagents are more like services. They require coordination overhead, so you use them when the scope justifies it.
+
+A single small task can be handled in the main thread. A large body of work with parallel tracks is where subagents earn their cost.
+
+The other big win with this structured approach is frequent checkpoints. When you instruct the AI to compile, lint, and test after each task, you stay consistently close to working software throughout the process. If you save all that for the end, you will have a lot of drift to reconcile. Small, verified commits throughout keep you out of that hole.
+
+Both of these approaches work because each step reduces ambiguity. The AI does not need to invent the workflow. It simply executes the structure that has already been defined.
+
+## **The Real Takeaway**
+
+The debate over Cursor vs. Claude Code is mostly a distraction. Both are LLM wrappers with different interfaces and default behaviors.
+
+What actually determines your output quality is how clearly you define the work. The requirements, the stories, the tasks, the dependencies, and the verification criteria all matter.
+
+That is systems thinking applied to prompting. And it is portable.
+
+Learn to think this way and it does not matter which harness you are sitting in. You will know how to make it work.
+
+The workflows are the commodity now. Build them, refine them, and the tool question mostly takes care of itself.
+
+---
+
+If you want to try this yourself, start small. Take a project you already understand and run it through this workflow: requirements → architecture proposals → stories → tasks → orchestrated implementation.
+
+You’ll quickly see that the biggest improvements don’t come from switching tools. They come from structuring the work.
+
+Right now, the biggest advantage in AI development isn’t the model you use. It’s the system you build around it.

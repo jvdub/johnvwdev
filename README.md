@@ -114,6 +114,28 @@ If it builds cleanly, the post should be available at:
 
 - `/blog/<slug>/` in the exported site
 
+## MDX code blocks
+
+Fenced code blocks in blog posts and project content are syntax highlighted automatically.
+
+Markdown usage:
+
+````md
+```ts
+export function greet(name: string) {
+  return `Hello, ${name}`;
+}
+```
+````
+
+Notes:
+
+- Add a language after the opening fence when possible, such as `ts`, `tsx`, `js`, `jsx`, `bash`, `json`, `html`, `css`, or `python`.
+- Unlabeled fenced blocks still render as styled code blocks and fall back to plain text highlighting.
+- Highlighting follows the site theme automatically in light and dark mode.
+- Code blocks include a keyboard-accessible copy button that appears on hover/focus and stays visible on touch devices.
+- Line numbers are rendered visually with CSS so they do not become part of the copied code text.
+
 ## MDX image components
 
 Standard Markdown images are enhanced automatically with caption, loading shimmer,

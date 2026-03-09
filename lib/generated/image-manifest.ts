@@ -330,6 +330,83 @@ export const imageManifest: Record<string, ImageManifestEntry> = {
     ],
     "hasAlpha": false
   },
+  "/images/posts/cursor-vs-claude-code-is-the-wrong-debate.png": {
+    "original": {
+      "src": "/images/posts/cursor-vs-claude-code-is-the-wrong-debate.png",
+      "width": 1536,
+      "height": 1024
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-480.jpg",
+          "width": 480,
+          "height": 320
+        },
+        {
+          "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-768.jpg",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-1024.jpg",
+          "width": 1024,
+          "height": 683
+        },
+        {
+          "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-1280.jpg",
+          "width": 1280,
+          "height": 853
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-480.webp",
+        "width": 480,
+        "height": 320
+      },
+      {
+        "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-768.webp",
+        "width": 768,
+        "height": 512
+      },
+      {
+        "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-1024.webp",
+        "width": 1024,
+        "height": 683
+      },
+      {
+        "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-1280.webp",
+        "width": 1280,
+        "height": 853
+      }
+    ],
+    "avif": [
+      {
+        "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-480.avif",
+        "width": 480,
+        "height": 320
+      },
+      {
+        "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-768.avif",
+        "width": 768,
+        "height": 512
+      },
+      {
+        "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-1024.avif",
+        "width": 1024,
+        "height": 683
+      },
+      {
+        "src": "/images/generated/posts/cursor-vs-claude-code-is-the-wrong-debate-1280.avif",
+        "width": 1280,
+        "height": 853
+      }
+    ],
+    "hasAlpha": false
+  },
   "/images/posts/demystifying-ai-in-engineering.png": {
     "original": {
       "src": "/images/posts/demystifying-ai-in-engineering.png",

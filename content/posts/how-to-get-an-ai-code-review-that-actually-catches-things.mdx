@@ -1,0 +1,116 @@
+---
+title: "How to Get an AI Code Review That Actually Catches Things"
+date: "2026-03-16"
+description: "A practical workflow for using AI to review pull requests with better coverage, clearer standards, and human oversight."
+tags:
+  - ai
+  - workflows
+  - software-engineering
+  - agents
+  - best-practices
+draft: false
+heroImage: "/images/posts/how-to-get-an-ai-code-review-that-actually-catches-things.png"
+canonicalUrl: ""
+---
+
+"AI reviewing AI code?\! That's ridiculous\!"
+
+"Idk what's worse: AI code or AI reviewing AI code"
+
+"AI code reviews can't possibly be good."
+
+I know. It sounds crazy. But there's a way to make them work, and once you see how, the skepticism starts to fade.
+
+## **Typical Reviews**
+
+In many companies, code reviews are a bottleneck. They often get put on the back burner. Code reviews pile up, especially for senior engineers, and sometimes (more often than we'd like to admit) they turn more into rubber stamps than actual quality gates.
+
+Small reviews are easy for humans to do. When I get a review that's a few files big, I'm a happy camper. I can breeze through it, think of pretty much everything I need to think about, and do a thorough review.
+
+But as the review grows. 10 files. 20 files. 300 files. The general quality tends to go down simply because of the time it takes. When I see a large diff, I immediately feel resistance. I can work through it by breaking it down into small chunks and setting the time aside, but I can only do that so many times a day before my brain is fried.
+
+What makes it worse is the cultural dynamic. The engineers who give the most thorough reviews are often the ones who get the most pushback. Their feedback is more detailed, more demanding, and takes longer to address. Over time, that's a real disincentive to keep doing it well. The system punishes quality and rewards speed.
+
+So how do we avoid rubber stamps, encourage thoroughness, and reduce friction at the same time?
+
+## **Making AI Reviews Meaningful**
+
+AI reviews are not a silver bullet, but they can reduce the friction we feel with normal code reviews. The catch is that if you just throw an agent at a bunch of code changes, you're probably not going to get very good results. We can do better.
+
+There are multiple aspects to a meaningful review. Here are the key elements as I see them:
+
+- Calculating the diff
+- Understanding the relative size
+- Pulling in documentation and standards
+- Reviewing against that documentation
+- Reporting results for a human to review
+
+Let's walk through each one.
+
+### **Calculating the Diff**
+
+This is a pretty overlooked step because GitHub already does it for us in the PR interface. But how does the agent actually know how to calculate the diff?
+
+I've come to like the GitHub CLI for this. You can point it at a PR and the agent has no trouble understanding the diff.
+
+Can you use the browser? Yes, but it's often slower and more token hungry. Can you use the git CLI? Yes, but that can leave the door open for more local changes, like switching branches, which you may or may not want depending on the state of your local repository. Agents are eager and sometimes do some unexpected things.
+
+Your mileage may vary, but I've been happy with the GitHub CLI.
+
+### **Understanding the Relative Size**
+
+This step is also a little overlooked, but we feel it every time we open a PR. That little file counter on the files tab can bring relief or dread depending on the number it shows.
+
+Just like a human reviewer, the larger the diff, the worse the agent will do at reviewing it. The good news is we can mitigate this by applying separation of concerns. I use four files as the threshold. Under that, we stay in the main thread. Over that, we spin up agents.
+
+The main reason is context management. If you ask the AI to review everything altogether all at once, you'll blow through your context and likely get a shallow review. Breaking it into smaller chunks and having subagents handle each piece keeps things focused.
+
+### **Applying Documentation and Standards**
+
+When you review a PR, how do you know what to look for?
+
+You probably don't refer to documentation too often anymore, depending on how familiar you are with the codebase. But you're applying standards and looking for patterns. If something doesn't match, that's what you note and comment on.
+
+This is where you turn a generic AI review into something actually useful for your team. Point your agents at your actual documentation. Your architecture decision records. Your coding standards. Your testing conventions. Without this, the agent is reviewing against its own general knowledge, which is a lot less useful than reviewing against the specific expectations of your codebase.
+
+### **Reviewing Through Lenses**
+
+Here's where the separation of concerns really pays off.
+
+A single reviewer, human or AI, context-switching between architecture concerns, test coverage, security, and style is going to do each of them worse than a reviewer focused on just one. That's not a knock on anyone. It's just how attention works.
+
+So instead of asking one agent to think about everything, I spin up dedicated agents with specific lenses. Each one gets the diff, the relevant documentation, and one job. My standard set looks like this:
+
+- **Architecture** — does this fit the existing patterns and structure of the codebase?
+- **Tests** — is there adequate coverage? Are the right things being tested?
+- **Localization** — are strings handled correctly? Anything hardcoded that shouldn't be?
+- **Security** — any obvious vulnerabilities, exposed values, or risky patterns?
+- **Style and standards** — does this follow the conventions the team has agreed on?
+
+Each agent goes deep on one thing instead of shallow on everything. You can adjust the lenses for your team. The point is the separation, not the specific list.
+
+This mirrors how strong human review teams often work in practice. You want the person who lives in the auth layer looking at auth changes. You want the person who cares deeply about test quality focused there. The lens approach makes that explicit and scalable.
+
+### **Aggregating the Results**
+
+Once the lens agents finish, a main agent aggregates the results into a single structured report.
+
+Synthesis is its own skill. If you skip this and just dump four separate reports at a reviewer, you're adding cognitive load instead of removing it. The aggregation step pulls the findings together, surfaces the most important issues, and presents something a human can actually act on.
+
+### **The Human Still Decides**
+
+This is the part I feel strongest about.
+
+The workflow does not auto-submit a review. It produces a recommendation. A human reads it, adjusts it, and decides what actually gets posted.
+
+This is what separates a meaningful review from review theater. The AI is doing the heavy lifting of coverage and thoroughness. The engineer is still accountable for the judgment call. That's the right division of labor.
+
+It also gives you a chance to push back on the AI. Agents are eager. They'll label minor things as blockers and miss the difference between a nit and a genuine concern. Building the human review step in gives you the chance to calibrate the feedback before it reaches anyone else. The goal is a review that's actually useful to the author, not one that's technically complete but noisy.
+
+If you skip this step and let the agent post directly, you've automated the accountability away. That's when things go wrong in ways that are hard to trace back.
+
+## **What This Gets You**
+
+Run this workflow a few times and a few things become clear. Coverage goes up because each lens agent has room to go deep on one concern instead of skimming across all of them. Friction goes down because large diffs stop feeling like a wall. And reviews become something you can actually trust, not perfectly, not automatically, but meaningfully. The output is grounded in the actual diff, informed by your actual standards, and signed off by a human before anything happens.
+
+That's not a rubber stamp. That's a review.

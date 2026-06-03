@@ -638,6 +638,98 @@ export const imageManifest: Record<string, ImageManifestEntry> = {
     ],
     "hasAlpha": false
   },
+  "/images/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned.png": {
+    "original": {
+      "src": "/images/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned.png",
+      "width": 1672,
+      "height": 941
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-480.jpg",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-768.jpg",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-1024.jpg",
+          "width": 1024,
+          "height": 576
+        },
+        {
+          "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-1280.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-1600.jpg",
+          "width": 1600,
+          "height": 900
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-480.webp",
+        "width": 480,
+        "height": 270
+      },
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-768.webp",
+        "width": 768,
+        "height": 432
+      },
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-1024.webp",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-1280.webp",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-1600.webp",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "avif": [
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-480.avif",
+        "width": 480,
+        "height": 270
+      },
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-768.avif",
+        "width": 768,
+        "height": 432
+      },
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-1024.avif",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-1280.avif",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "src": "/images/generated/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned-1600.avif",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "hasAlpha": false
+  },
   "/images/posts/systems-thinking-in-the-age-of-ai.png": {
     "original": {
       "src": "/images/posts/systems-thinking-in-the-age-of-ai.png",

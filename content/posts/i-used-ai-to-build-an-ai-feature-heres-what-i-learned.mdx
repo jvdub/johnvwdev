@@ -1,0 +1,96 @@
+---
+title: "I Used AI to Build an AI Feature. Here’s What I Learned."
+date: "2026-06-03"
+description: "AI did not replace engineering judgment. It changed where judgment mattered most: setting direction, giving context, reviewing output, and staying accountable."
+tags:
+  - ai
+  - software-engineering
+  - enterprise
+  - learning
+  - workflows
+draft: false
+heroImage: "/images/posts/i-used-ai-to-build-an-ai-feature-heres-what-i-learned.png"
+canonicalUrl: ""
+---
+
+It's crazy how quickly the entire software engineering industry has changed.
+
+Let's take a quick walk down memory lane. You remember the ancient times? When we used to hand-code software?
+
+Yeah, just last year. The ancient times. Let's go back then.
+
+Claude Code was brand new. Github Copilot had recently launched. All these agentic software engineering tools were just in their infancy. And, quite frankly, we're still in the early stages.
+
+But, back at this time, everyone was trying to incorporate generative AI into their products. Some were going big, others were picking off low-hanging fruit with easy applications of AI.
+
+The story today is of the latter.
+
+## The Idea
+
+Last year, a few of us saw an opportunity to solve a problem our customers have with AI. It was a simple idea but had the potential to save some serious time.
+
+I work on quality event management software. If you're not familiar with that, let me quickly explain. In order for a medical device or pharmaceutical company (or a food or oil or supplement company among many others) to get their product to market and keep their product on the market, they have to track a lot of paperwork--especially when things go wrong. When something goes wrong, we call this an event. The software I work on helps them track everything they need to about this event to prove that they responded according to their processes and know exactly the impact of the event.
+
+All this so they can get you your prescription medication or your life saving medical device. Boring paperwork but absolutely critical and impactful. To quote Chili Heeler, “boring things are important, too.”
+
+As you can imagine, some of these events can get rather large and complex. Responding to a customer complaint isn't just a one step process. Depending on what needs to be done, it can span multiple forms, processes, and departments. When you look at a single event, it can be a chore to ascertain what happened without sifting through all the details of every step of the process.
+
+Fortunately for us, generative AI is exceptional at summarizing text.
+
+So, that was our idea: summarize quality event data to help our customers understand their events and accelerate other activities like reporting and auditing.
+
+In the summer of 2025, we built a POC. It was partially hand-written and partially generated with AI coding tools. It worked well enough that we were able to get it on the roadmap and prioritize it.
+
+Fast forward to the end of Q4 when we were able to start planning it. We stacked hands on what we wanted it to do in the first version and what could wait. Then, in Q1, I started and finished coding it.
+
+But this time, I didn't hand code any of it.
+
+The recent releases of Claude's 4.6 models and OpenAI's GPT-5.3-codex and GPT-5.4 made this a reality.
+
+Instead of coding, I spent a significant amount of time building specs (with AI) and ensuring the requirements were all captured accurately. This was not the most enjoyable work, but I knew it was where most of the work would actually occur.
+
+Once the requirements were all captured and the stories reflected what we wanted to build, that's when the magic started to happen.
+
+I would turn GPT-5.4 on a story and let it loose. A short time later, I'd have code to review. I was always surprised at how well it did, but I was also often surprised at the things it missed. Even with these surprises, we were able to deliver the feature on-time. They even wrote a press release on the launch of an [AI Event Summarizer](https://www.contractpharma.com/breaking-news/mastercontrol-launches-event-summarizer/).
+
+## Lessons Learned
+
+Among the many things I learned, I want to highlight 4 things that stand out. The first is that AI accelerates intent. Second, AI in enterprise software is a great enabler. Third, AI is the great exposer: exposing all bottlenecks. Fourth, ensuring your market is ready for AI.
+
+### AI Accelerates Intent
+
+First, AI accelerates. I saw that. It accelerates everything. Good decisions. Bad decisions. All are quickly implemented. The trick is using AI well so that it accelerates your intent and reduces the bad decisions along the way. Simply asking AI for an event summarizer is not enough. You need additional oversight. You need to know the edge cases, best practices within the app, architectural boundaries, and what constraints you have. All these impact the end solution and determine whether or not the app is production-ready.
+
+For example, if your company seeks or as the ISO 42001 certification, you need to ensure you’re sourcing the data correctly so as to maintain that certification. The AI likely won’t know if you have that certification or not and won’t know if it should use the DB directly or the data lake or another data source. You, as the engineer, will need to guide it so that it operates in the constraints that you have for your organization and for this feature. Your oversight is still critical.
+
+### AI Enablement
+
+Second, AI magic is real. While Uber wonders if they got the value they wanted after burning their entire token budget, I can definitely attest that there is value in AI–even in enterprise software. It truly is amazing to see how well it can do at coding tasks. Does it write perfect code? No. But can it be your swamp guide? Absolutely. You’ll still need to provide architectural oversight and coach it along as it tries its best to do what you’ve asked, but it can take care of the dirty work very quickly and very well.
+
+As I used AI tools on the event summarizer, I viewed my job as architect, orchestrator, and (to a certain extent) product manager. My role was to provide the vision, help break work down, and guide, direct, and coach the agent along the way. I was not expecting perfect code the first time, but I was expecting to go on a journey together with the AI until we had what we wanted in the end. AI’s role? To be my swamp guide. To help me understand the parts of the system I didn’t understand. And to help bridge the gaps. This feature was primarily a backend feature. While I’ve done backend work before, it had been a few years. Using the AI tools helped me fill in the gaps of my knowledge and produce a working solution much faster than I would have otherwise been able to.
+
+### AI Exposes Bottlenecks
+
+This was possibly the most frustrating part of this whole experience. AI was awesome at churning out code, taking feedback, correcting mistakes, and getting this thing working. It was so quick at doing that, I soon overwhelmed my peers with code reviews. Not only did I have pull requests lined up to go in, some of them were much larger than they were used to which immediately caused them to feel resistance to this.
+
+The problem was two-fold: we were still 100% reliant on human review and I didn’t know the backend expectations for code reviews.
+
+The latter was more of an issue than the former. Once I learned about how big they expect pull requests to be, I was able to trim my PRs down to that size. That meant I had more PRs to review, but they were all smaller and easier to understand.
+
+Being 100% reliant on human reviews? Some would say that’s not a bad thing. I would say it depends. If you’re 100% reliant on human reviews, your review process will be slow and burdensome. You’ll burn out engineers on reviews and review quality will suffer. Reviews will turn more into rubber stamps than an actual quality gate. If you swing the pendulum entirely the other way and rely 100% on AI review with no human oversight, I think you’ll run into echo chamber problems and have a difficult time making working software.
+
+Each organization will need to find the balance that works for them between humans reviewing code and AI augmenting and supporting that. AI can increase quality. We’ve observed that in our own review processes. But AI cannot replace human judgement and experience. Both are needed and valuable additions to the code review process.
+
+### AI Market Readiness
+
+This last point may be unique to the industry we sell our product to. As a Quality Management System, we target regulated companies. This means that companies need to prove that any tool they use accomplishes its purpose and does what it’s supposed to do. This process is called software validation. Companies must validate software when they purchase it and anytime there’s a software update to it. Because of this, these companies are often slow to change and adopt new technology.
+
+Can you see how that might affect the biggest technological shift we’ve experienced in the history of computing?
+
+Luckily policy makers are more familiar with software now than they were 20+ years ago when some of these regulations were made, but there still is hesitation to change. We have some customers that are leaning into AI and some that aren’t. The ones that aren’t are cautious about these features and expressed some concerns. This caused us to delay the release of the feature so that we could get our AI policies as they relate to features and our customers hammered out. Once we were able to do that, we could communicate clearly about these features and assuage customer concern. This led to the successful release of the feature.
+
+## Conclusion
+
+Overall, this journey taught me that the role of the software engineer is shifting. We still need technical oversight. We still need good design principles to help both you and your agent teams make sense of the software and be more token efficient. But the skills that are becoming important now are not the same as they used to be. Soft skills such as breaking ideas down and the ability to clearly communicate them are becoming more important than they ever were before.
+
+So, yes, AI provides value. It’s an amazing swamp guide, can help you learn anything, and can bring real value to customers. And yes, software engineers are still needed. Their skills are still necessary. Spending some time working on soft skills will multiply their effectiveness. Or, at least, that’s how I felt shipping the first AI-integrated product at MasterControl.

@@ -147,16 +147,15 @@ export default async function BlogPostPage({ params }: PageProps) {
           targetSelector="#post-content"
         />
       </div>
-      <div className="print-hide hidden xl:block">
-        <div
-          className="fixed top-24 z-30 w-64 max-h-[calc(100vh-7rem)] overflow-y-auto"
-          style={{
-            left: "max(1rem, calc((100vw - var(--max)) / 2 - 16rem - 0.75rem))",
-          }}
+      <div className="relative">
+        <aside
+          aria-label="Post navigation"
+          className="print-hide absolute inset-y-0 right-[calc(100%+0.75rem)] hidden w-64 xl:block"
         >
-          <TableOfContents headings={tocHeadings} variant="desktop-only" />
-        </div>
-      </div>
+          <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
+            <TableOfContents headings={tocHeadings} variant="desktop-only" />
+          </div>
+        </aside>
       <article
         id="post-content"
         className="mx-auto max-w-content text-base leading-7 sm:text-lg sm:leading-8"
@@ -202,6 +201,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <div className="print-hide mx-auto max-w-content">
         <RelatedPosts posts={relatedPosts} />
+      </div>
       </div>
     </>
   );

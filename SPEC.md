@@ -151,9 +151,9 @@ Implementation guidance (v1):
 ## Redirect Management (Amplify)
 
 - Add `redirectFrom` to post or project frontmatter as a list of absolute paths.
-- Redirects are generated at build time into `amplify.yml` and `public/redirects-map.json`.
+- Redirects are generated into `infra/amplify/custom-rules.json` and `public/redirects-map.json`.
 - Paths must start with `/` and should not include a full URL.
-- Commit the updated `amplify.yml` so Amplify picks up the new rules.
+- Commit the generated files. GitHub Actions applies the desired rules to Amplify.
 
 Example (post frontmatter):
 

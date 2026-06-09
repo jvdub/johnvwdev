@@ -7,8 +7,12 @@ Personal site built with Next.js (App Router) + TypeScript + Tailwind, exported 
 ### Install
 
 ```bash
+nvm use
 npm install
 ```
+
+The project uses Node.js 24 LTS. The exact supported version is pinned in
+`.nvmrc` and `package.json`.
 
 ### Run locally (dev)
 

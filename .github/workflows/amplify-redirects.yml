@@ -1,0 +1,44 @@
+name: Apply Amplify redirects
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "content/posts/**"
+      - "app/projects/**"
+      - "infra/amplify/custom-rules.json"
+      - "scripts/generate-redirects.ts"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+      - run: npm run generate:redirects
+
+      - name: Verify generated redirect configuration is committed
+        run: git diff --exit-code -- infra/amplify/custom-rules.json public/redirects-map.json
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_AMPLIFY_REDIRECTS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Apply redirect configuration
+        run: >-
+          aws amplify update-app
+          --app-id "${{ vars.AMPLIFY_APP_ID }}"
+          --custom-rules file://infra/amplify/custom-rules.json

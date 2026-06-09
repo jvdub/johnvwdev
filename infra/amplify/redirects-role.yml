@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: GitHub Actions IAM role for applying Amplify redirect rules
+
+Parameters:
+  AmplifyAppId:
+    Type: String
+    Description: Existing Amplify app ID
+  GitHubOidcProviderArn:
+    Type: String
+    Description: ARN of the account's existing token.actions.githubusercontent.com OIDC provider
+  GitHubOrganization:
+    Type: String
+    Default: jvdub
+  GitHubRepository:
+    Type: String
+    Default: johnvwdev
+  GitHubBranch:
+    Type: String
+    Default: main
+
+Resources:
+  AmplifyRedirectsRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: Allows the johnvwdev GitHub workflow to update Amplify redirects
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !Ref GitHubOidcProviderArn
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+                token.actions.githubusercontent.com:sub: !Sub repo:${GitHubOrganization}/${GitHubRepository}:ref:refs/heads/${GitHubBranch}
+      Policies:
+        - PolicyName: UpdateAmplifyRedirects
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: amplify:UpdateApp
+                Resource: !Sub arn:${AWS::Partition}:amplify:${AWS::Region}:${AWS::AccountId}:apps/${AmplifyAppId}
+
+Outputs:
+  RoleArn:
+    Description: Store this as the AWS_AMPLIFY_REDIRECTS_ROLE_ARN GitHub secret
+    Value: !GetAtt AmplifyRedirectsRole.Arn

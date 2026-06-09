@@ -101,41 +101,6 @@ function createRedirectEntries(): RedirectEntry[] {
   return entries.sort((a, b) => a.source.localeCompare(b.source));
 }
 
-function generateAmplifyConfig(entries: RedirectEntry[]): string {
-  const lines: string[] = [
-    "version: 1",
-    "frontend:",
-    "  phases:",
-    "    preBuild:",
-    "      commands:",
-    "        - npm ci",
-    "    build:",
-    "      commands:",
-    "        - npm run build",
-    "  artifacts:",
-    "    baseDirectory: out",
-    "    files:",
-    "      - \"**/*\"",
-    "  cache:",
-    "    paths:",
-    "      - node_modules/**/*",
-  ];
-
-  if (entries.length === 0) {
-    lines.push("  customRules: []");
-    return `${lines.join("\n")}\n`;
-  }
-
-  lines.push("  customRules:");
-  for (const entry of entries) {
-    lines.push(`    - source: ${entry.source}`);
-    lines.push(`      target: ${entry.target}`);
-    lines.push(`      status: ${entry.status}`);
-  }
-
-  return `${lines.join("\n")}\n`;
-}
-
 function main(): void {
   const entries = createRedirectEntries();
 
@@ -143,12 +108,22 @@ function main(): void {
   const mapPath = path.join(publicDir, "redirects-map.json");
   writeFileEnsuringDir(mapPath, `${JSON.stringify(entries, null, 2)}\n`);
 
-  const amplifyConfig = generateAmplifyConfig(entries);
-  writeFileEnsuringDir(path.join(process.cwd(), "amplify.yml"), amplifyConfig);
+  const customRules = entries.map(({ source, target, status }) => ({
+    source,
+    target,
+    status: String(status),
+  }));
+  const customRulesPath = path.join(
+    process.cwd(),
+    "infra",
+    "amplify",
+    "custom-rules.json",
+  );
+  writeFileEnsuringDir(customRulesPath, `${JSON.stringify(customRules, null, 2)}\n`);
 
   // eslint-disable-next-line no-console
   console.log(
-    `[generate-redirects] Wrote public/redirects-map.json (${entries.length} redirects) and amplify.yml`,
+    `[generate-redirects] Wrote public/redirects-map.json and infra/amplify/custom-rules.json (${entries.length} redirects)`,
   );
 }
 

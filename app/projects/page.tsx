@@ -41,7 +41,7 @@ export default function Projects() {
               interactive AI agent sessions.
             </p>
             <span className="mt-3 inline-block text-sm text-blue-600 hover:underline">
-              View details â†’
+              View details &rarr;
             </span>
           </Link>
 

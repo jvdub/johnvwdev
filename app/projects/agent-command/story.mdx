@@ -1,0 +1,36 @@
+---
+title: "Agentic Command"
+githubUrl: "https://github.com/jvdub/agent-command"
+---
+
+## About This Project
+
+Agentic Command is a desktop command center for interactive AI agent CLIs. It
+wraps each agent in a real pseudo-terminal, preserving the prompts, permission
+requests, follow-up questions, and other terminal behavior that make agent
+sessions useful.
+
+The app is built for the moment when one agent session becomes several. A
+persistent sidebar launches sessions in chosen working directories, while the
+main workspace presents every active session as a card. Each card surfaces its
+current status so it is easy to see which agents are working, waiting for input,
+or need attention.
+
+## What It Does
+
+- Runs multiple concurrent agent sessions, each backed by its own PTY process.
+- Keeps session output and exit status available from a central command center.
+- Opens a full raw terminal for any session without disrupting the others.
+- Highlights permission prompts, questions, idle sessions, and errors.
+- Works with Claude CLI by default while keeping the command editable for other
+  terminal-based agents.
+
+## How It Works
+
+Agentic Command is an Electron app built around a multi-session manager. The
+main process owns the PTY processes and routes events by session ID. A preload
+bridge exposes a focused IPC API, and the renderer maintains the command-center
+cards, terminal views, output buffers, and attention states.
+
+The result is a practical workspace for supervising several agent-driven tasks
+without flattening them into non-interactive background jobs.

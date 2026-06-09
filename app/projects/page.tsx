@@ -30,6 +30,22 @@ export default function Projects() {
           className="grid gap-3 sm:grid-cols-2"
         >
           <Link
+            href="/projects/agent-command"
+            className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition no-underline"
+          >
+            <h2 className="text-xl font-semibold tracking-tight no-underline">
+              Agentic Command
+            </h2>
+            <p className="mt-2 text-fg-muted no-underline">
+              A desktop command center for running and monitoring multiple
+              interactive AI agent sessions.
+            </p>
+            <span className="mt-3 inline-block text-sm text-blue-600 hover:underline">
+              View details â†’
+            </span>
+          </Link>
+
+          <Link
             href="/projects/asteroids-evolved"
             className="rounded-lg border border-border bg-surface p-5 shadow-elev hover:ring-2 hover:ring-blue-400 transition no-underline"
           >

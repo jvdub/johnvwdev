@@ -232,6 +232,70 @@ body {
     white-space: pre-line;
   }
 
+  .mdx-content table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    border-spacing: 0;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  .mdx-content thead {
+    background: color-mix(in srgb, var(--surface2) 82%, var(--accent) 18%);
+  }
+
+  .mdx-content th,
+  .mdx-content td {
+    min-width: 11rem;
+    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .mdx-content th {
+    color: var(--text);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+
+  .mdx-content th:first-child,
+  .mdx-content td:first-child {
+    min-width: 12rem;
+  }
+
+  .mdx-content th:not(:last-child),
+  .mdx-content td:not(:last-child) {
+    border-right: 1px solid var(--border);
+  }
+
+  .mdx-content tbody tr:nth-child(even) {
+    background: color-mix(in srgb, var(--surface2) 72%, transparent);
+  }
+
+  .mdx-content tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .mdx-content tbody tr {
+    transition: background-color 140ms ease;
+  }
+
+  .mdx-content tbody tr:hover {
+    background: color-mix(in srgb, var(--surface2) 76%, var(--accent) 8%);
+  }
+
+  .mdx-content td:first-child {
+    color: var(--text);
+    font-weight: 700;
+  }
+
   .mdx-content :not(pre) > code {
     @apply rounded-md border border-border bg-surface-2 px-1.5 py-0.5 text-[0.9em];
   }
@@ -557,6 +621,28 @@ body {
       white-space: pre-wrap;
       word-break: break-word;
       box-shadow: none;
+    }
+
+    .mdx-content table {
+      display: table;
+      overflow: visible;
+      border: 1px solid #000;
+      border-collapse: collapse;
+      background: #fff !important;
+      box-shadow: none;
+    }
+
+    .mdx-content thead,
+    .mdx-content tbody tr {
+      background: #fff !important;
+    }
+
+    .mdx-content th,
+    .mdx-content td {
+      min-width: 0 !important;
+      border: 1px solid #000 !important;
+      padding: 0.35rem;
+      color: #000 !important;
     }
 
     .mdx-content code {

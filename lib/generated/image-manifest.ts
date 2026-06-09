@@ -807,6 +807,98 @@ export const imageManifest: Record<string, ImageManifestEntry> = {
     ],
     "hasAlpha": false
   },
+  "/images/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race.png": {
+    "original": {
+      "src": "/images/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race.png",
+      "width": 1774,
+      "height": 887
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-480.jpg",
+          "width": 480,
+          "height": 240
+        },
+        {
+          "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-768.jpg",
+          "width": 768,
+          "height": 384
+        },
+        {
+          "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-1024.jpg",
+          "width": 1024,
+          "height": 512
+        },
+        {
+          "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-1280.jpg",
+          "width": 1280,
+          "height": 640
+        },
+        {
+          "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-1600.jpg",
+          "width": 1600,
+          "height": 800
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-480.webp",
+        "width": 480,
+        "height": 240
+      },
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-768.webp",
+        "width": 768,
+        "height": 384
+      },
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-1024.webp",
+        "width": 1024,
+        "height": 512
+      },
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-1280.webp",
+        "width": 1280,
+        "height": 640
+      },
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-1600.webp",
+        "width": 1600,
+        "height": 800
+      }
+    ],
+    "avif": [
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-480.avif",
+        "width": 480,
+        "height": 240
+      },
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-768.avif",
+        "width": 768,
+        "height": 384
+      },
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-1024.avif",
+        "width": 1024,
+        "height": 512
+      },
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-1280.avif",
+        "width": 1280,
+        "height": 640
+      },
+      {
+        "src": "/images/generated/posts/the-deep-tech-and-local-reality-of-utahs-hyperscale-ai-race-1600.avif",
+        "width": 1600,
+        "height": 800
+      }
+    ],
+    "hasAlpha": false
+  },
   "/images/posts/the-most-dangerous-thing-ai-gives-engineers-false-confidence.png": {
     "original": {
       "src": "/images/posts/the-most-dangerous-thing-ai-gives-engineers-false-confidence.png",

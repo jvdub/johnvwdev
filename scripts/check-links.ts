@@ -29,6 +29,8 @@ const args = [
   "--skip",
   "linkedin.com",
   "--skip",
+  "researchgate.net",
+  "--skip",
   `${escapeForRegex(siteUrl)}(/.*)?$`,
   "--timeout",
   "10000", // 10 second timeout for external links

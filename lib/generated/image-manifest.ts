@@ -976,6 +976,98 @@ export const imageManifest: Record<string, ImageManifestEntry> = {
     ],
     "hasAlpha": false
   },
+  "/images/posts/the-truth-about-water-use-in-modern-ai-data-centers.png": {
+    "original": {
+      "src": "/images/posts/the-truth-about-water-use-in-modern-ai-data-centers.png",
+      "width": 1600,
+      "height": 900
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-480.jpg",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-768.jpg",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-1024.jpg",
+          "width": 1024,
+          "height": 576
+        },
+        {
+          "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-1280.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-1600.jpg",
+          "width": 1600,
+          "height": 900
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-480.webp",
+        "width": 480,
+        "height": 270
+      },
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-768.webp",
+        "width": 768,
+        "height": 432
+      },
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-1024.webp",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-1280.webp",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-1600.webp",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "avif": [
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-480.avif",
+        "width": 480,
+        "height": 270
+      },
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-768.avif",
+        "width": 768,
+        "height": 432
+      },
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-1024.avif",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-1280.avif",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "src": "/images/generated/posts/the-truth-about-water-use-in-modern-ai-data-centers-1600.avif",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "hasAlpha": false
+  },
   "/images/posts/using-ai-in-personal-projects-vs-enterprise-codebases.png": {
     "original": {
       "src": "/images/posts/using-ai-in-personal-projects-vs-enterprise-codebases.png",

@@ -979,8 +979,8 @@ export const imageManifest: Record<string, ImageManifestEntry> = {
   "/images/posts/the-truth-about-water-use-in-modern-ai-data-centers.png": {
     "original": {
       "src": "/images/posts/the-truth-about-water-use-in-modern-ai-data-centers.png",
-      "width": 1600,
-      "height": 900
+      "width": 1672,
+      "height": 941
     },
     "fallback": {
       "format": "jpg",

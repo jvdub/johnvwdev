@@ -1,7 +1,7 @@
 export type TocHeading = {
   id: string;
   text: string;
-  level: 2 | 3;
+  level: 2 | 3 | 4;
 };
 
 function normalizeHeadingWhitespace(value: string): string {
@@ -73,12 +73,12 @@ export function extractTocHeadingsFromMdx(source: string): TocHeading[] {
       continue;
     }
 
-    const headingMatch = line.match(/^\s{0,3}(##|###)\s+(.+?)\s*#*\s*$/);
+    const headingMatch = line.match(/^\s{0,3}(##|###|####)\s+(.+?)\s*#*\s*$/);
     if (!headingMatch) {
       continue;
     }
 
-    const level = headingMatch[1] === "##" ? 2 : 3;
+    const level = headingMatch[1].length as TocHeading["level"];
     const text = normalizeHeadingText(headingMatch[2]);
 
     if (!text) {

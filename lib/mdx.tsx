@@ -37,7 +37,10 @@ function withHeadingIds() {
     const getHeadingId = createHeadingIdFactory();
 
     const visit = (node: MdxNode) => {
-      if (node.type === "element" && (node.tagName === "h2" || node.tagName === "h3")) {
+      if (
+        node.type === "element" &&
+        (node.tagName === "h2" || node.tagName === "h3" || node.tagName === "h4")
+      ) {
         const headingText = getNodeText(node).trim();
         if (headingText.length > 0) {
           if (!node.properties) {

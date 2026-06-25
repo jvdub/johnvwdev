@@ -11,6 +11,26 @@ type Props = {
 
 const TOC_COLLAPSIBLE_ID = "post-toc-panel";
 
+function getHeadingListClassName(level: TocHeading["level"]): string {
+  if (level === 4) {
+    return "pl-7";
+  }
+
+  if (level === 3) {
+    return "pl-4";
+  }
+
+  return "";
+}
+
+function getHeadingLinkClassName(level: TocHeading["level"], isActive: boolean): string {
+  return [
+    "block rounded-md px-2 py-1 no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus",
+    level === 4 ? "text-xs leading-5" : "text-sm",
+    isActive ? "bg-surface-2 text-fg" : "text-fg-muted hover:text-fg",
+  ].join(" ");
+}
+
 export function TableOfContents({ headings, variant = "auto" }: Props) {
   const [activeId, setActiveId] = useState<string>(headings[0]?.id ?? "");
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -88,15 +108,12 @@ export function TableOfContents({ headings, variant = "auto" }: Props) {
         const isActive = heading.id === activeId;
 
         return (
-          <li key={heading.id} className={heading.level === 3 ? "pl-4" : ""}>
+          <li key={heading.id} className={getHeadingListClassName(heading.level)}>
             <a
               href={`#${heading.id}`}
               onClick={() => setIsMobileOpen(false)}
               aria-current={isActive ? "location" : undefined}
-              className={[
-                "block rounded-md px-2 py-1 text-sm no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus",
-                isActive ? "bg-surface-2 text-fg" : "text-fg-muted hover:text-fg",
-              ].join(" ")}
+              className={getHeadingLinkClassName(heading.level, isActive)}
             >
               {heading.text}
             </a>

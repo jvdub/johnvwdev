@@ -110,6 +110,8 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}');`;
 
+const isProduction = process.env.NODE_ENV === "production";
+
 // Build CSP directive
 // Note: 'unsafe-inline' is required for Next.js-generated inline scripts in static export.
 const cspContent = buildCSPContent({
@@ -117,6 +119,7 @@ const cspContent = buildCSPContent({
   "script-src": [
     "'self'",
     "'unsafe-inline'", // Required for Next.js inline scripts in static export
+    ...(!isProduction ? ["'unsafe-eval'"] : []), // Required by React debugging in dev mode
     "https://www.googletagmanager.com",
   ],
   "style-src": ["'self'", "'unsafe-inline'"], // Required for Tailwind

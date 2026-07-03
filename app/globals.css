@@ -473,18 +473,24 @@ body {
     margin-left: auto;
   }
 
+  .mdx-image-compact {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .mdx-image-compact .mdx-image {
+    width: auto;
+    max-width: 100%;
+    max-height: 500px;
+    margin-inline: auto;
+  }
+
   .mdx-image-frame {
     @apply relative overflow-hidden rounded-lg border border-border bg-surface-2 shadow-elev;
   }
 
   .mdx-image {
     @apply block h-auto w-full;
-    opacity: 0;
-    transition: opacity 220ms ease;
-  }
-
-  .mdx-image-frame[data-loaded="true"] .mdx-image {
-    opacity: 1;
   }
 
   .mdx-image-button {
@@ -493,35 +499,6 @@ body {
     border: none;
     padding: 0;
     cursor: zoom-in;
-  }
-
-  .mdx-image-skeleton {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      110deg,
-      rgba(255, 255, 255, 0.04) 8%,
-      rgba(255, 255, 255, 0.16) 18%,
-      rgba(255, 255, 255, 0.04) 33%
-    );
-    background-size: 200% 100%;
-    animation: mdx-shimmer 1.6s linear infinite;
-    opacity: 1;
-    transition: opacity 200ms ease;
-  }
-
-  :root[data-theme="light"] .mdx-image-skeleton {
-    background: linear-gradient(
-      110deg,
-      rgba(2, 6, 23, 0.06) 8%,
-      rgba(2, 6, 23, 0.14) 18%,
-      rgba(2, 6, 23, 0.06) 33%
-    );
-  }
-
-  .mdx-image-frame[data-loaded="true"] .mdx-image-skeleton {
-    opacity: 0;
-    pointer-events: none;
   }
 
   .mdx-image-caption {
@@ -679,7 +656,6 @@ body {
       background: #fff !important;
     }
 
-    .mdx-image-skeleton,
     .mdx-zoom-overlay {
       display: none !important;
     }
@@ -762,15 +738,6 @@ body {
     top: -0.5rem;
     right: 0;
     @apply rounded-md border border-border bg-surface px-3 py-1 text-sm text-fg shadow-elev;
-  }
-}
-
-@keyframes mdx-shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
   }
 }
 

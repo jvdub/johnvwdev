@@ -561,6 +561,130 @@ export const imageManifest: Record<string, ImageManifestEntry> = {
     ],
     "hasAlpha": false
   },
+  "/images/posts/execution-is-cheap-judgement-is-not-inline.png": {
+    "original": {
+      "src": "/images/posts/execution-is-cheap-judgement-is-not-inline.png",
+      "width": 624,
+      "height": 508
+    },
+    "fallback": {
+      "format": "png",
+      "variants": [
+        {
+          "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-inline-480.png",
+          "width": 480,
+          "height": 391
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-inline-480.webp",
+        "width": 480,
+        "height": 391
+      }
+    ],
+    "avif": [
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-inline-480.avif",
+        "width": 480,
+        "height": 391
+      }
+    ],
+    "hasAlpha": true
+  },
+  "/images/posts/execution-is-cheap-judgement-is-not.png": {
+    "original": {
+      "src": "/images/posts/execution-is-cheap-judgement-is-not.png",
+      "width": 1672,
+      "height": 941
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-480.jpg",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-768.jpg",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-1024.jpg",
+          "width": 1024,
+          "height": 576
+        },
+        {
+          "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-1280.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-1600.jpg",
+          "width": 1600,
+          "height": 900
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-480.webp",
+        "width": 480,
+        "height": 270
+      },
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-768.webp",
+        "width": 768,
+        "height": 432
+      },
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-1024.webp",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-1280.webp",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-1600.webp",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "avif": [
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-480.avif",
+        "width": 480,
+        "height": 270
+      },
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-768.avif",
+        "width": 768,
+        "height": 432
+      },
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-1024.avif",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-1280.avif",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "src": "/images/generated/posts/execution-is-cheap-judgement-is-not-1600.avif",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "hasAlpha": false
+  },
   "/images/posts/how-to-get-an-ai-code-review-that-actually-catches-things.png": {
     "original": {
       "src": "/images/posts/how-to-get-an-ai-code-review-that-actually-catches-things.png",

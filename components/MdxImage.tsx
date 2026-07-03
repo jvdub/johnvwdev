@@ -45,7 +45,6 @@ export function MdxImage({
     throw new Error(`MDX image is missing alt text for src "${resolvedSrc}".`);
   }
 
-  const [isLoaded, setIsLoaded] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const allowZoom = zoom === true;
   const imageSources = getImageSources(resolvedSrc);
@@ -107,8 +106,6 @@ export function MdxImage({
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         fetchPriority={priority ? "high" : "auto"}
-        onLoad={() => setIsLoaded(true)}
-        onError={() => setIsLoaded(true)}
       />
     </picture>
   ) : (
@@ -120,14 +117,12 @@ export function MdxImage({
       loading={priority ? "eager" : "lazy"}
       decoding="async"
       fetchPriority={priority ? "high" : "auto"}
-      onLoad={() => setIsLoaded(true)}
-      onError={() => setIsLoaded(true)}
     />
   );
 
   return (
     <figure className={figureClassName}>
-      <div className="mdx-image-frame" data-loaded={isLoaded}>
+      <div className="mdx-image-frame">
         {allowZoom ? (
           <button
             type="button"
@@ -144,7 +139,6 @@ export function MdxImage({
         ) : (
           imageElement
         )}
-        <div className="mdx-image-skeleton" aria-hidden="true" />
       </div>
       {resolvedCaption.length > 0 ? (
         <figcaption className="mdx-image-caption">{resolvedCaption}</figcaption>

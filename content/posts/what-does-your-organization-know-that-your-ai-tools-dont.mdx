@@ -1,0 +1,150 @@
+---
+title: "What Does Your Organization Know That Your AI Tools Don't?"
+date: "2026-10-22"
+description: "How making organizational knowledge accessible to AI agents reduced known bad patterns by 30% across more than 500 A/B tests."
+tags:
+  - ai
+  - software-engineering
+  - agents
+  - workflows
+  - best-practices
+draft: false
+heroImage: "/images/posts/what-does-your-organization-know-that-your-ai-tools-dont.png"
+canonicalUrl: ""
+---
+
+AI tools can do some impressive things. But they also have a frustrating habit of making mistakes that people in your organization already know how to avoid.
+
+Sometimes those mistakes are minor inconveniences. Other times, they lead to rework, wasted time, or problems for customers.
+
+I've seen this firsthand in software engineering. At MasterControl, where I've spent years working on a large, mature software product, we've seen AI coding agents use known bad practices. Some of those practices have even contributed to customer incidents.
+
+The frustrating part is that we already knew better.
+
+The knowledge existed. Our AI tools just weren't using it. In some cases, they couldn’t use it because that knowledge only existed in engineers’ heads.
+
+For our recent innovation and hackathon week, I decided to explore whether we could change that. So, I systematized [Anthropic’s best practices](https://code.claude.com/docs/en/large-codebases). And, after more than 500 A/B tests, we saw a 30% reduction in the use of known bad patterns, along with improvements in other tasks.
+
+Here's what we learned, and why I think the lessons apply well beyond software engineering.
+
+Our main software product lives in a repository that's over 20 years old. It contains millions of lines of code spread across more than a dozen services.
+
+Over those years, we've accumulated a tremendous amount of knowledge about how our products work. We know which approaches work well, which ones cause problems, and why certain decisions were made.
+
+Not all of that knowledge is written down. Some of it lives in documentation, some in the code, and some in the heads of engineers who've worked on the product for years.
+
+When we give an AI agent a task, it doesn't automatically have access to all that experience.
+
+It can explore the codebase and try to figure things out, but that takes time. And sometimes it makes the wrong assumptions.
+
+We call this "blank slate syndrome."
+
+I suspect this problem is familiar to people outside software engineering, too.
+
+Think about someone new joining your company. Even if they're highly capable, they don't immediately know how your business operates. They don't know your customers, your internal processes, or the exceptions and unwritten rules your employees have learned over time.
+
+AI faces much the same problem.
+
+Giving it access to your documents and systems is a start, but access alone doesn't guarantee understanding. It still needs a way to find the right information and apply it to the task at hand.
+
+I’m reminded of this as I watch my kids play sports. The start of a new season is always exciting. You have eager and capable young athletes, but they haven’t become a team yet. Individually skilled, they’ll never reach their full potential until they learn to work as a team. That teamwork takes effort and shared context for it to flourish.
+
+Spinning up new agents in a codebase without documented context is similar. You have a highly capable tool but it doesn’t know how to help you in your codebase specifically. It needs to learn that. Without context documentation, every time you start a new agent is like starting a new season in sports.
+
+Rather than trying to make our agents smarter, we focused on making our existing knowledge more accessible.
+
+We used Claude Code's context capabilities to organize information about our products, engineering practices, and known problems.
+
+Some information applies to the entire codebase. Other information only matters when working in a particular service or product area.
+
+That distinction, while seemingly small, is a key piece.
+
+If we gave every agent every piece of information we had, we'd waste resources and potentially bury important instructions in irrelevant details.
+
+Instead, we created a system that makes more specific knowledge available where it's needed.
+
+We also built reusable tools to examine our existing documentation, identify gaps, and recommend improvements.
+
+The result was more than 50 context files, several product guides, and a collection of rules designed to help our agents avoid known mistakes.
+
+One example involved an agent introducing a change that looked perfectly reasonable in isolation but violated an important architectural constraint in our system. That constraint wasn't obvious from the code the agent was working on, and the resulting change caused a customer incident.
+
+Our engineers knew about the constraint. The agent didn't. Yet the change seemed reasonable enough and it slipped in.
+
+This was exactly the kind of knowledge we wanted to capture. Rather than expecting agents to discover these decisions on their own, we could document them and make that guidance available when agents worked in the relevant areas of the codebase.
+
+One of the more interesting findings was that we didn't always need to add information.
+
+In some places, we had too much.
+
+Our tools recommended significantly reducing two existing context documents. We made those changes without observing a noticeable reduction in agent performance.
+
+That reinforced something I think is easy to overlook when implementing AI: more information isn't necessarily better.
+
+The goal is to provide the right information at the right time.
+
+It's easy to build something with AI and feel like you've made an improvement.
+
+It's harder to demonstrate that the improvement is real.
+
+Before merging our changes, I wanted evidence that our approach was actually helping.
+
+We ran more than 500 A/B tests comparing our agents' behavior with the existing context against their behavior with the new documentation.
+
+The most significant result was a 30% reduction in the use of known bad patterns.
+
+That was our biggest win. These weren't merely stylistic preferences. Some of the practices we were trying to prevent had previously contributed to customer incidents.
+
+We also observed moderate improvements in code navigation and other general tasks.
+
+We didn't need a new AI model or an entirely new platform to get those improvements.
+
+We made better use of the knowledge we already had.
+
+That doesn't mean this approach will produce the same results everywhere. Our tests were specific to our tools, tasks, and codebase. But they gave us evidence that addressing the knowledge gap was worthwhile.
+
+There was one more problem we wanted to address.
+
+Our business and software are constantly changing. Documentation that accurately describes something today might be wrong six months from now.
+
+And outdated information can be worse than missing information when an AI system confidently relies on it.
+
+We considered several approaches to keeping our context current. For now, we settled on an automated check in our development process that helps identify when documentation might need attention.
+
+This check is simple for now. It’s mostly pattern matching and some simple logic around what impactful changes could look like. In a later iteration, we’ll likely add a small agent here to give us better results.
+
+It's not a perfect solution, but it's a practical starting point.
+
+The important thing is that we treated maintaining AI context as part of the solution, rather than something we'd worry about later.
+
+That's worth considering for any business implementing AI.
+
+Your processes change. Your policies change. Your customers' needs change. If AI is going to support those operations, the knowledge it relies on needs to keep up.
+
+I started this project trying to solve a software engineering problem, but I think the broader lesson applies to many business processes.
+
+Organizations spend years developing knowledge about how to serve their customers, manage their operations, and avoid costly mistakes.
+
+Much of that knowledge is scattered across documents, software systems, and employees' experience.
+
+When businesses introduce AI, there's a temptation to focus on what the technology can do. Can it write this report? Answer this question? Automate this task?
+
+Those are useful questions, but I think there's another one worth asking:
+
+What does our organization already know that our AI tools don't?
+
+Maybe your customer support team knows which issues require special handling. Maybe your operations team knows why certain exceptions exist. Maybe your quality team has spent years identifying the practices that prevent costly errors.
+
+That knowledge has value.
+
+Making it accessible to AI could help reduce mistakes, improve consistency, and make existing tools more useful.
+
+Of course, not every problem needs AI. Sometimes a simpler process, better documentation, or conventional automation is the better answer.
+
+But when AI is appropriate, I've become convinced that understanding the business and its existing knowledge is just as important as choosing the right technology.
+
+Our experiment was one example of that.
+
+We didn't solve every problem with AI-assisted development. But we identified a recurring source of mistakes, made a targeted change, and measured a meaningful improvement.
+
+That's the kind of progress I'd like to see more organizations pursue: start with a real problem, make a manageable improvement, and find out whether it actually works.

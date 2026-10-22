@@ -1269,98 +1269,6 @@ export const imageManifest: Record<string, ImageManifestEntry> = {
     ],
     "hasAlpha": false
   },
-  "/images/posts/what-does-your-organization-know-that-your-ai-tools-dont.png": {
-    "original": {
-      "src": "/images/posts/what-does-your-organization-know-that-your-ai-tools-dont.png",
-      "width": 1672,
-      "height": 941
-    },
-    "fallback": {
-      "format": "jpg",
-      "variants": [
-        {
-          "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-480.jpg",
-          "width": 480,
-          "height": 270
-        },
-        {
-          "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-768.jpg",
-          "width": 768,
-          "height": 432
-        },
-        {
-          "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-1024.jpg",
-          "width": 1024,
-          "height": 576
-        },
-        {
-          "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-1280.jpg",
-          "width": 1280,
-          "height": 720
-        },
-        {
-          "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-1600.jpg",
-          "width": 1600,
-          "height": 900
-        }
-      ]
-    },
-    "webp": [
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-480.webp",
-        "width": 480,
-        "height": 270
-      },
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-768.webp",
-        "width": 768,
-        "height": 432
-      },
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-1024.webp",
-        "width": 1024,
-        "height": 576
-      },
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-1280.webp",
-        "width": 1280,
-        "height": 720
-      },
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-1600.webp",
-        "width": 1600,
-        "height": 900
-      }
-    ],
-    "avif": [
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-480.avif",
-        "width": 480,
-        "height": 270
-      },
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-768.avif",
-        "width": 768,
-        "height": 432
-      },
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-1024.avif",
-        "width": 1024,
-        "height": 576
-      },
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-1280.avif",
-        "width": 1280,
-        "height": 720
-      },
-      {
-        "src": "/images/generated/posts/what-does-your-organization-know-that-your-ai-tools-dont-1600.avif",
-        "width": 1600,
-        "height": 900
-      }
-    ],
-    "hasAlpha": false
-  },
   "/images/posts/you-are-a-mostly-helpful-assistant.png": {
     "original": {
       "src": "/images/posts/you-are-a-mostly-helpful-assistant.png",
@@ -1511,6 +1419,98 @@ export const imageManifest: Record<string, ImageManifestEntry> = {
         "src": "/images/generated/posts/you-are-absolutely-right-1280.avif",
         "width": 1280,
         "height": 853
+      }
+    ],
+    "hasAlpha": false
+  },
+  "/images/posts/your-ai-doesnt-know-what-your-business-knows.png": {
+    "original": {
+      "src": "/images/posts/your-ai-doesnt-know-what-your-business-knows.png",
+      "width": 1672,
+      "height": 941
+    },
+    "fallback": {
+      "format": "jpg",
+      "variants": [
+        {
+          "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-480.jpg",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-768.jpg",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-1024.jpg",
+          "width": 1024,
+          "height": 576
+        },
+        {
+          "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-1280.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-1600.jpg",
+          "width": 1600,
+          "height": 900
+        }
+      ]
+    },
+    "webp": [
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-480.webp",
+        "width": 480,
+        "height": 270
+      },
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-768.webp",
+        "width": 768,
+        "height": 432
+      },
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-1024.webp",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-1280.webp",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-1600.webp",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "avif": [
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-480.avif",
+        "width": 480,
+        "height": 270
+      },
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-768.avif",
+        "width": 768,
+        "height": 432
+      },
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-1024.avif",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-1280.avif",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "src": "/images/generated/posts/your-ai-doesnt-know-what-your-business-knows-1600.avif",
+        "width": 1600,
+        "height": 900
       }
     ],
     "hasAlpha": false

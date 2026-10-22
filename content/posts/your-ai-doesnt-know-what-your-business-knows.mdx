@@ -1,5 +1,5 @@
 ---
-title: "What Does Your Organization Know That Your AI Tools Don't?"
+title: "Your AI Doesn't Know What Your Business Knows"
 date: "2026-10-22"
 description: "How making organizational knowledge accessible to AI agents reduced known bad patterns by 30% across more than 500 A/B tests."
 tags:
@@ -9,7 +9,7 @@ tags:
   - workflows
   - best-practices
 draft: false
-heroImage: "/images/posts/what-does-your-organization-know-that-your-ai-tools-dont.png"
+heroImage: "/images/posts/your-ai-doesnt-know-what-your-business-knows.png"
 canonicalUrl: ""
 ---
 
@@ -26,6 +26,8 @@ The knowledge existed. Our AI tools just weren't using it. In some cases, they c
 For our recent innovation and hackathon week, I decided to explore whether we could change that. So, I systematized [Anthropic’s best practices](https://code.claude.com/docs/en/large-codebases). And, after more than 500 A/B tests, we saw a 30% reduction in the use of known bad patterns, along with improvements in other tasks.
 
 Here's what we learned, and why I think the lessons apply well beyond software engineering.
+
+## **AI doesn't automatically understand your business**
 
 Our main software product lives in a repository that's over 20 years old. It contains millions of lines of code spread across more than a dozen services.
 
@@ -50,6 +52,8 @@ Giving it access to your documents and systems is a start, but access alone does
 I’m reminded of this as I watch my kids play sports. The start of a new season is always exciting. You have eager and capable young athletes, but they haven’t become a team yet. Individually skilled, they’ll never reach their full potential until they learn to work as a team. That teamwork takes effort and shared context for it to flourish.
 
 Spinning up new agents in a codebase without documented context is similar. You have a highly capable tool but it doesn’t know how to help you in your codebase specifically. It needs to learn that. Without context documentation, every time you start a new agent is like starting a new season in sports.
+
+## **We started by improving what AI could learn**
 
 Rather than trying to make our agents smarter, we focused on making our existing knowledge more accessible.
 
@@ -83,6 +87,8 @@ That reinforced something I think is easy to overlook when implementing AI: more
 
 The goal is to provide the right information at the right time.
 
+## **We tested whether it actually helped**
+
 It's easy to build something with AI and feel like you've made an improvement.
 
 It's harder to demonstrate that the improvement is real.
@@ -103,6 +109,8 @@ We made better use of the knowledge we already had.
 
 That doesn't mean this approach will produce the same results everywhere. Our tests were specific to our tools, tasks, and codebase. But they gave us evidence that addressing the knowledge gap was worthwhile.
 
+## **The work doesn't end when you deploy AI**
+
 There was one more problem we wanted to address.
 
 Our business and software are constantly changing. Documentation that accurately describes something today might be wrong six months from now.
@@ -121,6 +129,8 @@ That's worth considering for any business implementing AI.
 
 Your processes change. Your policies change. Your customers' needs change. If AI is going to support those operations, the knowledge it relies on needs to keep up.
 
+## **What this means beyond software engineering**
+
 I started this project trying to solve a software engineering problem, but I think the broader lesson applies to many business processes.
 
 Organizations spend years developing knowledge about how to serve their customers, manage their operations, and avoid costly mistakes.
@@ -131,7 +141,7 @@ When businesses introduce AI, there's a temptation to focus on what the technolo
 
 Those are useful questions, but I think there's another one worth asking:
 
-What does our organization already know that our AI tools don't?
+**What does our organization already know that our AI tools don't?**
 
 Maybe your customer support team knows which issues require special handling. Maybe your operations team knows why certain exceptions exist. Maybe your quality team has spent years identifying the practices that prevent costly errors.
 
